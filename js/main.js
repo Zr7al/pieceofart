@@ -600,7 +600,7 @@ function renderProjects(filter = 'all') {
       <article class="project-card reveal" data-reveal="up" data-id="${project.id}" style="--stagger-i:${i % 3}">
         <div class="project-card__inner">
           <div class="project-card__img">
-            <img src="${project.visuals && project.visuals[0] ? project.visuals[0] : project.image}" alt="${lang.name}" loading="lazy" />
+            <img src="${project.image}" alt="${lang.name}" loading="lazy" />
             <div class="project-card__overlay">
               <div class="project-card__overlay-content">
                 <span class="project-card__cat">${categoryLabel(project.category)}</span>
@@ -719,9 +719,19 @@ function openProjectModal(projectId) {
   document.body.style.overflow = 'hidden';
 }
 
+function getModalImages() {
+  if (!activeProject) return [];
+  const raw = activeProject[activeTab] || [];
+  // Prepend thumbnail as first visual if it's not already there
+  if (activeTab === 'visuals' && activeProject.image && raw[0] !== activeProject.image) {
+    return [activeProject.image, ...raw];
+  }
+  return raw;
+}
+
 function updateModalDisplay() {
   if (!activeProject) return;
-  const images = activeProject[activeTab] || [];
+  const images = getModalImages();
   const main = document.getElementById('modalMainImg');
   const thumbs = document.getElementById('modalThumbs');
   const counter = document.getElementById('modalCounter');
@@ -752,7 +762,7 @@ function updateModalDisplay() {
 }
 
 function setModalImage(idx) {
-  const images = activeProject[activeTab] || [];
+  const images = getModalImages();
   if (idx < 0 || idx >= images.length) return;
   
   currentImgIdx = idx;
@@ -974,7 +984,7 @@ function initImageGestures() {
 
     // Horizontal swipe when NOT zoomed → navigate images
     if (!zoomState.active && absDx > 55 && absDx > absDy * 1.5) {
-      const imgs = activeProject[activeTab] || [];
+      const imgs = getModalImages();
       if (dx < 0) {
         setModalImage((currentImgIdx + 1) % imgs.length);               // swipe left = next
       } else {
@@ -1002,13 +1012,13 @@ function initModalEvents() {
 
   prevBtn?.addEventListener('click', (e) => {
     e.stopPropagation();
-    const imgs = activeProject[activeTab] || [];
+    const imgs = getModalImages();
     setModalImage((currentImgIdx - 1 + imgs.length) % imgs.length);
   });
 
   nextBtn?.addEventListener('click', (e) => {
     e.stopPropagation();
-    const imgs = activeProject[activeTab] || [];
+    const imgs = getModalImages();
     setModalImage((currentImgIdx + 1) % imgs.length);
   });
 
@@ -1041,10 +1051,10 @@ function initModalEvents() {
     if (e.key === 'Escape') {
       closeModal();
     } else if (e.key === 'ArrowLeft') {
-      const imgs = activeProject[activeTab] || [];
+      const imgs = getModalImages();
       setModalImage((currentImgIdx - 1 + imgs.length) % imgs.length);
     } else if (e.key === 'ArrowRight') {
-      const imgs = activeProject[activeTab] || [];
+      const imgs = getModalImages();
       setModalImage((currentImgIdx + 1) % imgs.length);
     }
   });
