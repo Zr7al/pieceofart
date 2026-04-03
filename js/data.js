@@ -36,7 +36,7 @@ const POA_DATA = {
       slug:   'interior-design',
       number: '01',
       icon:   'interior',
-      image:  'Assets/images/services/interior.jpg',
+      image:  'Assets/images/interior-design.jpg',
       en: {
         title:       'Interior Design',
         description: 'Most interiors look finished but never feel right. We solve that. Our team designs environments where every material, proportion, and detail is chosen with purpose — creating spaces that feel effortless to inhabit and impossible to forget.',
@@ -65,7 +65,7 @@ const POA_DATA = {
       slug:   'architecture',
       number: '02',
       icon:   'arch',
-      image:  'Assets/images/services/architecture.jpg',
+      image:  'Assets/images/Architecture.jpg',
       en: {
         title:       'Architecture',
         description: 'Architecture is more than what a building looks like — it is how it makes people feel and how it performs over decades. We design across project types: villas, farm estates, office buildings, and hospitality — each resolved with the same rigour.',
@@ -94,7 +94,7 @@ const POA_DATA = {
       slug:   'project-management',
       number: '03',
       icon:   'management',
-      image:  'Assets/images/services/management.jpg',
+      image:  'Assets/images/Project Management.jpg',
       en: {
         title:       'Project Management',
         description: 'Construction projects fail when oversight fails. We step in as your dedicated project manager — holding contractors accountable, protecting your budget, and keeping your project moving while you stay informed at every stage.',
@@ -670,7 +670,15 @@ const POA_DATA = {
         heroTitle:    'We design spaces that<br />define how people experience them.',
         heroSubtitle: 'Architecture, interior design, and project management — delivered under one roof. We bring ambitious spaces from concept to completion, without compromise.',
         ctaPrimary:   'Book a Consultation',
-        ctaSecondary: 'View Portfolio'
+        ctaSecondary: 'View Portfolio',
+        visualLabel:  'Our disciplines',
+        montageInterior:   'Interior Design',
+        montageArchitecture: 'Architecture',
+        montagePM:         'Project Management',
+        processLabel:      'How we work',
+        processTitle:      'From concept to completion',
+        processIntro:      'A disciplined path keeps creativity aligned with scope, budget, and delivery — at every stage.',
+        scrollHint:        'Scroll'
       },
       projectsPage: {
 
@@ -831,7 +839,15 @@ const POA_DATA = {
         heroTitle:    'نحن نصمم مساحات<br />تحدد كيفية تجربة الناس لها.',
         heroSubtitle: 'العمارة والتصميم الداخلي وإدارة المشاريع — يتم تقديمها تحت سقف واحد. ننتقل بالمساحات الطموحة من المفهوم إلى الاكتمال، دون تنازلات.',
         ctaPrimary:   'احجز استشارة',
-        ctaSecondary: 'استعرض أعمالنا'
+        ctaSecondary: 'استعرض أعمالنا',
+        visualLabel:  'مجالات عملنا',
+        montageInterior:   'التصميم الداخلي',
+        montageArchitecture: 'العمارة',
+        montagePM:         'إدارة المشاريع',
+        processLabel:      'أساليب العمل',
+        processTitle:      'من الفكرة إلى التسليم',
+        processIntro:      'مسار منضبط يحافظ على توازن الإبداع مع النطاق والميزانية والجدول الزمني.',
+        scrollHint:        'مرر لأسفل'
       },
       projectsPage: {
         heroTitle:      'مشاريعنا',

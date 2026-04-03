@@ -246,24 +246,44 @@ function renderServicesPage() {
     const bgClass = isEven ? 'section--gray' : '';
     
     return `
-      <section class="svc-block ${bgClass}" id="${svc.id}">
-        <div class="container">
+      <section class="svc-block section-curtain ${bgClass}" id="${svc.id}">
+        
+        <!-- Architectural Measurement Lines -->
+        <div class="dimension-line dimension-line--v" style="left: 5%; height: 100%; top: 0;"></div>
+        <div class="dimension-label" style="left: calc(5% - 15px); top: 50%; transform: rotate(-90deg);">SECTION_${svc.number}</div>
+
+        <div class="container svc-block__container">
           <div class="svc-block__grid">
-            <div class="svc-block__image reveal">
-              <img src="${svc.image}" alt="${lang.title}" loading="lazy" />
-            </div>
-            <div class="svc-block__content reveal reveal--delay">
-              <span class="svc-block__number">${svc.number}</span>
-              <h2 class="svc-block__title">
-                <span class="svc-block__title-script">${lang.title}</span>
-              </h2>
-              <p class="svc-block__body body-text">${lang.description}</p>
+            <div class="svc-block__image-container reveal" data-reveal="up">
               
-              <ul class="svc-block__list">
+              <!-- Technical Corners -->
+              <div class="drafting-corner drafting-corner--tl"></div>
+              <div class="drafting-corner drafting-corner--tr"></div>
+              <div class="drafting-corner drafting-corner--bl"></div>
+              <div class="drafting-corner drafting-corner--br"></div>
+              
+              <div class="svc-block__image-wrap">
+                <img src="${svc.image}" alt="${lang.title}" loading="lazy" />
+                <div class="blueprint-overlay"></div>
+              </div>
+
+              <div class="coord-marker" style="bottom: -20px; right: 0;">X: ${420 + i * 15} Y: ${880 - i * 10}</div>
+            </div>
+
+            <div class="svc-block__content reveal" data-reveal="up">
+              <span class="svc-block__number split-reveal"><span>${svc.number}</span></span>
+              <h2 class="svc-block__title drawing-line reveal" data-reveal="fade">
+                <span class="svc-block__title-script split-reveal"><span>${lang.title}</span></span>
+              </h2>
+              <p class="svc-block__body body-text reveal" data-reveal="up">${lang.description}</p>
+              
+              <ul class="svc-block__list reveal" data-reveal="up">
                 ${lang.bullets.map(bullet => `<li>${bullet}</li>`).join('')}
               </ul>
 
-              <a href="contact.html" class="btn btn--outline svc-block__cta">${lang.link}</a>
+              <div class="btn-magnetic">
+                <a href="contact.html" class="btn btn--outline svc-block__cta reveal" data-reveal="up">${lang.link}</a>
+              </div>
             </div>
           </div>
         </div>
@@ -511,10 +531,9 @@ function initNavbar() {
 }
 
 
-/* ── HERO ENTRANCE + PARALLAX ────────────────────────────── */
+/* ── HERO ENTRANCE ───────────────────────────────────────── */
 function initHero() {
-  var hero   = document.querySelector('.hero');
-  var heroBg = document.querySelector('.hero__bg');
+  var hero = document.querySelector('.hero');
   if (!hero) return;
 
   /* Ken Burns now runs as a pure CSS animation — the `loaded`
@@ -526,33 +545,7 @@ function initHero() {
     });
   });
 
-  /* Parallax — skip if user prefers reduced motion */
-  if (!heroBg) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  /* Background moves at 28% of scroll speed.
-     The .hero__bg has top/bottom: -35% buffer so there is
-     ~280px of travel available before any edge is exposed. */
-  var FACTOR  = 0.28;
-  var ticking = false;
-
-  function applyParallax() {
-    var scrollY     = window.scrollY;
-    var heroBottom  = hero.getBoundingClientRect().bottom + scrollY;
-
-    /* Stop updating once the hero is fully off-screen */
-    if (scrollY < heroBottom) {
-      heroBg.style.transform = 'translateY(' + (scrollY * FACTOR).toFixed(2) + 'px)';
-    }
-    ticking = false;
-  }
-
-  window.addEventListener('scroll', function () {
-    if (!ticking) {
-      requestAnimationFrame(applyParallax);
-      ticking = true;
-    }
-  }, { passive: true });
+  /* Hero background: no scroll-parallax (keeps imagery and edges stable for reading). */
 }
 
 
@@ -636,34 +629,6 @@ function initRipple() {
 }
 
 
-/* ── IMAGE PARALLAX (rAF lerp) ───────────────────────────── */
-function initImageParallax() {
-  var items = [];
-
-  document.querySelectorAll('.js-parallax').forEach(function (el) {
-    items.push({ el: el, cx: 0, cy: 0 });
-    el.style.willChange = 'transform';
-  });
-
-  if (!items.length) return;
-
-  document.addEventListener('mousemove', function (e) {
-    var nx = (e.clientX / window.innerWidth  - 0.5) * 18;
-    var ny = (e.clientY / window.innerHeight - 0.5) * 12;
-    items.forEach(function (item) { item.tx = nx; item.ty = ny; });
-  });
-
-  (function tick() {
-    requestAnimationFrame(tick);
-    items.forEach(function (item) {
-      item.cx += ((item.tx || 0) - item.cx) * 0.08;
-      item.cy += ((item.ty || 0) - item.cy) * 0.08;
-      item.el.style.transform = 'translate(' + item.cx.toFixed(2) + 'px,' + item.cy.toFixed(2) + 'px)';
-    });
-  })();
-}
-
-
 /* ── CARD 3-D TILT ───────────────────────────────────────── */
 function initCardTilt() {
   document.querySelectorAll('.project-card, .service-card').forEach(function (card) {
@@ -687,44 +652,6 @@ function initCardTilt() {
       });
     });
   });
-}
-
-
-/* ── SERVICES PARALLAX ───────────────────────────────────── */
-/*
- * Large card drifts ~18px slower (background depth).
- * Right stack drifts ~22px faster (foreground depth).
- * Uses the CSS `translate` property so it composes with
- * the hover `transform: translateY(-6px)` without conflict.
- */
-function initServicesParallax() {
-  const section = document.getElementById('services');
-  if (!section) return;
-
-  /* Disable on touch/small screens where hover is unreliable */
-  if (window.matchMedia('(max-width: 900px)').matches) return;
-
-  function update() {
-    const largeCard = section.querySelector('.svc-card--large');
-    const stack     = section.querySelector('.svc-stack');
-    if (!largeCard || !stack) return;
-
-    const rect    = section.getBoundingClientRect();
-    const viewH   = window.innerHeight;
-
-    /* Normalised progress: 0 when section centre is at viewport centre */
-    const progress = ((viewH / 2) - (rect.top + rect.height / 2)) / viewH;
-    const t        = Math.max(-0.55, Math.min(0.55, progress));
-
-    /* Large card: slow drift — feels like background */
-    largeCard.style.translate = '0 ' + (t * 18).toFixed(1) + 'px';
-
-    /* Stack: faster counter-drift — feels like foreground */
-    stack.style.translate = '0 ' + (t * -22).toFixed(1) + 'px';
-  }
-
-  window.addEventListener('scroll', update, { passive: true });
-  update();
 }
 
 
@@ -1333,8 +1260,6 @@ document.addEventListener('DOMContentLoaded', function () {
   initReveal();
   initScrollProgress();
   initRipple();
-  initImageParallax();
-  initServicesParallax();
   initCardTilt();
   initLangSwitch();
   initProjectsHero();

@@ -12,6 +12,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Service imagery (same paths as POA_DATA.services[].image in js/data.js) -->
+  <link rel="preload" as="image" href="Assets/images/interior-design.jpg" />
+  <link rel="preload" as="image" href="Assets/images/Architecture.jpg" />
+  <link rel="preload" as="image" href="Assets/images/Project Management.jpg" />
 </head>
 <body class="page-services">
 
@@ -66,10 +71,12 @@
 
   <!-- ===================== HERO ===================== -->
   <section class="services-hero reveal" data-reveal="fade">
-    <div class="container">
+    <div class="services-hero__accent" aria-hidden="true"></div>
+
+    <div class="container services-hero__layout">
       <div class="services-hero__content">
         <span class="section-label" data-i18n="nav.services">What We Do</span>
-        <h1 class="services-hero__title" data-i18n="servicesPage.heroTitle">
+        <h1 class="services-hero__title" data-i18n-html="servicesPage.heroTitle">
           We design spaces that<br />define how people experience them.
         </h1>
         <p class="services-hero__subtitle" data-i18n="servicesPage.heroSubtitle">
@@ -80,26 +87,56 @@
           <a href="projects.html" class="btn btn--outline" data-i18n="servicesPage.ctaSecondary">View Portfolio</a>
         </div>
       </div>
+
+      <div class="services-hero__visual reveal reveal--delay" data-reveal="up">
+        <p class="services-hero__visual-label section-label" data-i18n="servicesPage.visualLabel">Our disciplines</p>
+        <nav class="services-hero__montage" aria-label="Service sections">
+          <a href="#interior-design" class="services-hero__card services-hero__card--primary">
+            <img src="Assets/images/interior-design.jpg" alt="" width="800" height="600" loading="eager" decoding="async" />
+            <span class="services-hero__card-label"><span class="services-hero__card-num">01</span> <span data-i18n="servicesPage.montageInterior">Interior Design</span></span>
+          </a>
+          <div class="services-hero__montage-row">
+            <a href="#architecture" class="services-hero__card services-hero__card--secondary">
+              <img src="Assets/images/Architecture.jpg" alt="" width="600" height="480" loading="lazy" decoding="async" />
+              <span class="services-hero__card-label"><span class="services-hero__card-num">02</span> <span data-i18n="servicesPage.montageArchitecture">Architecture</span></span>
+            </a>
+            <a href="#project-management" class="services-hero__card services-hero__card--secondary">
+              <img src="Assets/images/Project Management.jpg" alt="" width="600" height="480" loading="lazy" decoding="async" />
+              <span class="services-hero__card-label"><span class="services-hero__card-num">03</span> <span data-i18n="servicesPage.montagePM">Project Management</span></span>
+            </a>
+          </div>
+        </nav>
+      </div>
     </div>
-    
-    <div class="hero__scroll-indicator">
+
+    <div class="hero__scroll-indicator hero__scroll-indicator--on-light" aria-hidden="true">
       <span></span>
-      <p>Scroll</p>
+      <p data-i18n="servicesPage.scrollHint">Scroll</p>
     </div>
   </section>
 
   <!-- ===================== PROCESS STRIP ===================== -->
   <section class="process-strip section section--gray">
     <div class="container">
+      <header class="process-strip__header reveal" data-reveal="up">
+        <span class="section-label" data-i18n="servicesPage.processLabel">How we work</span>
+        <h2 class="process-strip__title" data-i18n="servicesPage.processTitle">From concept to completion</h2>
+        <p class="process-strip__intro" data-i18n="servicesPage.processIntro">
+          A disciplined path keeps creativity aligned with scope, budget, and delivery — at every stage.
+        </p>
+      </header>
       <div class="process-strip__grid" id="process-grid">
         <!-- Populated by JS -->
       </div>
     </div>
   </section>
 
-  <!-- ===================== SERVICES LIST ===================== -->
-  <section class="services-list" id="services-page-list">
-    <!-- Populated by JS (Zig-Zag Layout) -->
+  <!--
+    Services list: each block includes an image from Assets/images/
+    (interior-design.jpg, Architecture.jpg, Project Management.jpg).
+    Markup is built by renderServicesPage() in js/main.js from POA_DATA.services.
+  -->
+  <section class="services-list" id="services-page-list" aria-label="Our services">
   </section>
 
   <!-- ===================== FINAL CTA ===================== -->
