@@ -700,15 +700,20 @@ function renderProjects(filter = 'all') {
     `;
   }).join('');
 
-  // Add click listeners to cards
-  grid.querySelectorAll('.project-card').forEach(card => {
-    card.addEventListener('click', () => {
-      openProjectModal(card.getAttribute('data-id'));
-    });
-  });
-
   observeReveal(grid.querySelectorAll('.reveal'));
 }
+
+/* Event-delegation: single listener on the grid handles all card clicks */
+(function initProjectGridDelegation() {
+  document.addEventListener('click', function (e) {
+    const card = e.target.closest('.project-card[data-id]');
+    if (!card) return;
+    e.preventDefault();
+    e.stopPropagation();
+    const id = card.getAttribute('data-id');
+    if (id) openProjectModal(id);
+  });
+})();
 
 /* ── MODAL LOGIC ─────────────────────────────────────────── */
 let activeProject = null;
@@ -765,41 +770,30 @@ function openProjectModal(projectId) {
   clearTimeout(imgSwapTimer);
   clearTimeout(tabSwitchTimer);
 
-  activeProject = project;
-  activeTab = 'visuals';
-  currentImgIdx = 0;
-
   const modal = document.getElementById('projectModal');
   if (!modal) return;
   const container = modal.querySelector('.modal-container');
 
-  // If modal is already visible (fast switch), hide instantly, swap content, re-show
-  if (modal.classList.contains('active')) {
-    // Kill transitions so the hide is instant
-    modal.style.transition = 'none';
-    if (container) container.style.transition = 'none';
-    modal.classList.remove('active');
+  // Always force-hide first (no transition) so content swaps while invisible
+  modal.style.transition = 'none';
+  if (container) container.style.transition = 'none';
+  modal.classList.remove('active');
+  void modal.offsetHeight;
 
-    // Force browser to flush the hidden state
-    void modal.offsetHeight;
+  // Now populate with fresh data
+  activeProject = project;
+  activeTab = 'visuals';
+  currentImgIdx = 0;
+  resetZoom();
+  populateModal(project);
+  if (container) container.scrollTop = 0;
 
-    populateModal(project);
-    if (container) container.scrollTop = 0;
-    resetZoom();
+  // Restore transitions, then reveal
+  modal.style.transition = '';
+  if (container) container.style.transition = '';
+  void modal.offsetHeight;
 
-    // Restore transitions, then show
-    modal.style.transition = '';
-    if (container) container.style.transition = '';
-    void modal.offsetHeight;
-
-    modal.classList.add('active');
-  } else {
-    populateModal(project);
-    if (container) container.scrollTop = 0;
-    resetZoom();
-    modal.classList.add('active');
-  }
-
+  modal.classList.add('active');
   document.body.style.overflow = 'hidden';
 }
 
