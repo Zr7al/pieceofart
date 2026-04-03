@@ -800,24 +800,9 @@ function closeModal() {
   resetZoom();
 }
 
-function openProjectModal(projectId) {
-  const project = POA_DATA.projects.find(p => p.id === projectId);
-  if (!project) return;
-
-  // Cancel any pending timers from previous modal
-  clearTimeout(imgSwapTimer);
-  clearTimeout(tabSwitchTimer);
-
-  activeProject = project;
-  activeTab = 'visuals';
-  currentImgIdx = 0;
-
-  const modal = document.getElementById('projectModal');
-  if (!modal) return;
-
+function populateModal(project) {
   const lang = project[currentLang];
 
-  // Populate textual info
   const elements = {
     'modalCat': categoryLabel(project.category),
     'modalTitle': lang.name,
@@ -832,27 +817,62 @@ function openProjectModal(projectId) {
     if (el) el.textContent = val;
   }
 
-  // Blueprints tab visibility
   const bTab = document.querySelector('.modal-tab[data-tab="blueprints"]');
   const hasB = project.blueprints && project.blueprints.length > 0;
   if (bTab) bTab.style.display = hasB ? 'block' : 'none';
 
-  // Active tab state reset
   document.querySelectorAll('.modal-tab').forEach(t => {
     t.classList.toggle('active', t.getAttribute('data-tab') === 'visuals');
   });
 
-  // Reset image wrapper opacity (may be 0 from a pending tab switch)
   const wrapper = document.getElementById('modalImgContainer');
   if (wrapper) wrapper.style.opacity = '1';
 
   updateModalDisplay();
+}
 
-  // Scroll container to top so the image is visible
+function openProjectModal(projectId) {
+  const project = POA_DATA.projects.find(p => p.id === projectId);
+  if (!project) return;
+
+  clearTimeout(imgSwapTimer);
+  clearTimeout(tabSwitchTimer);
+
+  activeProject = project;
+  activeTab = 'visuals';
+  currentImgIdx = 0;
+
+  const modal = document.getElementById('projectModal');
+  if (!modal) return;
   const container = modal.querySelector('.modal-container');
-  if (container) container.scrollTop = 0;
 
-  modal.classList.add('active');
+  // If modal is already visible (fast switch), hide instantly, swap content, re-show
+  if (modal.classList.contains('active')) {
+    // Kill transitions so the hide is instant
+    modal.style.transition = 'none';
+    if (container) container.style.transition = 'none';
+    modal.classList.remove('active');
+
+    // Force browser to flush the hidden state
+    void modal.offsetHeight;
+
+    populateModal(project);
+    if (container) container.scrollTop = 0;
+    resetZoom();
+
+    // Restore transitions, then show
+    modal.style.transition = '';
+    if (container) container.style.transition = '';
+    void modal.offsetHeight;
+
+    modal.classList.add('active');
+  } else {
+    populateModal(project);
+    if (container) container.scrollTop = 0;
+    resetZoom();
+    modal.classList.add('active');
+  }
+
   document.body.style.overflow = 'hidden';
 }
 
