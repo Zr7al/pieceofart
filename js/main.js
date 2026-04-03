@@ -787,11 +787,13 @@ function renderProjects(filter = 'all') {
 let activeProject = null;
 let activeTab = 'visuals';
 let currentImgIdx = 0;
+let imgSwapTimer = null;
 
 function openProjectModal(projectId) {
   const project = POA_DATA.projects.find(p => p.id === projectId);
   if (!project) return;
 
+  clearTimeout(imgSwapTimer);
   activeProject = project;
   activeTab = 'visuals';
   currentImgIdx = 0;
@@ -878,7 +880,7 @@ function setModalImage(idx) {
 
   if (main) {
     main.style.opacity = '0';
-    setTimeout(() => {
+    imgSwapTimer = setTimeout(() => {
       main.src = images[currentImgIdx];
       main.style.opacity = '1';
     }, 250);
