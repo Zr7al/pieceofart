@@ -2941,7 +2941,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .project-card__img {
   position: relative;
   overflow: hidden;
-  height: 240px;
+  height: 320px;
   background: #e8e8e8;
   flex-shrink: 0;
 }
@@ -3515,7 +3515,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   /* Projects grid: 2-col, reset masonry */
   .projects-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
   .project-card:nth-child(n) { grid-column: auto; }
-  .project-card:nth-child(n) .project-card__img { height: 220px; }
+  .project-card:nth-child(n) .project-card__img { height: 280px; }
   .project-filters { gap: 1.5rem; }
 
   /* Services page */
@@ -3600,7 +3600,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   /* Projects: 1-col, taller images */
   .projects-grid { grid-template-columns: 1fr; gap: 14px; }
   .project-card:nth-child(n) { grid-column: auto; }
-  .project-card:nth-child(n) .project-card__img { height: 260px; }
+  .project-card:nth-child(n) .project-card__img { height: 240px; }
   .project-filters { gap: 0.75rem; font-size: 0.65rem; }
 
   /* ── Modal: full-screen mobile gallery ── */

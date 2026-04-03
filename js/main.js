@@ -13,7 +13,7 @@ let currentFilter = 'all';
 /* ── ICONS ───────────────────────────────────────────────── */
 /*
  * All icons: 24×24 viewBox, stroke-width 1.5, no fill.
- * Used by renderServices() and renderStats().
+ * Optional SVG fragments (service cards currently use inline SVGs).
  */
 var SVG_ATTRS = 'viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"';
 
@@ -103,73 +103,6 @@ function t(key) {
 function categoryLabel(id) {
   const cat = POA_DATA.categories.find(function (c) { return c.id === id; });
   return cat ? cat[currentLang] : id;
-}
-
-
-/* ── RENDER: STATS ───────────────────────────────────────── */
-function renderStats() {
-  const grid = document.getElementById('stats-grid');
-  if (!grid) return;
-
-  grid.innerHTML = POA_DATA.stats.map(function (stat, i) {
-    const label = stat[currentLang].label;
-    return `
-      <div class="stat-item reveal" data-reveal="up" style="--stagger-i:${i}">
-        <div class="stat-item__number">
-          <span
-            class="stat-item__value"
-            data-target="${stat.value}"
-            aria-label="${stat.value}${stat.suffix} ${label}"
-          >0</span>
-          <span class="stat-item__suffix" aria-hidden="true">${stat.suffix}</span>
-        </div>
-        <p class="stat-item__label">${label}</p>
-      </div>`;
-  }).join('');
-
-  /* Kick off count-up for any newly rendered values */
-  initCountUp(grid.querySelectorAll('.stat-item__value[data-target]'));
-  observeReveal(grid.querySelectorAll('.reveal'));
-}
-
-
-/* ── COUNT-UP ANIMATION ──────────────────────────────────── */
-/*
- * Observes each .stat-item__value[data-target] element.
- * When it enters the viewport, counts from 0 → data-target
- * over ~1800ms using an ease-out-quad curve.
- */
-function animateCount(el, target, duration) {
-  var startTime = null;
-
-  function step(timestamp) {
-    if (!startTime) startTime = timestamp;
-    var elapsed  = timestamp - startTime;
-    var progress = Math.min(elapsed / duration, 1);
-    /* ease-out quad */
-    var eased    = 1 - (1 - progress) * (1 - progress);
-    el.textContent = Math.round(eased * target);
-    if (progress < 1) requestAnimationFrame(step);
-  }
-
-  requestAnimationFrame(step);
-}
-
-function initCountUp(elements) {
-  if (!elements || !elements.length) return;
-
-  var observer = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        var el     = entry.target;
-        var target = parseInt(el.getAttribute('data-target'), 10);
-        animateCount(el, target, 1800);
-        observer.unobserve(el);
-      }
-    });
-  }, { threshold: 0.6 });
-
-  elements.forEach(function (el) { observer.observe(el); });
 }
 
 
@@ -434,7 +367,6 @@ function setLanguage(lang) {
   });
 
   /* Re-render dynamic sections in new language */
-  renderStats();
   renderServices();
   renderFeatured();
   renderProjectsHero();
@@ -466,16 +398,6 @@ function initNavbar() {
 
   const isLightNav = navbar.classList.contains('navbar--light');
   const logoImg    = navbar.querySelector('.navbar__logo img');
-
-  /* ── Inject brand tagline for letter-spacing hover effect ── */
-  var logoLink = navbar.querySelector('.navbar__logo');
-  if (logoLink && !logoLink.querySelector('.navbar__logo-tagline')) {
-    var tagline = document.createElement('span');
-    tagline.className = 'navbar__logo-tagline';
-    tagline.setAttribute('aria-hidden', 'true');
-    tagline.textContent = 'PIECE\u00A0OF\u00A0ART';
-    logoLink.appendChild(tagline);
-  }
 
   /* ── Scroll handler ─────────────────────────────────────── */
   function onScroll() {
@@ -678,7 +600,7 @@ function renderProjects(filter = 'all') {
       <article class="project-card reveal" data-reveal="up" data-id="${project.id}" style="--stagger-i:${i % 3}">
         <div class="project-card__inner">
           <div class="project-card__img">
-            <img src="${project.image}" alt="${lang.name}" loading="lazy" />
+            <img src="${project.visuals && project.visuals[0] ? project.visuals[0] : project.image}" alt="${lang.name}" loading="lazy" />
             <div class="project-card__overlay">
               <div class="project-card__overlay-content">
                 <span class="project-card__cat">${categoryLabel(project.category)}</span>
@@ -1237,7 +1159,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* 2. Render dynamic sections */
-  renderStats();
   renderServices();
   renderProcessStrip();
   renderServicesPage();
