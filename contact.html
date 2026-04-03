@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Piece of Art</title>
+  <meta name="description" content="Get in touch with Piece of Art design and project management studio in Amman, Jordan." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Montserrat:wght@300;400;500;600&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar navbar--light" id="navbar">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo" aria-label="Piece of Art — Home">
+        <img src="Assets/images/logo 2-01.png" alt="Piece of Art" />
+      </a>
+      <nav class="navbar__nav" id="mainNav" aria-label="Primary navigation">
+        <ul>
+          <li><a href="index.html"    class="nav-link"        data-i18n="nav.home">Home</a></li>
+          <li><a href="about.html"    class="nav-link"        data-i18n="nav.about">About</a></li>
+          <li><a href="services.html" class="nav-link"        data-i18n="nav.services">Services</a></li>
+          <li><a href="projects.html" class="nav-link"        data-i18n="nav.projects">Projects</a></li>
+          <li><a href="careers.html"  class="nav-link"        data-i18n="nav.careers">Careers</a></li>
+          <li><a href="contact.html"  class="nav-link active" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="navbar__actions">
+        <button class="lang-switch" id="langSwitch" aria-label="Switch language">
+          <span class="lang-switch__en active">EN</span>
+          <span class="lang-switch__divider">/</span>
+          <span class="lang-switch__ar">AR</span>
+        </button>
+        <button class="navbar__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <ul>
+      <li><a href="index.html"    class="nav-link" data-i18n="nav.home">Home</a></li>
+      <li><a href="about.html"    class="nav-link" data-i18n="nav.about">About</a></li>
+      <li><a href="services.html" class="nav-link" data-i18n="nav.services">Services</a></li>
+      <li><a href="projects.html" class="nav-link" data-i18n="nav.projects">Projects</a></li>
+      <li><a href="careers.html"  class="nav-link" data-i18n="nav.careers">Careers</a></li>
+      <li><a href="contact.html"  class="nav-link" data-i18n="nav.contact">Contact</a></li>
+    </ul>
+  </div>
+
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="container">
+      <span class="section-label" data-i18n="contact.label">Contact Us</span>
+      <h1 class="page-header__title" data-i18n="contact.title">Get in Touch</h1>
+      <p class="page-header__subtitle" data-i18n-html="contact.subtitle">
+        We're here to discuss your project and bring your vision to life.<br />
+        Reach out and let's start building something extraordinary together.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- CONTACT -->
+  <section class="contact-section">
+    <div class="container contact-grid">
+
+      <!-- Form -->
+      <div class="contact-form-wrap reveal">
+        <h2 class="contact-form-wrap__heading" data-i18n="contact.formHeading">Let's Talk About Your Project</h2>
+
+        <form id="contactForm" class="contact-form" novalidate>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="name">
+                <span data-i18n="contact.nameLabel">Full Name</span>
+                <span aria-hidden="true"> *</span>
+              </label>
+              <input
+                class="form-input"
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Your full name"
+                data-i18n-placeholder="contact.namePlaceholder"
+                required
+                autocomplete="name"
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">
+                <span data-i18n="contact.emailLabel">Email Address</span>
+                <span aria-hidden="true"> *</span>
+              </label>
+              <input
+                class="form-input"
+                type="email"
+                id="email"
+                name="email"
+                placeholder="We'll get back to you here"
+                data-i18n-placeholder="contact.emailPlaceholder"
+                required
+                autocomplete="email"
+              />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="phone" data-i18n="contact.phoneLabel">Phone Number</label>
+              <input
+                class="form-input"
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="Optional"
+                data-i18n-placeholder="contact.phonePlaceholder"
+                autocomplete="tel"
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="subject">
+                <span data-i18n="contact.subjectLabel">Subject</span>
+                <span aria-hidden="true"> *</span>
+              </label>
+              <input
+                class="form-input"
+                type="text"
+                id="subject"
+                name="subject"
+                placeholder="What's this about?"
+                data-i18n-placeholder="contact.subjectPlaceholder"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="message">
+              <span data-i18n="contact.messageLabel">Message</span>
+              <span aria-hidden="true"> *</span>
+            </label>
+            <textarea
+              class="form-input form-textarea"
+              id="message"
+              name="message"
+              placeholder="Tell us how we can help…"
+              data-i18n-placeholder="contact.messagePlaceholder"
+              rows="6"
+              required
+            ></textarea>
+          </div>
+
+          <div id="formStatus" class="form-status" aria-live="polite" hidden></div>
+
+          <button type="submit" class="btn btn--dark contact-form__submit" id="submitBtn" data-i18n="contact.submit">
+            Send Message
+          </button>
+
+        </form>
+      </div>
+
+      <!-- Info + Map -->
+      <div class="contact-info reveal reveal--delay">
+
+        <div class="contact-info__direct">
+          <h3 class="contact-info__heading" data-i18n="contact.infoHeading">Prefer a Direct Approach?</h3>
+
+          <ul class="contact-info__list">
+            <li class="contact-info__item">
+              <span class="contact-info__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013 6.18 2 2 0 014.96 4h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L9.09 11a16 16 0 006.86 6.86l1.27-1.12a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 19z"/></svg>
+              </span>
+              <a href="tel:+962798184862" dir="ltr">+962 79 818 4862</a>
+            </li>
+            <li class="contact-info__item">
+              <span class="contact-info__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </span>
+              <a href="mailto:info@pieceofartjo.com">info@pieceofartjo.com</a>
+            </li>
+            <li class="contact-info__item">
+              <span class="contact-info__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14.5"/></svg>
+              </span>
+              <span data-i18n="contact.hours">Sunday – Thursday, 8 AM – 4 PM</span>
+            </li>
+            <li class="contact-info__item">
+              <span class="contact-info__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </span>
+              <span data-i18n="contact.location">Amman, Jordan</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="contact-map-card">
+          <div class="contact-map-card__map">
+            <iframe
+              src="https://maps.google.com/maps?q=31.9665802,35.844676&z=17&output=embed"
+              width="100%"
+              height="240"
+              style="border:0; display:block;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Piece of Art office location"
+            ></iframe>
+          </div>
+          <div class="contact-map-card__footer">
+            <div class="contact-map-card__address">
+              <span class="contact-info__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </span>
+              <span data-i18n="contact.location">Amman, Jordan</span>
+            </div>
+            <a
+              href="https://www.google.com/maps/place/31%C2%B057'59.7%22N+35%C2%B050'40.8%22E/@31.9665802,35.8421011,17z"
+              target="_blank"
+              rel="noopener"
+              class="contact-map-card__directions"
+            >
+              <span data-i18n="contact.directions">Get Directions</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer class="footer" id="footer">
+    <div class="container footer__main">
+      <div class="footer__brand">
+        <a href="index.html" class="footer__logo">
+          <img src="Assets/images/logo.png" alt="Piece of Art" />
+        </a>
+        <p class="footer__tagline" data-i18n-html="footer.tagline">
+          Design &amp; Project Management Studio.<br />
+          Crafting spaces of lasting distinction.
+        </p>
+        <div class="footer__social">
+          <a href="https://instagram.com/pieceofart.sa" target="_blank" rel="noopener" aria-label="Instagram" class="footer__social-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://wa.me/962798184862" target="_blank" rel="noopener" aria-label="WhatsApp" class="footer__social-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+          </a>
+          <a href="mailto:info@pieceofartjo.com" aria-label="Email" class="footer__social-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
+        </div>
+      </div>
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <div class="footer__col">
+          <h4 class="footer__heading" data-i18n="footer.navHeading">Navigation</h4>
+          <ul>
+            <li><a href="index.html"    data-i18n="nav.home">Home</a></li>
+            <li><a href="about.html"    data-i18n="nav.about">About</a></li>
+            <li><a href="services.html" data-i18n="nav.services">Services</a></li>
+            <li><a href="projects.html" data-i18n="nav.projects">Projects</a></li>
+            <li><a href="careers.html"  data-i18n="nav.careers">Careers</a></li>
+            <li><a href="contact.html"  data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading" data-i18n="footer.svcHeading">Services</h4>
+          <ul>
+            <li><a href="services.html#interior-design"    data-svc-en="Interior Design"    data-svc-ar="التصميم الداخلي">Interior Design</a></li>
+            <li><a href="services.html#architecture"       data-svc-en="Architecture"       data-svc-ar="التصميم المعماري">Architecture</a></li>
+            <li><a href="services.html#project-management" data-svc-en="Project Management" data-svc-ar="إدارة المشاريع">Project Management</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading" data-i18n="footer.conHeading">Contact</h4>
+          <ul>
+            <li><a href="tel:+962798184862" dir="ltr">+962 79 818 4862</a></li>
+            <li><a href="mailto:info@pieceofartjo.com">info@pieceofartjo.com</a></li>
+            <li><span class="footer__plain" data-i18n="contact.location">Amman, Jordan</span></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p>&copy; <span id="year"></span> <span data-i18n="footer.copyright">Piece of Art. All rights reserved.</span></p>
+        <button class="lang-switch lang-switch--small" id="langSwitchFooter" aria-label="Switch language">
+          <span class="lang-switch__en active">EN</span>
+          <span class="lang-switch__divider">/</span>
+          <span class="lang-switch__ar">AR</span>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    (function () {
+      const form      = document.getElementById('contactForm');
+      const status    = document.getElementById('formStatus');
+      const submitBtn = document.getElementById('submitBtn');
+
+      function tr(key) {
+        /* Read from POA_DATA using the current language on <html> */
+        const lang = document.documentElement.lang || 'en';
+        const keys = ('contact.' + key).split('.');
+        let val = POA_DATA.translations[lang];
+        for (var i = 0; i < keys.length; i++) {
+          if (!val) return key;
+          val = val[keys[i]];
+        }
+        return val || key;
+      }
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const required = form.querySelectorAll('[required]');
+        let valid = true;
+        required.forEach(function (el) {
+          el.classList.remove('is-invalid');
+          if (!el.value.trim()) { el.classList.add('is-invalid'); valid = false; }
+        });
+        if (!valid) {
+          showStatus(tr('errorRequired'), false);
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = tr('sending');
+
+        try {
+          const res  = await fetch('contact.php', { method: 'POST', body: new FormData(form) });
+          const text = await res.text();
+          let data;
+          try {
+            data = JSON.parse(text);
+          } catch {
+            showStatus(tr('errorServer'), false);
+            console.error('Non-JSON response:', text);
+            return;
+          }
+          showStatus(data.success ? tr('successMsg') : data.message, data.success);
+          if (data.success) form.reset();
+        } catch (err) {
+          showStatus(tr('errorNetwork'), false);
+          console.error('Fetch error:', err);
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = tr('submit');
+        }
+      });
+
+      form.querySelectorAll('.form-input').forEach(function (el) {
+        el.addEventListener('input', function () { el.classList.remove('is-invalid'); });
+      });
+
+      function showStatus(msg, success) {
+        status.textContent = msg;
+        status.className   = 'form-status ' + (success ? 'form-status--ok' : 'form-status--err');
+        status.hidden      = false;
+      }
+    })();
+  </script>
+</body>
+</html>

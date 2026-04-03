@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تواصل معنا — Piece of Art</title>
+  <meta name="description" content="تواصل مع استوديو Piece of Art للتصميم وإدارة المشاريع في عمّان، الأردن." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Montserrat:wght@300;400;500;600&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/contact-ar.css" />
+</head>
+<body>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <header class="navbar navbar--light" id="navbar">
+    <div class="navbar__inner">
+
+      <a href="index.html" class="navbar__logo" aria-label="Piece of Art — الرئيسية">
+        <img src="Assets/images/logo 2-01.png" alt="Piece of Art" />
+      </a>
+
+      <nav class="navbar__nav" id="mainNav" aria-label="التنقل الرئيسي">
+        <ul>
+          <li><a href="index.html"       class="nav-link">الرئيسية</a></li>
+          <li><a href="about.html"       class="nav-link">عن الاستوديو</a></li>
+          <li><a href="services.html"    class="nav-link">الخدمات</a></li>
+          <li><a href="projects.html"    class="nav-link">المشاريع</a></li>
+          <li><a href="careers.html"     class="nav-link">وظائف</a></li>
+          <li><a href="contact-ar.html"  class="nav-link active">تواصل</a></li>
+        </ul>
+      </nav>
+
+      <div class="navbar__actions">
+        <a href="contact.html" class="lang-switch" aria-label="English version">
+          <span class="lang-switch__en">EN</span>
+          <span class="lang-switch__divider">/</span>
+          <span class="lang-switch__ar active">AR</span>
+        </a>
+        <button class="navbar__hamburger" id="hamburger" aria-label="فتح القائمة" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Mobile nav -->
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <ul>
+      <li><a href="index.html"      class="nav-link">الرئيسية</a></li>
+      <li><a href="about.html"      class="nav-link">عن الاستوديو</a></li>
+      <li><a href="services.html"   class="nav-link">الخدمات</a></li>
+      <li><a href="projects.html"   class="nav-link">المشاريع</a></li>
+      <li><a href="careers.html"    class="nav-link">وظائف</a></li>
+      <li><a href="contact-ar.html" class="nav-link">تواصل</a></li>
+    </ul>
+  </div>
+
+
+  <!-- ===================== PAGE HEADER ===================== -->
+  <section class="page-header">
+    <div class="container">
+      <span class="section-label">تواصل معنا</span>
+      <h1 class="page-header__title">ابدأ المحادثة</h1>
+      <p class="page-header__subtitle">
+        نحن هنا لنناقش مشروعك ونحوّل رؤيتك إلى واقع.<br />
+        تواصل معنا ولنبدأ معاً في بناء شيء استثنائي.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ===================== CONTACT ===================== -->
+  <section class="contact-section">
+    <div class="container contact-grid">
+
+      <!-- ── يسار: النموذج ── -->
+      <div class="contact-form-wrap reveal">
+        <h2 class="contact-form-wrap__heading">أخبرنا عن مشروعك</h2>
+
+        <form id="contactForm" class="contact-form" novalidate>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="name">الاسم الكامل <span aria-hidden="true">*</span></label>
+              <input
+                class="form-input"
+                type="text"
+                id="name"
+                name="name"
+                placeholder="اسمك الكامل"
+                required
+                autocomplete="name"
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">البريد الإلكتروني <span aria-hidden="true">*</span></label>
+              <input
+                class="form-input"
+                type="email"
+                id="email"
+                name="email"
+                placeholder="سنردّ عليك هنا"
+                required
+                autocomplete="email"
+              />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="phone">رقم الهاتف</label>
+              <input
+                class="form-input"
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="اختياري"
+                autocomplete="tel"
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="subject">الموضوع <span aria-hidden="true">*</span></label>
+              <input
+                class="form-input"
+                type="text"
+                id="subject"
+                name="subject"
+                placeholder="ما الذي تودّ الاستفسار عنه؟"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="message">الرسالة <span aria-hidden="true">*</span></label>
+            <textarea
+              class="form-input form-textarea"
+              id="message"
+              name="message"
+              placeholder="أخبرنا كيف يمكننا مساعدتك…"
+              rows="6"
+              required
+            ></textarea>
+          </div>
+
+          <div id="formStatus" class="form-status" aria-live="polite" hidden></div>
+
+          <button type="submit" class="btn btn--dark contact-form__submit" id="submitBtn">
+            إرسال الرسالة
+          </button>
+
+        </form>
+      </div>
+
+      <!-- ── يمين: معلومات التواصل ── -->
+      <div class="contact-info reveal reveal--delay">
+
+        <div class="contact-info__direct">
+          <h3 class="contact-info__heading">تفضّل بالتواصل المباشر</h3>
+
+          <ul class="contact-info__list">
+            <li class="contact-info__item">
+              <span class="contact-info__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013 6.18 2 2 0 014.96 4h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L9.09 11a16 16 0 006.86 6.86l1.27-1.12a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 19z"/></svg>
+              </span>
+              <a href="tel:+962798184862" dir="ltr">+962 79 818 4862</a>
+            </li>
+            <li class="contact-info__item">
+              <span class="contact-info__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </span>
+              <a href="mailto:info@pieceofartjo.com">info@pieceofartjo.com</a>
+            </li>
+            <li class="contact-info__item">
+              <span class="contact-info__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14.5"/></svg>
+              </span>
+              <span>الأحد – الخميس، 8 ص – 4 م</span>
+            </li>
+            <li class="contact-info__item">
+              <span class="contact-info__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </span>
+              <span>عمّان، الأردن</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="contact-map-card">
+          <div class="contact-map-card__map">
+            <iframe
+              src="https://maps.google.com/maps?q=31.9665802,35.844676&z=17&output=embed"
+              width="100%"
+              height="240"
+              style="border:0; display:block;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="موقع مكتب Piece of Art"
+            ></iframe>
+          </div>
+          <div class="contact-map-card__footer">
+            <div class="contact-map-card__address">
+              <span class="contact-info__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </span>
+              <span>عمّان، الأردن</span>
+            </div>
+            <a
+              href="https://www.google.com/maps/place/31%C2%B057'59.7%22N+35%C2%B050'40.8%22E/@31.9665802,35.8421011,17z"
+              target="_blank"
+              rel="noopener"
+              class="contact-map-card__directions"
+            >
+              الحصول على الاتجاهات
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer" id="footer">
+    <div class="container footer__main">
+
+      <div class="footer__brand">
+        <a href="index.html" class="footer__logo">
+          <img src="Assets/images/logo.png" alt="Piece of Art" />
+        </a>
+        <p class="footer__tagline">
+          استوديو للتصميم وإدارة المشاريع.<br />
+          نصنع مساحات من الفخامة الخالدة.
+        </p>
+        <div class="footer__social">
+          <a href="https://instagram.com/pieceofart.sa" target="_blank" rel="noopener" aria-label="إنستغرام" class="footer__social-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://wa.me/962798184862" target="_blank" rel="noopener" aria-label="واتساب" class="footer__social-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+          </a>
+          <a href="mailto:info@pieceofartjo.com" aria-label="البريد الإلكتروني" class="footer__social-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <nav class="footer__nav" aria-label="تنقل الفوتر">
+        <div class="footer__col">
+          <h4 class="footer__heading">التنقل</h4>
+          <ul>
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="about.html">عن الاستوديو</a></li>
+            <li><a href="services.html">الخدمات</a></li>
+            <li><a href="projects.html">المشاريع</a></li>
+            <li><a href="careers.html">وظائف</a></li>
+            <li><a href="contact-ar.html">تواصل</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading">الخدمات</h4>
+          <ul>
+            <li><a href="services.html#interior-design">التصميم الداخلي</a></li>
+            <li><a href="services.html#architecture">التصميم المعماري</a></li>
+            <li><a href="services.html#project-management">إدارة المشاريع</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading">التواصل</h4>
+          <ul>
+            <li><a href="tel:+962798184862" dir="ltr">+962 79 818 4862</a></li>
+            <li><a href="mailto:info@pieceofartjo.com">info@pieceofartjo.com</a></li>
+            <li><span class="footer__plain">عمّان، الأردن</span></li>
+          </ul>
+        </div>
+      </nav>
+
+    </div>
+
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p>&copy; <span id="year"></span> Piece of Art. جميع الحقوق محفوظة.</p>
+        <a href="contact.html" class="lang-switch lang-switch--small" aria-label="English version">
+          <span class="lang-switch__en">EN</span>
+          <span class="lang-switch__divider">/</span>
+          <span class="lang-switch__ar active">AR</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    (function () {
+      const form      = document.getElementById('contactForm');
+      const status    = document.getElementById('formStatus');
+      const submitBtn = document.getElementById('submitBtn');
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const required = form.querySelectorAll('[required]');
+        let valid = true;
+        required.forEach(function (el) {
+          el.classList.remove('is-invalid');
+          if (!el.value.trim()) { el.classList.add('is-invalid'); valid = false; }
+        });
+        if (!valid) {
+          showStatus('يرجى تعبئة جميع الحقول المطلوبة.', false);
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'جارٍ الإرسال…';
+
+        try {
+          const res  = await fetch('contact.php', { method: 'POST', body: new FormData(form) });
+          const text = await res.text();
+          let data;
+          try {
+            data = JSON.parse(text);
+          } catch {
+            showStatus('خطأ في الخادم. يرجى التواصل معنا مباشرة على info@pieceofartjo.com', false);
+            return;
+          }
+          showStatus(data.success ? 'شكراً! تلقّينا رسالتك وسنردّ عليك قريباً.' : data.message, data.success);
+          if (data.success) form.reset();
+        } catch {
+          showStatus('خطأ في الشبكة. يرجى المحاولة مجدداً أو مراسلتنا على info@pieceofartjo.com', false);
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'إرسال الرسالة';
+        }
+      });
+
+      form.querySelectorAll('.form-input').forEach(function (el) {
+        el.addEventListener('input', function () { el.classList.remove('is-invalid'); });
+      });
+
+      function showStatus(msg, success) {
+        status.textContent = msg;
+        status.className   = 'form-status ' + (success ? 'form-status--ok' : 'form-status--err');
+        status.hidden      = false;
+      }
+    })();
+  </script>
+</body>
+</html>

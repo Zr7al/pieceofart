@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Piece of Art — Design &amp; Project Management</title>
+  <meta name="description" content="Piece of Art is a premium design and project management studio crafting spaces of lasting distinction." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Scroll progress line -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+
+      <a href="index.html" class="navbar__logo" aria-label="Piece of Art — Home">
+        <img src="Assets/images/logo 2-01.png" alt="Piece of Art" />
+      </a>
+
+      <nav class="navbar__nav" id="mainNav" aria-label="Primary navigation">
+        <ul>
+          <li><a href="index.html"    class="nav-link active" data-i18n="nav.home">Home</a></li>
+          <li><a href="about.html"    class="nav-link"        data-i18n="nav.about">About</a></li>
+          <li><a href="services.html" class="nav-link"        data-i18n="nav.services">Services</a></li>
+          <li><a href="projects.html" class="nav-link"        data-i18n="nav.projects">Projects</a></li>
+          <li><a href="careers.html"  class="nav-link"        data-i18n="nav.careers">Careers</a></li>
+          <li><a href="contact.html"  class="nav-link"        data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="navbar__actions">
+        <button class="lang-switch" id="langSwitch" aria-label="Switch language">
+          <span class="lang-switch__en active">EN</span>
+          <span class="lang-switch__divider">/</span>
+          <span class="lang-switch__ar">AR</span>
+        </button>
+
+        <button class="navbar__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Mobile nav overlay -->
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <ul>
+      <li><a href="index.html"    class="nav-link" data-i18n="nav.home">Home</a></li>
+      <li><a href="about.html"    class="nav-link" data-i18n="nav.about">About</a></li>
+      <li><a href="services.html" class="nav-link" data-i18n="nav.services">Services</a></li>
+      <li><a href="projects.html" class="nav-link" data-i18n="nav.projects">Projects</a></li>
+      <li><a href="careers.html"  class="nav-link" data-i18n="nav.careers">Careers</a></li>
+      <li><a href="contact.html"  class="nav-link" data-i18n="nav.contact">Contact</a></li>
+    </ul>
+  </div>
+
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" id="hero">
+    <style>
+      .hero__bg img {
+        animation: heroImgFadeIn 1.1s ease forwards, kenBurns 15s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+      }
+      @keyframes heroImgFadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      .hero__overlay {
+        box-shadow: inset 0 0 160px rgba(6, 5, 3, 0.45);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .hero__bg img {
+          animation: none;
+          opacity: 1;
+        }
+      }
+    </style>
+    <div class="hero__bg">
+      <img
+        src="Assets/images/hero-main.jpg"
+        alt="Piece of Art featured project"
+        aria-hidden="true"
+      />
+      <div class="hero__overlay"></div>
+    </div>
+
+    <!-- Structural left grid line -->
+    <div class="hero__gridline" aria-hidden="true"></div>
+
+    <div class="hero__content">
+      <!-- Section index + discipline label -->
+      <div class="hero__meta">
+        <span class="hero__index" aria-hidden="true">[01]</span>
+        <p class="hero__eyebrow" data-i18n="hero.eyebrow">Design &amp; Project Management</p>
+      </div>
+      <h1 class="hero__title" data-i18n="hero.title">Piece of Art</h1>
+      <p class="hero__subtitle" data-i18n-html="hero.subtitle">
+        We craft spaces of lasting distinction —<br />where vision meets precision.
+      </p>
+      <a href="projects.html" class="btn btn--light" data-i18n="hero.cta">Explore Our Work</a>
+    </div>
+
+    <div class="hero__scroll-indicator" aria-hidden="true">
+      <span></span>
+      <p>Scroll</p>
+    </div>
+  </section>
+
+
+  <!-- ===================== ABOUT PREVIEW ===================== -->
+  <section class="about-preview section section--compact about-preview--sticky" id="about">
+    <div class="container about-preview__grid">
+
+      <div class="about-preview__text reveal" data-reveal="left">
+        <div class="section-intro">
+          <div class="section-intro__label">
+            <span class="section-intro__index">[02]</span>
+            <span class="section-intro__tag" data-i18n="about.label">Who We Are</span>
+          </div>
+          <h2 class="section-intro__heading" data-i18n-html="about.title">
+            Thoughtful Design.<br />Flawless Execution.
+          </h2>
+        </div>
+        <p class="body-text" data-i18n="about.body">
+          Piece of Art is a multidisciplinary design and project management studio.
+          We believe every space tells a story — and we are dedicated to making that story
+          extraordinary. From concept to completion, we bring together architectural
+          intelligence and creative vision.
+        </p>
+        <a href="about.html" class="btn btn--outline" data-i18n="about.cta">Learn More</a>
+      </div>
+
+      <div class="about-preview__image reveal" data-reveal="right">
+        <div class="about-preview__img-wrap">
+          <!--
+            PLACEHOLDER: Replace src below with your real about/studio image.
+            Recommended size: 900×700px or larger.
+          -->
+          <img
+            src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=900&q=85&fit=crop"
+            alt="Piece of Art studio"
+          />
+          <div class="about-preview__accent"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ===================== PHILOSOPHY ===================== -->
+  <section class="philosophy section" id="philosophy">
+    <div class="philosophy__inner">
+      <div class="container">
+        <div class="philosophy__grid">
+
+          <div class="philosophy__text reveal" data-reveal="left">
+            <div class="section-intro section-intro--light">
+              <div class="section-intro__label">
+                <span class="section-intro__index">[02b]</span>
+                <span class="section-intro__tag" data-i18n="philosophy.label">Our Approach</span>
+              </div>
+              <h2 class="section-intro__heading" data-i18n="philosophy.title">Respecting Nature.</h2>
+            </div>
+            <blockquote class="philosophy__quote reveal reveal--delay" data-reveal="fade">
+              <span class="philosophy__quote-mark" aria-hidden="true">"</span>
+              <p data-i18n="philosophy.quote">Respecting nature... is our philosophy of building.</p>
+            </blockquote>
+            <p class="philosophy__body body-text reveal reveal--delay-2" data-reveal="up" data-i18n="philosophy.body">
+              We adopt principles of organic architecture, designing in harmony with the land by preserving natural elements such as rocks and trees — allowing the structure to become an extension of its environment rather than an intrusion.
+            </p>
+          </div>
+
+          <div class="philosophy__visual reveal" data-reveal="right">
+            <div class="philosophy__img-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?w=900&q=85&fit=crop"
+                alt="Organic architecture detail"
+                loading="lazy"
+              />
+            </div>
+            <div class="philosophy__accent-line" aria-hidden="true"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== STATS ===================== -->
+  <!--
+    Values come from js/data.js → POA_DATA.stats
+    To update numbers or labels, edit data.js only.
+  -->
+  <section class="stats section--overlap-sm" id="stats">
+    <div class="container">
+      <!-- Populated by renderStats() in main.js — items get data-stagger via JS -->
+      <div class="stats__grid" id="stats-grid" aria-live="polite" data-stagger></div>
+    </div>
+  </section>
+
+
+  <!-- ===================== PARTNERS ===================== -->
+  <!--
+    To add/remove logos: edit the two .partners__track divs below (keep them identical — the second is the loop clone).
+    Replace the <img> src attributes with your actual logo files.
+    Recommended logo size: any height, roughly 120–180px wide, PNG with transparent background.
+  -->
+  <section class="partners" id="partners">
+    <div class="partners__header">
+      <span class="section-label">Trusted Partners</span>
+    </div>
+    <div class="partners__marquee" aria-label="Companies we have worked with">
+      <div class="partners__track">
+        <div class="partners__logo"><img src="Assets/images/partners/partner-1.png" alt="Partner 1" /></div>
+        <div class="partners__logo"><img src="Assets/images/partners/partner-2.png" alt="Partner 2" /></div>
+        <div class="partners__logo"><img src="Assets/images/partners/partner-3.png" alt="Partner 3" /></div>
+        <div class="partners__logo"><img src="Assets/images/partners/partner-4.png" alt="Partner 4" /></div>
+        <div class="partners__logo"><img src="Assets/images/partners/partner-5.png" alt="Partner 5" /></div>
+        <div class="partners__logo"><img src="Assets/images/partners/partner-6.png" alt="Partner 6" /></div>
+        <div class="partners__logo"><img src="Assets/images/partners/partner-7.png" alt="Partner 7" /></div>
+        <div class="partners__logo"><img src="Assets/images/partners/partner-8.png" alt="Partner 8" /></div>
+      </div>
+      <!-- Duplicate track for seamless loop -->
+      <div class="partners__track" aria-hidden="true">
+        <div class="partners__logo"><img src="Assets/images/partners/partner-1.png" alt="" /></div>
+        <div class="partners__logo"><img src="Assets/images/partners/partner-2.png" alt="" /></div>
+        <div class="partners__logo"><img src="Assets/images/partners/partner-3.png" alt="" /></div>
+        <div class="partners__logo"><img src="Assets/images/partners/partner-4.png" alt="" /></div>
+        <div class="partners__logo"><img src="Assets/images/partners/partner-5.png" alt="" /></div>
+        <div class="partners__logo"><img src="Assets/images/partners/partner-6.png" alt="" /></div>
+        <div class="partners__logo"><img src="Assets/images/partners/partner-7.png" alt="" /></div>
+        <div class="partners__logo"><img src="Assets/images/partners/partner-8.png" alt="" /></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== SERVICES ===================== -->
+  <!--
+    Content rendered dynamically from js/data.js → POA_DATA.services
+    To update service content, edit js/data.js only.
+  -->
+  <section class="services section section--gray" id="services">
+    <div class="container">
+
+      <div class="section-intro reveal">
+        <div class="section-intro__label">
+          <span class="section-intro__index">[03]</span>
+          <span class="section-intro__tag" data-i18n="services.label">What We Do</span>
+        </div>
+        <h2 class="section-intro__heading" data-i18n="services.title">Our Services</h2>
+        <p class="section-intro__sub" data-i18n="services.intro">We partner with you from the very first idea, delivering integrated services that ensure precision in execution and excellence in outcome:</p>
+      </div>
+
+      <!-- Populated by renderServices() in main.js -->
+      <div class="services__grid" id="services-grid" aria-live="polite"></div>
+
+    </div>
+  </section>
+
+
+  <!-- ===================== FEATURED PROJECT ===================== -->
+  <!--
+    Renders the single project with featured: true from js/data.js.
+    To change featured project: set featured: true on a different project
+    and featured: false on the current one.
+    "View Project" links to: project-detail.html?id=PROJECT_ID
+  -->
+  <section class="featured-project" id="featured">
+    <!-- Layer 1: Full-bleed background image (src set by renderFeatured) -->
+    <div class="fp-bg" id="fp-bg" aria-hidden="true"></div>
+    <!-- Layer 2: Gradient overlay -->
+    <div class="fp-overlay" aria-hidden="true"></div>
+    <!-- Layer 3: Section header + floating card (rendered by renderFeatured) -->
+    <div class="fp-stage">
+      <div class="container">
+        <div id="featured-project" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== TESTIMONIALS ===================== -->
+  <section class="testimonials section" id="testimonials">
+    <div class="container">
+
+      <div class="section-intro section-intro--center reveal" data-reveal="fade">
+        <div class="section-intro__label">
+          <span class="section-intro__index">[05]</span>
+          <span class="section-intro__tag" data-i18n="testimonials.label">Client Words</span>
+        </div>
+        <h2 class="section-intro__heading section-intro__heading--script" data-i18n="testimonials.title">What They Say</h2>
+      </div>
+
+      <div class="testimonials__grid" data-stagger>
+
+        <blockquote class="testimonial reveal" data-reveal="up">
+          <div class="testimonial__quote-mark" aria-hidden="true">"</div>
+          <p class="testimonial__text">
+            Piece of Art transformed our vision into something we could never have imagined on our own.
+            Every detail was considered. The result is simply extraordinary.
+          </p>
+          <footer class="testimonial__author">
+            <strong>Mohammed Al-Rashid</strong>
+            <span>Private Client, Amman</span>
+          </footer>
+        </blockquote>
+
+        <blockquote class="testimonial reveal" data-reveal="up">
+          <div class="testimonial__quote-mark" aria-hidden="true">"</div>
+          <p class="testimonial__text">
+            Working with this team was seamless. Their project management expertise meant
+            everything was delivered on time and above expectation. Truly professional.
+          </p>
+          <footer class="testimonial__author">
+            <strong>Sarah Al-Tamimi</strong>
+            <span>CEO, Tamimi Developments</span>
+          </footer>
+        </blockquote>
+
+        <blockquote class="testimonial reveal" data-reveal="up">
+          <div class="testimonial__quote-mark" aria-hidden="true">"</div>
+          <p class="testimonial__text">
+            The interior they designed for our headquarters speaks of quality and intention.
+            Clients constantly comment on how the space feels — calm, confident, and remarkable.
+          </p>
+          <footer class="testimonial__author">
+            <strong>Khalid Bin Fahad</strong>
+            <span>Director, Bin Fahad Group</span>
+          </footer>
+        </blockquote>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== WHY US ===================== -->
+  <section class="whyus section" id="whyus">
+    <div class="container">
+      <div class="whyus__inner reveal" data-reveal="scale">
+
+        <div class="section-intro section-intro--center">
+          <div class="section-intro__label">
+            <span class="section-intro__index">[05b]</span>
+            <span class="section-intro__tag" data-i18n="whyus.label">Why Choose Us</span>
+          </div>
+          <h2 class="section-intro__heading" data-i18n-html="whyus.title">Vision Meets<br/>Precision.</h2>
+        </div>
+
+        <p class="whyus__body" data-i18n="whyus.body">
+          We combine the vision of an artist with the precision of an executive.
+        </p>
+
+        <div class="whyus__pillars" data-stagger>
+          <div class="whyus__pillar reveal" data-reveal="up">
+            <div class="whyus__pillar-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            </div>
+            <h3 class="whyus__pillar-title" data-i18n="whyus.p1title">20+ Years Experience</h3>
+          </div>
+          <div class="whyus__pillar reveal" data-reveal="up">
+            <div class="whyus__pillar-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            </div>
+            <h3 class="whyus__pillar-title" data-i18n="whyus.p2title">On-Time Delivery</h3>
+          </div>
+          <div class="whyus__pillar reveal" data-reveal="up">
+            <div class="whyus__pillar-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            </div>
+            <h3 class="whyus__pillar-title" data-i18n="whyus.p3title">Bespoke Approach</h3>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== CALL TO ACTION ===================== -->
+  <section class="cta section section--overlap" id="cta">
+    <div class="cta__bg" aria-hidden="true"></div>
+    <div class="container cta__inner reveal" data-reveal="scale">
+      <span class="section-label section-label--light" data-i18n="cta.label">Start a Conversation</span>
+      <h2 class="cta__title" data-i18n="cta.title">Have a Project in Mind?</h2>
+      <p class="cta__subtitle" data-i18n="cta.subtitle">
+        Let's build something extraordinary together.
+        Reach out and we'll arrange a consultation.
+      </p>
+      <div class="cta__actions">
+        <a href="contact.html"  class="btn btn--light"         data-i18n="cta.primary">Get In Touch</a>
+        <a href="projects.html" class="btn btn--outline-light" data-i18n="cta.secondary">Our Work</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== PRE-FOOTER CTA ===================== -->
+  <section class="prefooter" aria-label="Contact invitation">
+    <div class="prefooter__watermark" aria-hidden="true">POA</div>
+    <div class="prefooter__inner container">
+      <div class="prefooter__left reveal" data-reveal="left">
+        <span class="section-label section-label--light">Begin Here</span>
+        <h2 class="prefooter__heading">Every great space<br />starts with a call.</h2>
+      </div>
+      <div class="prefooter__right reveal reveal--delay" data-reveal="right">
+        <p class="prefooter__body">Whether you have detailed plans or just an idea — we want to hear it. Tell us about the space you're imagining and we'll tell you what we can build together.</p>
+        <div class="prefooter__actions">
+          <a href="contact.html" class="btn btn--light">Start a Project</a>
+          <a href="tel:+962798184862" class="prefooter__tel">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="14" height="14"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            +962 79 818 4862
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer" id="footer">
+    <div class="container footer__main">
+
+      <!-- Left: brand block -->
+      <div class="footer__brand">
+        <a href="index.html" class="footer__logo">
+          <img src="Assets/images/logo.png" alt="Piece of Art" />
+        </a>
+        <p class="footer__tagline" data-i18n-html="footer.tagline">
+          Design &amp; Project Management Studio.<br />
+          Crafting spaces of lasting distinction.
+        </p>
+        <!-- Social icons -->
+        <div class="footer__social">
+          <a href="https://instagram.com/pieceofart.sa" target="_blank" rel="noopener" aria-label="Instagram" class="footer__social-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://wa.me/966500000000" target="_blank" rel="noopener" aria-label="WhatsApp" class="footer__social-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+          </a>
+          <a href="mailto:hello@pieceofart.sa" aria-label="Email" class="footer__social-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: nav columns -->
+      <nav class="footer__nav" aria-label="Footer navigation">
+
+        <div class="footer__col">
+          <h4 class="footer__heading" data-i18n="footer.navHeading">Navigation</h4>
+          <ul>
+            <li><a href="index.html"    data-i18n="nav.home">Home</a></li>
+            <li><a href="about.html"    data-i18n="nav.about">About</a></li>
+            <li><a href="services.html" data-i18n="nav.services">Services</a></li>
+            <li><a href="projects.html" data-i18n="nav.projects">Projects</a></li>
+            <li><a href="careers.html"  data-i18n="nav.careers">Careers</a></li>
+            <li><a href="contact.html"  data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4 class="footer__heading" data-i18n="footer.svcHeading">Services</h4>
+          <ul>
+            <li><a href="services.html#architecture"       data-svc-en="Architecture"       data-svc-ar="التصميم المعماري">Architecture</a></li>
+            <li><a href="services.html#interior-design"    data-svc-en="Interior Design"    data-svc-ar="التصميم الداخلي">Interior Design</a></li>
+            <li><a href="services.html#project-management" data-svc-en="Project Management" data-svc-ar="إدارة المشاريع">Project Management</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4 class="footer__heading" data-i18n="footer.conHeading">Contact</h4>
+          <ul>
+            <li><a href="tel:+966500000000">+966 50 000 0000</a></li>
+            <li><a href="mailto:hello@pieceofart.sa">hello@pieceofart.sa</a></li>
+            <li><span class="footer__plain">Amman, Jordan</span></li>
+          </ul>
+        </div>
+
+      </nav>
+
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p>&copy; <span id="year"></span> <span data-i18n="footer.copyright">Piece of Art. All rights reserved.</span></p>
+        <button class="lang-switch lang-switch--small" id="langSwitchFooter" aria-label="Switch language">
+          <span class="lang-switch__en active">EN</span>
+          <span class="lang-switch__divider">/</span>
+          <span class="lang-switch__ar">AR</span>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Data must load before main.js -->
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+# Claude internal files
+.claude/
+
+# PHP server files (not needed for static GitHub Pages deploy)
+*.php
+phpmailer/
+
+# Non-web project files (documents, CAD, video)
+*.docx
+*.pdf
+*.dwg
+*.ai
+*.mp4
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+*.sublime-project
+*.sublime-workspace

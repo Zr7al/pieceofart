@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Careers — Piece of Art</title>
+  <meta name="description" content="Join the Piece of Art team. Explore open positions at our design and project management studio in Amman, Jordan." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <header class="navbar navbar--light" id="navbar">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo" aria-label="Piece of Art — Home">
+        <img src="Assets/images/logo 2-01.png" alt="Piece of Art" />
+      </a>
+      <nav class="navbar__nav" id="mainNav" aria-label="Primary navigation">
+        <ul>
+          <li><a href="index.html"    class="nav-link"        data-i18n="nav.home">Home</a></li>
+          <li><a href="about.html"    class="nav-link"        data-i18n="nav.about">About</a></li>
+          <li><a href="services.html" class="nav-link"        data-i18n="nav.services">Services</a></li>
+          <li><a href="projects.html" class="nav-link"        data-i18n="nav.projects">Projects</a></li>
+          <li><a href="careers.html"  class="nav-link active" data-i18n="nav.careers">Careers</a></li>
+          <li><a href="contact.html"  class="nav-link"        data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="navbar__actions">
+        <button class="lang-switch" id="langSwitch" aria-label="Switch language">
+          <span class="lang-switch__en active">EN</span>
+          <span class="lang-switch__divider">/</span>
+          <span class="lang-switch__ar">AR</span>
+        </button>
+        <button class="navbar__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile nav -->
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <ul>
+      <li><a href="index.html"    class="nav-link">Home</a></li>
+      <li><a href="about.html"    class="nav-link">About</a></li>
+      <li><a href="services.html" class="nav-link">Services</a></li>
+      <li><a href="projects.html" class="nav-link">Projects</a></li>
+      <li><a href="careers.html"  class="nav-link">Careers</a></li>
+      <li><a href="contact.html"  class="nav-link">Contact</a></li>
+    </ul>
+  </div>
+
+
+  <!-- ===================== PAGE HEADER ===================== -->
+  <section class="page-header">
+    <div class="container">
+      <span class="section-label">Join Our Team</span>
+      <h1 class="page-header__title">Build Your Career With Us</h1>
+      <p class="page-header__subtitle">
+        We are building a studio of exceptional talent — architects, designers, and
+        project managers who believe great spaces change lives.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ===================== JOB LISTINGS ===================== -->
+  <section class="careers-section">
+    <div class="container">
+
+      <div class="jobs-header">
+        <p class="jobs-count"><span id="openCount">4</span> Open Positions</p>
+      </div>
+
+      <div class="jobs-table-head" aria-hidden="true">
+        <div>Position</div>
+        <div>Location</div>
+        <div>Department</div>
+        <div>Posted</div>
+        <div></div>
+      </div>
+
+      <div id="jobsList">
+
+        <!-- ─ JOB 1 ─ -->
+        <article class="job-item reveal" data-job-id="1">
+          <div class="job-row" role="button" tabindex="0" aria-expanded="false" aria-controls="job-drawer-1">
+            <div class="job-cell job-title">
+              Architectural Designer
+              <span class="job-badge">New</span>
+            </div>
+            <div class="job-cell">Amman, Jordan</div>
+            <div class="job-cell">Architecture</div>
+            <div class="job-cell job-date">Mar 2026</div>
+            <div class="job-toggle" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+          </div>
+          <div class="job-drawer" id="job-drawer-1" hidden>
+            <div class="job-drawer-inner">
+              <div class="job-desc">
+                <h4>About the Role</h4>
+                <p>You will work across multiple residential and commercial projects, developing design concepts from initial brief through to technical documentation. You'll collaborate closely with senior architects and project managers to deliver spaces of lasting distinction.</p>
+                <h4>Requirements</h4>
+                <ul>
+                  <li>Bachelor's or Master's degree in Architecture</li>
+                  <li>2–4 years of experience in an architecture or design studio</li>
+                  <li>Proficiency in AutoCAD, Revit, and SketchUp</li>
+                  <li>Strong design sensibility with a keen eye for detail</li>
+                  <li>Fluent in Arabic and English</li>
+                </ul>
+                <h4>What We Offer</h4>
+                <ul>
+                  <li>Competitive salary based on experience</li>
+                  <li>Exposure to high-end residential and commercial projects</li>
+                  <li>Collaborative studio environment in Amman</li>
+                </ul>
+              </div>
+              <button class="job-apply-btn" data-job="Architectural Designer">
+                Apply Now
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- ─ JOB 2 ─ -->
+        <article class="job-item reveal reveal--delay" data-job-id="2">
+          <div class="job-row" role="button" tabindex="0" aria-expanded="false" aria-controls="job-drawer-2">
+            <div class="job-cell job-title">Interior Design Specialist</div>
+            <div class="job-cell">Amman, Jordan</div>
+            <div class="job-cell">Interior Design</div>
+            <div class="job-cell job-date">Mar 2026</div>
+            <div class="job-toggle" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+          </div>
+          <div class="job-drawer" id="job-drawer-2" hidden>
+            <div class="job-drawer-inner">
+              <div class="job-desc">
+                <h4>About the Role</h4>
+                <p>You will lead interior design development for our residential and hospitality projects — from mood boards and material selection through to FF&E specifications and site supervision. Your work will directly shape how our clients experience their spaces.</p>
+                <h4>Requirements</h4>
+                <ul>
+                  <li>Degree in Interior Design or a related discipline</li>
+                  <li>3+ years of studio experience on premium residential or commercial projects</li>
+                  <li>Strong command of 3ds Max, V-Ray, and AutoCAD</li>
+                  <li>Excellent presentation and client communication skills</li>
+                  <li>Fluent in Arabic; English proficiency required</li>
+                </ul>
+                <h4>What We Offer</h4>
+                <ul>
+                  <li>Involvement in landmark projects across Jordan</li>
+                  <li>Competitive package with room for growth</li>
+                  <li>A studio culture that values craft and creativity</li>
+                </ul>
+              </div>
+              <button class="job-apply-btn" data-job="Interior Design Specialist">
+                Apply Now
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- ─ JOB 3 ─ -->
+        <article class="job-item reveal reveal--delay" data-job-id="3">
+          <div class="job-row" role="button" tabindex="0" aria-expanded="false" aria-controls="job-drawer-3">
+            <div class="job-cell job-title">Project Manager</div>
+            <div class="job-cell">Amman, Jordan</div>
+            <div class="job-cell">Project Management</div>
+            <div class="job-cell job-date">Feb 2026</div>
+            <div class="job-toggle" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+          </div>
+          <div class="job-drawer" id="job-drawer-3" hidden>
+            <div class="job-drawer-inner">
+              <div class="job-desc">
+                <h4>About the Role</h4>
+                <p>You will own the delivery of multiple construction and fit-out projects simultaneously — managing timelines, budgets, contractors, and client relationships from concept approval through handover. Precision and accountability are non-negotiable in this role.</p>
+                <h4>Requirements</h4>
+                <ul>
+                  <li>5+ years of project management experience in construction or fit-out</li>
+                  <li>PMP certification or equivalent is a strong advantage</li>
+                  <li>Proven track record of delivering projects on time and within budget</li>
+                  <li>Strong negotiation and contractor management skills</li>
+                  <li>Fluent in Arabic and English</li>
+                </ul>
+                <h4>What We Offer</h4>
+                <ul>
+                  <li>Senior-level compensation package</li>
+                  <li>Autonomy to manage your projects end-to-end</li>
+                  <li>Work on prestigious residential and commercial developments</li>
+                </ul>
+              </div>
+              <button class="job-apply-btn" data-job="Project Manager">
+                Apply Now
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- ─ JOB 4 ─ -->
+        <article class="job-item reveal reveal--delay-2" data-job-id="4">
+          <div class="job-row" role="button" tabindex="0" aria-expanded="false" aria-controls="job-drawer-4">
+            <div class="job-cell job-title">3D Visualization Artist</div>
+            <div class="job-cell">Amman, Jordan</div>
+            <div class="job-cell">Design</div>
+            <div class="job-cell job-date">Feb 2026</div>
+            <div class="job-toggle" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+          </div>
+          <div class="job-drawer" id="job-drawer-4" hidden>
+            <div class="job-drawer-inner">
+              <div class="job-desc">
+                <h4>About the Role</h4>
+                <p>You will produce photorealistic renders and walkthroughs that bring our design proposals to life for clients. You'll work directly with our architects and interior designers to visualize spaces with accuracy and artistry.</p>
+                <h4>Requirements</h4>
+                <ul>
+                  <li>2+ years of experience in architectural visualization</li>
+                  <li>Expert-level proficiency in 3ds Max and V-Ray or Corona</li>
+                  <li>Strong portfolio demonstrating photorealistic interior and exterior renders</li>
+                  <li>Experience with Lumion or Unreal Engine is a plus</li>
+                  <li>Ability to work to tight project deadlines</li>
+                </ul>
+                <h4>What We Offer</h4>
+                <ul>
+                  <li>Competitive salary and flexible working arrangements</li>
+                  <li>Creative freedom to explore new rendering techniques</li>
+                  <li>Work featured across our project portfolio and client presentations</li>
+                </ul>
+              </div>
+              <button class="job-apply-btn" data-job="3D Visualization Artist">
+                Apply Now
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+
+      </div><!-- /jobsList -->
+    </div>
+  </section>
+
+
+  <!-- ===================== CTA STRIP ===================== -->
+  <section class="careers-cta">
+    <div class="container careers-cta__inner">
+      <div>
+        <h3 class="careers-cta__title">Don't See the Right Role?</h3>
+        <p class="careers-cta__sub">We're always open to exceptional talent. Send your CV and we'll reach out when a matching position opens.</p>
+      </div>
+      <a href="contact.html" class="btn btn--light">Get In Touch</a>
+    </div>
+  </section>
+
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer" id="footer">
+    <div class="container footer__main">
+      <div class="footer__brand">
+        <a href="index.html" class="footer__logo">
+          <img src="Assets/images/logo.png" alt="Piece of Art" />
+        </a>
+        <p class="footer__tagline">Design &amp; Project Management Studio.<br />Crafting spaces of lasting distinction.</p>
+        <div class="footer__social">
+          <a href="https://instagram.com/pieceofart.sa" target="_blank" rel="noopener" aria-label="Instagram" class="footer__social-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://wa.me/962798184862" target="_blank" rel="noopener" aria-label="WhatsApp" class="footer__social-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+          </a>
+          <a href="mailto:info@pieceofartjo.com" aria-label="Email" class="footer__social-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
+        </div>
+      </div>
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <div class="footer__col">
+          <h4 class="footer__heading">Navigation</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading">Services</h4>
+          <ul>
+            <li><a href="services.html#architecture">Architecture</a></li>
+            <li><a href="services.html#interior-design">Interior Design</a></li>
+            <li><a href="services.html#project-management">Project Management</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading">Contact</h4>
+          <ul>
+            <li><a href="tel:+962798184862">+962 79 818 4862</a></li>
+            <li><a href="mailto:info@pieceofartjo.com">info@pieceofartjo.com</a></li>
+            <li><span class="footer__plain">Amman, Jordan</span></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p>&copy; <span id="year"></span> Piece of Art. All rights reserved.</p>
+        <button class="lang-switch lang-switch--small" id="langSwitchFooter" aria-label="Switch language">
+          <span class="lang-switch__en active">EN</span>
+          <span class="lang-switch__divider">/</span>
+          <span class="lang-switch__ar">AR</span>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ===================== APPLY MODAL ===================== -->
+  <div class="apply-modal" id="applyModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+    <div class="apply-modal__box">
+      <button class="apply-modal__close" id="modalClose" aria-label="Close">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <!-- Form state -->
+      <div id="modalFormWrap">
+        <span class="section-label">Apply Now</span>
+        <h3 id="modalTitle" class="apply-modal__title">Send Your Application</h3>
+        <p id="modalJobLabel" class="apply-modal__position"></p>
+
+        <form id="applyForm" class="apply-form" novalidate>
+          <input type="text" name="website" class="apply-form__honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <input type="hidden" name="job" id="applyJobField" />
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="applyName">Full Name <span>*</span></label>
+              <input class="form-input" type="text" id="applyName" name="name" placeholder="Your full name" required autocomplete="name" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="applyEmail">Email <span>*</span></label>
+              <input class="form-input" type="email" id="applyEmail" name="email" placeholder="your@email.com" required autocomplete="email" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="applyPhone">Phone Number</label>
+            <input class="form-input" type="tel" id="applyPhone" name="phone" placeholder="+962 7X XXX XXXX" autocomplete="tel" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="cvFile">CV / Resume <span>*</span></label>
+            <div class="cv-zone" id="cvZone">
+              <input type="file" id="cvFile" name="cv" accept=".pdf,.doc,.docx" required />
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+              <p class="cv-zone__label">Drop your CV here or <span>browse</span></p>
+              <p class="cv-zone__sub">PDF, DOC, DOCX — max 5 MB</p>
+              <p class="cv-zone__filename" id="cvFilename"></p>
+              <p class="cv-zone__error" id="cvError" hidden></p>
+            </div>
+          </div>
+
+          <div id="applyStatus" class="form-status" aria-live="polite" hidden></div>
+
+          <button type="submit" class="btn btn--dark apply-form__submit" id="applySubmitBtn">
+            Submit Application
+          </button>
+        </form>
+      </div>
+
+      <!-- Success state -->
+      <div id="modalSuccess" class="apply-modal__success" hidden>
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <h4>Application Sent</h4>
+        <p>We've received your application and will be in touch if your profile matches. Good luck!</p>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+  (function () {
+    'use strict';
+
+    /* ── Job accordion ── */
+    document.querySelectorAll('.job-row').forEach(function (row) {
+      function toggle() {
+        var item   = row.closest('.job-item');
+        var drawer = item.querySelector('.job-drawer');
+        var tog    = item.querySelector('.job-toggle');
+        var isOpen = item.classList.contains('open');
+
+        /* Close all others */
+        document.querySelectorAll('.job-item').forEach(function (el) {
+          el.classList.remove('open');
+          el.querySelector('.job-row').setAttribute('aria-expanded', 'false');
+          el.querySelector('.job-toggle').classList.remove('open');
+          el.querySelector('.job-drawer').hidden = true;
+        });
+
+        if (!isOpen) {
+          item.classList.add('open');
+          row.setAttribute('aria-expanded', 'true');
+          tog.classList.add('open');
+          drawer.hidden = false;
+        }
+      }
+      row.addEventListener('click', toggle);
+      row.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+      });
+    });
+
+    /* ── Modal ── */
+    var modal      = document.getElementById('applyModal');
+    var modalClose = document.getElementById('modalClose');
+    var modalLabel = document.getElementById('modalJobLabel');
+    var jobField   = document.getElementById('applyJobField');
+
+    function openModal(jobTitle) {
+      jobField.value   = jobTitle;
+      modalLabel.textContent = 'Position: ' + jobTitle;
+      modal.hidden     = false;
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      modalClose.focus();
+    }
+    function closeModal() {
+      modal.hidden = true;
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      document.getElementById('modalSuccess').hidden = true;
+      document.getElementById('modalFormWrap').hidden = false;
+      document.getElementById('applyForm').reset();
+      document.getElementById('cvFilename').textContent = '';
+      document.getElementById('applyStatus').hidden = true;
+      document.getElementById('cvZone').classList.remove('has-file');
+    }
+
+    document.querySelectorAll('.job-apply-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () { openModal(btn.dataset.job); });
+    });
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+
+    /* ── CV upload zone ── */
+    var cvInput    = document.getElementById('cvFile');
+    var cvZone     = document.getElementById('cvZone');
+    var cvFilename = document.getElementById('cvFilename');
+    var cvError    = document.getElementById('cvError');
+    var allowedExt = ['pdf', 'doc', 'docx'];
+
+    cvZone.addEventListener('click', function (e) {
+      if (e.target !== cvInput) cvInput.click();
+    });
+    cvZone.addEventListener('dragover', function (e) { e.preventDefault(); cvZone.classList.add('drag'); });
+    cvZone.addEventListener('dragleave', function () { cvZone.classList.remove('drag'); });
+    cvZone.addEventListener('drop', function (e) {
+      e.preventDefault();
+      cvZone.classList.remove('drag');
+      if (e.dataTransfer.files.length) {
+        cvInput.files = e.dataTransfer.files;
+        validateFile(e.dataTransfer.files[0]);
+      }
+    });
+    cvInput.addEventListener('change', function () {
+      if (cvInput.files.length) validateFile(cvInput.files[0]);
+    });
+
+    function validateFile(file) {
+      var ext = file.name.split('.').pop().toLowerCase();
+      cvZone.classList.remove('has-file', 'is-invalid');
+      cvFilename.textContent = '';
+      cvError.hidden = true;
+
+      if (!allowedExt.includes(ext)) {
+        setInvalid('Invalid file type. Please upload a PDF, DOC, or DOCX.');
+        return;
+      }
+      if (file.size > 5 * 1024 * 1024) {
+        setInvalid('File is too large. Maximum size is 5 MB.');
+        return;
+      }
+      /* Valid */
+      cvFilename.textContent = file.name;
+      cvZone.classList.add('has-file');
+    }
+
+    function setInvalid(msg) {
+      cvZone.classList.add('is-invalid');
+      cvError.textContent = msg;
+      cvError.hidden = false;
+      /* Clear the input so the user must re-select */
+      cvInput.value = '';
+    }
+
+    /* ── Apply form submit ── */
+    var applyForm      = document.getElementById('applyForm');
+    var applySubmitBtn = document.getElementById('applySubmitBtn');
+    var applyStatus    = document.getElementById('applyStatus');
+    var modalSuccess   = document.getElementById('modalSuccess');
+    var modalFormWrap  = document.getElementById('modalFormWrap');
+
+    applyForm.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      /* Honeypot */
+      if (applyForm.elements.website.value) return;
+
+      /* Validate */
+      var valid = true;
+      applyForm.querySelectorAll('[required]').forEach(function (el) {
+        el.classList.remove('is-invalid');
+        if (!el.value.trim() && el.type !== 'file') { el.classList.add('is-invalid'); valid = false; }
+        if (el.type === 'file' && !el.files.length)  { el.closest('.cv-zone').classList.add('is-invalid'); valid = false; }
+      });
+      if (!valid) { showStatus('Please fill in all required fields.', false); return; }
+
+      /* File size check */
+      if (cvInput.files[0] && cvInput.files[0].size > 5 * 1024 * 1024) {
+        showStatus('CV file must be under 5 MB.', false); return;
+      }
+
+      applySubmitBtn.disabled = true;
+      applySubmitBtn.textContent = 'Sending…';
+
+      try {
+        var fd = new FormData(applyForm);
+        var res = await fetch('apply.php', { method: 'POST', body: fd });
+        var text = await res.text();
+        var data;
+        try { data = JSON.parse(text); }
+        catch { showStatus('Server error. Please email us at info@pieceofartjo.com', false); return; }
+
+        if (data.success) {
+          modalFormWrap.hidden = true;
+          modalSuccess.hidden  = false;
+        } else {
+          showStatus(data.message, false);
+        }
+      } catch {
+        showStatus('Network error. Please try again.', false);
+      } finally {
+        applySubmitBtn.disabled = false;
+        applySubmitBtn.textContent = 'Submit Application';
+      }
+    });
+
+    applyForm.querySelectorAll('.form-input').forEach(function (el) {
+      el.addEventListener('input', function () { el.classList.remove('is-invalid'); });
+    });
+
+    function showStatus(msg, ok) {
+      applyStatus.textContent = msg;
+      applyStatus.className   = 'form-status ' + (ok ? 'form-status--ok' : 'form-status--err');
+      applyStatus.hidden      = false;
+    }
+  })();
+  </script>
+</body>
+</html>

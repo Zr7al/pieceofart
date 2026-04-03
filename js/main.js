@@ -1,0 +1,1313 @@
+/* ============================================================
+   PIECE OF ART — Main JavaScript
+   Depends on: js/data.js (must load first)
+   ============================================================ */
+
+'use strict';
+
+/* ── STATE ───────────────────────────────────────────────── */
+let currentLang   = localStorage.getItem('poa-lang') || 'en';
+let currentFilter = 'all';
+
+
+/* ── ICONS ───────────────────────────────────────────────── */
+/*
+ * All icons: 24×24 viewBox, stroke-width 1.5, no fill.
+ * Used by renderServices() and renderStats().
+ */
+var SVG_ATTRS = 'viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"';
+
+var ICONS = {
+
+  /* ── Service icons ─────────────── */
+
+  arch: '<svg ' + SVG_ATTRS + '>' +
+    '<path d="M3 10.5L12 4l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V10.5z"/>' +
+    '<path d="M9 21V13h6v8"/>' +
+    '</svg>',
+
+  interior: '<svg ' + SVG_ATTRS + '>' +
+    '<path d="M12 3L2 8l10 5 10-5-10-5z"/>' +
+    '<path d="M2 17l10 5 10-5"/>' +
+    '<path d="M2 12l10 5 10-5"/>' +
+    '</svg>',
+
+  management: '<svg ' + SVG_ATTRS + '>' +
+    '<path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/>' +
+    '<rect x="9" y="3" width="6" height="4" rx="1"/>' +
+    '<path d="M9 12l2 2 4-4"/>' +
+    '<line x1="9" y1="17" x2="13" y2="17"/>' +
+    '</svg>',
+
+  /* ── Stat icons ────────────────── */
+
+  years: '<svg ' + SVG_ATTRS + '>' +
+    '<circle cx="12" cy="12" r="9"/>' +
+    '<polyline points="12 7 12 12 15.5 14.5"/>' +
+    '</svg>',
+
+  projects: '<svg ' + SVG_ATTRS + '>' +
+    '<line x1="3" y1="21" x2="21" y2="21"/>' +
+    '<path d="M5 21V10l7-7 7 7v11"/>' +
+    '<path d="M10 21v-5h4v5"/>' +
+    '</svg>',
+
+  clients: '<svg ' + SVG_ATTRS + '>' +
+    '<path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>' +
+    '<circle cx="9" cy="7" r="4"/>' +
+    '<path d="M23 21v-2a4 4 0 00-3-3.87"/>' +
+    '<path d="M16 3.13a4 4 0 010 7.75"/>' +
+    '</svg>',
+
+  /* ── Footer / contact icons ────── */
+
+  phone: '<svg ' + SVG_ATTRS + '>' +
+    '<path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013 6.18 2 2 0 014.96 4h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L9.09 11a16 16 0 006.86 6.86l1.27-1.12a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 19z"/>' +
+    '</svg>',
+
+  email: '<svg ' + SVG_ATTRS + '>' +
+    '<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>' +
+    '<polyline points="22,6 12,13 2,6"/>' +
+    '</svg>',
+
+  whatsapp: '<svg ' + SVG_ATTRS + '>' +
+    '<path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/>' +
+    '</svg>',
+
+  pin: '<svg ' + SVG_ATTRS + '>' +
+    '<path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/>' +
+    '<circle cx="12" cy="10" r="3"/>' +
+    '</svg>'
+
+};
+
+
+/* ── TRANSLATION HELPER ──────────────────────────────────── */
+/**
+ * Resolves a dot-path key from POA_DATA.translations[lang].
+ * e.g. t('nav.home') → 'Home' or 'الرئيسية'
+ */
+function t(key) {
+  const parts = key.split('.');
+  let val = POA_DATA.translations[currentLang];
+  for (const part of parts) {
+    if (val == null) return key;
+    val = val[part];
+  }
+  return val != null ? String(val) : key;
+}
+
+/**
+ * Returns the localised category label for a given category id.
+ */
+function categoryLabel(id) {
+  const cat = POA_DATA.categories.find(function (c) { return c.id === id; });
+  return cat ? cat[currentLang] : id;
+}
+
+
+/* ── RENDER: STATS ───────────────────────────────────────── */
+function renderStats() {
+  const grid = document.getElementById('stats-grid');
+  if (!grid) return;
+
+  grid.innerHTML = POA_DATA.stats.map(function (stat, i) {
+    const label = stat[currentLang].label;
+    return `
+      <div class="stat-item reveal" data-reveal="up" style="--stagger-i:${i}">
+        <div class="stat-item__number">
+          <span
+            class="stat-item__value"
+            data-target="${stat.value}"
+            aria-label="${stat.value}${stat.suffix} ${label}"
+          >0</span>
+          <span class="stat-item__suffix" aria-hidden="true">${stat.suffix}</span>
+        </div>
+        <p class="stat-item__label">${label}</p>
+      </div>`;
+  }).join('');
+
+  /* Kick off count-up for any newly rendered values */
+  initCountUp(grid.querySelectorAll('.stat-item__value[data-target]'));
+  observeReveal(grid.querySelectorAll('.reveal'));
+}
+
+
+/* ── COUNT-UP ANIMATION ──────────────────────────────────── */
+/*
+ * Observes each .stat-item__value[data-target] element.
+ * When it enters the viewport, counts from 0 → data-target
+ * over ~1800ms using an ease-out-quad curve.
+ */
+function animateCount(el, target, duration) {
+  var startTime = null;
+
+  function step(timestamp) {
+    if (!startTime) startTime = timestamp;
+    var elapsed  = timestamp - startTime;
+    var progress = Math.min(elapsed / duration, 1);
+    /* ease-out quad */
+    var eased    = 1 - (1 - progress) * (1 - progress);
+    el.textContent = Math.round(eased * target);
+    if (progress < 1) requestAnimationFrame(step);
+  }
+
+  requestAnimationFrame(step);
+}
+
+function initCountUp(elements) {
+  if (!elements || !elements.length) return;
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        var el     = entry.target;
+        var target = parseInt(el.getAttribute('data-target'), 10);
+        animateCount(el, target, 1800);
+        observer.unobserve(el);
+      }
+    });
+  }, { threshold: 0.6 });
+
+  elements.forEach(function (el) { observer.observe(el); });
+}
+
+
+/* ── RENDER: SERVICES ────────────────────────────────────── */
+function renderServices() {
+  const grid = document.getElementById('services-grid');
+  if (!grid) return;
+
+  const svcs = POA_DATA.services;
+
+  function buildCard(svc, mod) {
+    const lang = svc[currentLang];
+    const img  = svc.image || '';
+    return `
+      <article class="svc-card ${mod}">
+        <div class="svc-card__bg">
+          <img src="${img}" alt="${lang.title}" loading="lazy" />
+        </div>
+        <div class="svc-card__overlay"></div>
+        <div class="svc-card__body">
+          <span class="svc-card__num">${svc.number}</span>
+          <h3 class="svc-card__title">${lang.title}</h3>
+          <p class="svc-card__desc">${lang.description}</p>
+          <a href="services/${svc.slug}.html" class="svc-card__link">
+            ${lang.link} <span aria-hidden="true">→</span>
+          </a>
+        </div>
+        <span class="svc-card__arrow" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </article>`;
+  }
+
+  grid.innerHTML = `
+    <div class="svc-grid reveal">
+      ${buildCard(svcs[0], 'svc-card--large')}
+      <div class="svc-stack">
+        ${buildCard(svcs[1], 'svc-card--small')}
+        ${buildCard(svcs[2], 'svc-card--small')}
+      </div>
+    </div>`;
+
+  observeReveal(grid.querySelectorAll('.reveal'));
+}
+
+
+/* ── RENDER: PROCESS STRIP ───────────────────────────────── */
+function renderProcessStrip() {
+  const grid = document.getElementById('process-grid');
+  if (!grid) return;
+
+  grid.innerHTML = POA_DATA.process.map((step, i) => {
+    const lang = step[currentLang];
+    return `
+      <div class="process-step reveal" data-reveal="up" style="--stagger-i:${i}">
+        <div class="process-step__num">0${i + 1}</div>
+        <h3 class="process-step__title">${lang.title}</h3>
+        <p class="process-step__desc">${lang.description}</p>
+      </div>
+    `;
+  }).join('');
+}
+
+/* ── RENDER: SERVICES PAGE LIST ──────────────────────────── */
+function renderServicesPage() {
+  const list = document.getElementById('services-page-list');
+  if (!list) return;
+
+  list.innerHTML = POA_DATA.services.map((svc, i) => {
+    const lang = svc[currentLang];
+    const isEven = i % 2 !== 0;
+    const bgClass = isEven ? 'section--gray' : '';
+    
+    return `
+      <section class="svc-block ${bgClass}" id="${svc.id}">
+        <div class="container">
+          <div class="svc-block__grid">
+            <div class="svc-block__image reveal">
+              <img src="${svc.image}" alt="${lang.title}" loading="lazy" />
+            </div>
+            <div class="svc-block__content reveal reveal--delay">
+              <span class="svc-block__number">${svc.number}</span>
+              <h2 class="svc-block__title">
+                <span class="svc-block__title-script">${lang.title}</span>
+              </h2>
+              <p class="svc-block__body body-text">${lang.description}</p>
+              
+              <ul class="svc-block__list">
+                ${lang.bullets.map(bullet => `<li>${bullet}</li>`).join('')}
+              </ul>
+
+              <a href="contact.html" class="btn btn--outline svc-block__cta">${lang.link}</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    `;
+  }).join('');
+
+  observeReveal(list.querySelectorAll('.reveal'));
+}
+
+
+/* ── RENDER: FEATURED PROJECT ────────────────────────────── */
+/*
+ * Finds the single project with featured: true in POA_DATA.projects.
+ * Renders:  section label → split card (image | category + name + meta + desc + 2 buttons)
+ * Links:    "View Project"       → project-detail.html?id=PROJECT_ID
+ *           "View All Projects"  → projects.html
+ *
+ * Thumbnail: POA_DATA uses project.image (singular). Gallery rows use project.visuals / blueprints.
+ *
+ * To change the featured project: open data.js, set featured: true on the
+ * desired project and featured: false on the current one.
+ */
+function renderFeatured() {
+  const container = document.getElementById('featured-project');
+  const bgEl      = document.getElementById('fp-bg');
+  if (!container) return;
+
+  const project = POA_DATA.projects.find(function (p) { return p.featured; });
+  if (!project) {
+    container.innerHTML = '';
+    return;
+  }
+
+  const lang       = project[currentLang];
+  const catLabel   = categoryLabel(project.category);
+  const ctaView    = t('featured.cta');
+  const ctaAll     = t('featured.viewAll');
+  const sectionLbl = t('featured.label');
+  const featuredSrc =
+    typeof project.image === 'string' && project.image.trim() ? project.image.trim() : '';
+
+  /* Layer 1 — inject background image into fp-bg (POA_DATA: image, not images[]) */
+  if (bgEl) {
+    bgEl.innerHTML = featuredSrc
+      ? `<img src="${featuredSrc}" alt="" loading="lazy" />`
+      : '';
+  }
+
+  /* Layer 3 — section header + floating card */
+  container.innerHTML = `
+    <div class="section-intro section-intro--light reveal">
+      <div class="section-intro__label">
+        <span class="section-intro__index">[04]</span>
+        <span class="section-intro__tag">${sectionLbl}</span>
+      </div>
+      <h2 class="section-intro__heading section-intro__heading--script">
+        Recent Work
+      </h2>
+    </div>
+
+    <article class="fp-card reveal reveal--delay" aria-label="${lang.name}">
+
+      <div class="fp-card__thumb">
+        <img
+          src="${featuredSrc}"
+          alt="${lang.name}"
+          loading="lazy"
+        />
+      </div>
+
+      <div class="fp-card__info">
+
+        <span class="fp-card__category">${catLabel}</span>
+
+        <div class="fp-card__meta">
+          <span>${project.year}</span>
+          <span class="fp-card__meta-sep" aria-hidden="true">—</span>
+          <span>${project.size}</span>
+          <span class="fp-card__meta-sep" aria-hidden="true">—</span>
+          <span>${lang.location}</span>
+        </div>
+
+        <h3 class="fp-card__title">${lang.name}</h3>
+
+        <p class="fp-card__desc">${lang.description}</p>
+
+        <div class="fp-card__actions">
+          <a href="project-detail.html?id=${project.id}" class="btn btn--dark">${ctaView}</a>
+          <a href="projects.html" class="btn btn--outline">${ctaAll}</a>
+        </div>
+
+      </div>
+    </article>`;
+
+  observeReveal(container.querySelectorAll('.reveal'));
+}
+
+
+/* ── APPLY STATIC TRANSLATIONS (data-i18n) ───────────────── */
+function applyTranslations() {
+  /* Plain text content */
+  document.querySelectorAll('[data-i18n]').forEach(function (el) {
+    const key = el.getAttribute('data-i18n');
+    const val = t(key);
+    if (val !== key) el.textContent = val;
+  });
+
+  /* innerHTML (contains <br/> or HTML entities) */
+  document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
+    const key = el.getAttribute('data-i18n-html');
+    const val = t(key);
+    if (val !== key) el.innerHTML = val;
+  });
+
+  /* Placeholder attributes */
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(function (el) {
+    const key = el.getAttribute('data-i18n-placeholder');
+    const val = t(key);
+    if (val !== key) el.placeholder = val;
+  });
+
+  /* Switch body font for Arabic */
+  document.body.style.fontFamily = currentLang === 'ar'
+    ? "'Tajawal', sans-serif"
+    : "'Montserrat', sans-serif";
+
+  /* Footer service links */
+  document.querySelectorAll('[data-svc-en]').forEach(function (el) {
+    el.textContent = currentLang === 'ar'
+      ? el.getAttribute('data-svc-ar')
+      : el.getAttribute('data-svc-en');
+  });
+}
+
+
+/* ── LANGUAGE SWITCH ─────────────────────────────────────── */
+function setLanguage(lang) {
+  currentLang = lang;
+  const isAr  = lang === 'ar';
+
+  document.documentElement.lang = lang;
+  document.documentElement.dir  = isAr ? 'rtl' : 'ltr';
+
+  document.querySelectorAll('.lang-switch').forEach(function (btn) {
+    btn.querySelector('.lang-switch__en').classList.toggle('active', !isAr);
+    btn.querySelector('.lang-switch__ar').classList.toggle('active',  isAr);
+  });
+
+  /* Re-render dynamic sections in new language */
+  renderStats();
+  renderServices();
+  renderFeatured();
+  renderProjectsHero();
+  if (document.getElementById('projects-grid')) {
+    renderProjects(currentFilter);
+    updateFilterLabels();
+  }
+  applyTranslations();
+
+  localStorage.setItem('poa-lang', lang);
+}
+
+function initLangSwitch() {
+  document.querySelectorAll('.lang-switch').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      setLanguage(currentLang === 'ar' ? 'en' : 'ar');
+    });
+  });
+}
+
+
+/* ── NAVBAR ──────────────────────────────────────────────── */
+function initNavbar() {
+  const navbar    = document.getElementById('navbar');
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+
+  if (!navbar) return;
+
+  const isLightNav = navbar.classList.contains('navbar--light');
+  const logoImg    = navbar.querySelector('.navbar__logo img');
+
+  /* ── Inject brand tagline for letter-spacing hover effect ── */
+  var logoLink = navbar.querySelector('.navbar__logo');
+  if (logoLink && !logoLink.querySelector('.navbar__logo-tagline')) {
+    var tagline = document.createElement('span');
+    tagline.className = 'navbar__logo-tagline';
+    tagline.setAttribute('aria-hidden', 'true');
+    tagline.textContent = 'PIECE\u00A0OF\u00A0ART';
+    logoLink.appendChild(tagline);
+  }
+
+  /* ── Scroll handler ─────────────────────────────────────── */
+  function onScroll() {
+    var scrollY = window.scrollY;
+    var past    = scrollY > 50;
+    navbar.classList.toggle('scrolled', past);
+
+    if (isLightNav) {
+      navbar.style.backdropFilter = 'none';
+      navbar.style.webkitBackdropFilter = 'none';
+    }
+
+    /* Proportional opacity transition while logo crosses the
+       hero/glass boundary (0 → 120px scroll range).
+       This creates a gentle "fade through" as the filter switches.
+       After the logo CSS animation completes (~1.4s), the inline
+       opacity is released so CSS transitions take over cleanly. */
+    if (logoImg) {
+      var crossfadeRange = 120;
+      if (scrollY <= crossfadeRange) {
+        var progress = scrollY / crossfadeRange;
+        /* Dip to ~0.78 at midpoint, full opacity at both ends */
+        var dip     = Math.sin(progress * Math.PI) * 0.22;
+        logoImg.style.opacity = String(1 - dip);
+      } else {
+        /* Past the crossfade zone — let CSS take over */
+        logoImg.style.opacity = '';
+      }
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  if (hamburger && mobileNav) {
+    hamburger.addEventListener('click', function () {
+      const isOpen = mobileNav.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', String(isOpen));
+      mobileNav.setAttribute('aria-hidden', String(!isOpen));
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    mobileNav.querySelectorAll('.nav-link').forEach(function (link) {
+      link.addEventListener('click', function () {
+        mobileNav.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        mobileNav.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+}
+
+
+/* ── HERO ENTRANCE + PARALLAX ────────────────────────────── */
+function initHero() {
+  var hero   = document.querySelector('.hero');
+  var heroBg = document.querySelector('.hero__bg');
+  if (!hero) return;
+
+  /* Ken Burns now runs as a pure CSS animation — the `loaded`
+     class is kept for potential future use but no longer drives
+     the zoom transition. */
+  requestAnimationFrame(function () {
+    requestAnimationFrame(function () {
+      hero.classList.add('loaded');
+    });
+  });
+
+  /* Parallax — skip if user prefers reduced motion */
+  if (!heroBg) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  /* Background moves at 28% of scroll speed.
+     The .hero__bg has top/bottom: -35% buffer so there is
+     ~280px of travel available before any edge is exposed. */
+  var FACTOR  = 0.28;
+  var ticking = false;
+
+  function applyParallax() {
+    var scrollY     = window.scrollY;
+    var heroBottom  = hero.getBoundingClientRect().bottom + scrollY;
+
+    /* Stop updating once the hero is fully off-screen */
+    if (scrollY < heroBottom) {
+      heroBg.style.transform = 'translateY(' + (scrollY * FACTOR).toFixed(2) + 'px)';
+    }
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', function () {
+    if (!ticking) {
+      requestAnimationFrame(applyParallax);
+      ticking = true;
+    }
+  }, { passive: true });
+}
+
+
+/* ── SCROLL REVEAL ───────────────────────────────────────── */
+let revealObserver = null;
+
+function observeReveal(elements) {
+  if (!revealObserver) {
+    revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  }
+  elements.forEach(function (el) { revealObserver.observe(el); });
+}
+
+function initReveal() {
+  /* Auto-stagger: assign --stagger-i CSS var to .reveal children
+     inside any element marked [data-stagger] */
+  document.querySelectorAll('[data-stagger]').forEach(function (group) {
+    var items = group.querySelectorAll('.reveal');
+    items.forEach(function (el, i) {
+      el.style.setProperty('--stagger-i', i);
+    });
+  });
+
+  observeReveal(document.querySelectorAll('.reveal'));
+}
+
+
+/* ── SCROLL PROGRESS INDICATOR ───────────────────────────── */
+function initScrollProgress() {
+  var bar = document.getElementById('scroll-progress');
+  if (!bar) return;
+
+  window.addEventListener('scroll', function () {
+    var scrollTop = window.scrollY || document.documentElement.scrollTop;
+    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    bar.style.width = pct + '%';
+  }, { passive: true });
+}
+
+
+/* ── BUTTON RIPPLE ───────────────────────────────────────── */
+function initRipple() {
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest('.btn');
+    if (!btn) return;
+
+    var rect   = btn.getBoundingClientRect();
+    var size   = Math.max(rect.width, rect.height) * 2;
+    var x      = e.clientX - rect.left - size / 2;
+    var y      = e.clientY - rect.top  - size / 2;
+
+    var ripple = document.createElement('span');
+    ripple.className = 'btn__ripple';
+    ripple.style.cssText = 'position:absolute;border-radius:50%;pointer-events:none;'
+      + 'width:' + size + 'px;height:' + size + 'px;'
+      + 'left:' + x + 'px;top:' + y + 'px;'
+      + 'background:rgba(255,255,255,0.18);'
+      + 'transform:scale(0);animation:rippleOut 0.55s var(--ease-out) forwards;';
+
+    btn.style.position = btn.style.position || 'relative';
+    btn.style.overflow = 'hidden';
+    btn.appendChild(ripple);
+    ripple.addEventListener('animationend', function () { ripple.remove(); });
+  });
+
+  /* Inject keyframe if not already present */
+  if (!document.getElementById('ripple-kf')) {
+    var s = document.createElement('style');
+    s.id = 'ripple-kf';
+    s.textContent = '@keyframes rippleOut{to{transform:scale(1);opacity:0;}}';
+    document.head.appendChild(s);
+  }
+}
+
+
+/* ── IMAGE PARALLAX (rAF lerp) ───────────────────────────── */
+function initImageParallax() {
+  var items = [];
+
+  document.querySelectorAll('.js-parallax').forEach(function (el) {
+    items.push({ el: el, cx: 0, cy: 0 });
+    el.style.willChange = 'transform';
+  });
+
+  if (!items.length) return;
+
+  document.addEventListener('mousemove', function (e) {
+    var nx = (e.clientX / window.innerWidth  - 0.5) * 18;
+    var ny = (e.clientY / window.innerHeight - 0.5) * 12;
+    items.forEach(function (item) { item.tx = nx; item.ty = ny; });
+  });
+
+  (function tick() {
+    requestAnimationFrame(tick);
+    items.forEach(function (item) {
+      item.cx += ((item.tx || 0) - item.cx) * 0.08;
+      item.cy += ((item.ty || 0) - item.cy) * 0.08;
+      item.el.style.transform = 'translate(' + item.cx.toFixed(2) + 'px,' + item.cy.toFixed(2) + 'px)';
+    });
+  })();
+}
+
+
+/* ── CARD 3-D TILT ───────────────────────────────────────── */
+function initCardTilt() {
+  document.querySelectorAll('.project-card, .service-card').forEach(function (card) {
+    card.addEventListener('mouseenter', function () {
+      card.style.transition = 'transform 0.08s ease';
+    });
+
+    card.addEventListener('mousemove', function (e) {
+      var rect = card.getBoundingClientRect();
+      var cx   = (e.clientX - rect.left) / rect.width  - 0.5;
+      var cy   = (e.clientY - rect.top)  / rect.height - 0.5;
+      card.style.transform = 'perspective(900px) rotateY(' + (cx * 10) + 'deg) rotateX(' + (-cy * 8) + 'deg) translateY(-6px)';
+    });
+
+    card.addEventListener('mouseleave', function () {
+      card.style.transition = 'transform 0.65s var(--ease-out)';
+      card.style.transform  = '';
+      card.addEventListener('transitionend', function restore() {
+        card.style.transition = '';
+        card.removeEventListener('transitionend', restore);
+      });
+    });
+  });
+}
+
+
+/* ── SERVICES PARALLAX ───────────────────────────────────── */
+/*
+ * Large card drifts ~18px slower (background depth).
+ * Right stack drifts ~22px faster (foreground depth).
+ * Uses the CSS `translate` property so it composes with
+ * the hover `transform: translateY(-6px)` without conflict.
+ */
+function initServicesParallax() {
+  const section = document.getElementById('services');
+  if (!section) return;
+
+  /* Disable on touch/small screens where hover is unreliable */
+  if (window.matchMedia('(max-width: 900px)').matches) return;
+
+  function update() {
+    const largeCard = section.querySelector('.svc-card--large');
+    const stack     = section.querySelector('.svc-stack');
+    if (!largeCard || !stack) return;
+
+    const rect    = section.getBoundingClientRect();
+    const viewH   = window.innerHeight;
+
+    /* Normalised progress: 0 when section centre is at viewport centre */
+    const progress = ((viewH / 2) - (rect.top + rect.height / 2)) / viewH;
+    const t        = Math.max(-0.55, Math.min(0.55, progress));
+
+    /* Large card: slow drift — feels like background */
+    largeCard.style.translate = '0 ' + (t * 18).toFixed(1) + 'px';
+
+    /* Stack: faster counter-drift — feels like foreground */
+    stack.style.translate = '0 ' + (t * -22).toFixed(1) + 'px';
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+}
+
+
+/* ── RENDER: PROJECTS PAGE ───────────────────────────────── */
+function renderProjects(filter = 'all') {
+  const grid = document.getElementById('projects-grid');
+  if (!grid) return;
+
+  const filtered = filter === 'all'
+    ? POA_DATA.projects
+    : POA_DATA.projects.filter(p => p.category === filter);
+
+  if (filtered.length === 0) {
+    grid.innerHTML = `<p class="no-results">No projects found in this category.</p>`;
+    return;
+  }
+
+  const viewText = t('projectsPage.viewProject');
+
+  grid.innerHTML = filtered.map((project, i) => {
+    const lang = project[currentLang];
+    
+    return `
+      <article class="project-card reveal" data-reveal="up" data-id="${project.id}" style="--stagger-i:${i % 3}">
+        <div class="project-card__inner">
+          <div class="project-card__img">
+            <img src="${project.image}" alt="${lang.name}" loading="lazy" />
+            <div class="project-card__overlay">
+              <div class="project-card__overlay-content">
+                <span class="project-card__cat">${categoryLabel(project.category)}</span>
+                <h3 class="project-card__title">${lang.name}</h3>
+                <span class="project-card__btn">${viewText}</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-card__info">
+            <div class="project-card__meta-top">
+               <span class="project-card__cat-simple">${categoryLabel(project.category)}</span>
+               <span class="project-card__year-simple">${project.year}</span>
+            </div>
+            <h3 class="project-card__title-simple">${lang.name}</h3>
+            <p class="project-card__loc-simple">${lang.location}</p>
+          </div>
+        </div>
+      </article>
+    `;
+  }).join('');
+
+  // Add click listeners to cards
+  grid.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('click', () => {
+      openProjectModal(card.getAttribute('data-id'));
+    });
+  });
+
+  observeReveal(grid.querySelectorAll('.reveal'));
+}
+
+/* ── MODAL LOGIC ─────────────────────────────────────────── */
+let activeProject = null;
+let activeTab = 'visuals';
+let currentImgIdx = 0;
+
+function openProjectModal(projectId) {
+  const project = POA_DATA.projects.find(p => p.id === projectId);
+  if (!project) return;
+
+  activeProject = project;
+  activeTab = 'visuals';
+  currentImgIdx = 0;
+
+  const modal = document.getElementById('projectModal');
+  if (!modal) return;
+
+  const lang = project[currentLang];
+
+  // Populate textual info
+  const elements = {
+    'modalCat': categoryLabel(project.category),
+    'modalTitle': lang.name,
+    'modalLoc': lang.location,
+    'modalYear': project.year,
+    'modalArea': project.size,
+    'modalPhilosophy': lang.philosophy
+  };
+
+  for (const [id, val] of Object.entries(elements)) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = val;
+  }
+
+  // Blueprints tab visibility
+  const bTab = document.querySelector('.modal-tab[data-tab="blueprints"]');
+  const hasB = project.blueprints && project.blueprints.length > 0;
+  if (bTab) bTab.style.display = hasB ? 'block' : 'none';
+
+  // Active tab state reset
+  document.querySelectorAll('.modal-tab').forEach(t => {
+    t.classList.toggle('active', t.getAttribute('data-tab') === 'visuals');
+  });
+
+  updateModalDisplay();
+
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function updateModalDisplay() {
+  if (!activeProject) return;
+  const images = activeProject[activeTab] || [];
+  const main = document.getElementById('modalMainImg');
+  const thumbs = document.getElementById('modalThumbs');
+  const counter = document.getElementById('modalCounter');
+
+  if (images.length > 0) {
+    if (main) {
+      main.src = images[currentImgIdx];
+      main.style.opacity = '1';
+    }
+    if (counter) {
+      counter.textContent = `${currentImgIdx + 1} / ${images.length}`;
+    }
+
+    if (thumbs) {
+      thumbs.innerHTML = images.map((img, i) => `
+        <div class="modal-thumb ${i === currentImgIdx ? 'active' : ''}" data-index="${i}">
+          <img src="${img}" alt="" loading="lazy" />
+        </div>
+      `).join('');
+
+      thumbs.querySelectorAll('.modal-thumb').forEach(t => {
+        t.addEventListener('click', () => {
+          setModalImage(parseInt(t.getAttribute('data-index')));
+        });
+      });
+    }
+  }
+}
+
+function setModalImage(idx) {
+  const images = activeProject[activeTab] || [];
+  if (idx < 0 || idx >= images.length) return;
+  
+  currentImgIdx = idx;
+  const main = document.getElementById('modalMainImg');
+  const counter = document.getElementById('modalCounter');
+  const thumbs = document.querySelectorAll('.modal-thumb');
+
+  // Reset zoom on image switch
+  resetZoom();
+
+  if (main) {
+    main.style.opacity = '0';
+    setTimeout(() => {
+      main.src = images[currentImgIdx];
+      main.style.opacity = '1';
+    }, 250);
+  }
+
+  if (counter) counter.textContent = `${currentImgIdx + 1} / ${images.length}`;
+  
+  thumbs.forEach((t, i) => t.classList.toggle('active', i === currentImgIdx));
+  
+  const activeThumb = thumbs[currentImgIdx];
+  if (activeThumb) {
+    activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
+}
+
+let zoomState = {
+  active: false,
+  x: 0,
+  y: 0,
+  lastX: 0,
+  lastY: 0,
+  isDragging: false,
+  dragStarted: false
+};
+
+function toggleZoom(e) {
+  const container = document.getElementById('modalImgContainer');
+  const img = document.getElementById('modalMainImg');
+  if (!container || !img) return;
+
+  zoomState.active = !zoomState.active;
+  container.classList.toggle('is-zoomed', zoomState.active);
+
+  if (!zoomState.active) {
+    resetZoom();
+  } else {
+    zoomState.x = 0;
+    zoomState.y = 0;
+    applyTransform();
+  }
+}
+
+function resetZoom() {
+  const container = document.getElementById('modalImgContainer');
+  const img = document.getElementById('modalMainImg');
+  if (!container || !img) return;
+
+  zoomState.active      = false;
+  zoomState.x           = 0;
+  zoomState.y           = 0;
+  zoomState.isDragging  = false;
+  zoomState.dragStarted = false;
+  container.classList.remove('is-zoomed');
+  container.style.cursor = '';
+  img.style.transform = 'none';
+}
+
+const ZOOM_SCALE = 2.5;
+
+function applyTransform() {
+  const container = document.getElementById('modalImgContainer');
+  const img = document.getElementById('modalMainImg');
+  if (!container || !img) return;
+
+  /* Clamp pan so the image never leaves the container bounds.
+     Translate units are in the pre-scale coordinate space,
+     so divide screen-pixel limits by ZOOM_SCALE. */
+  const maxX = Math.max(0, (img.offsetWidth  * ZOOM_SCALE - container.offsetWidth)  / (2 * ZOOM_SCALE));
+  const maxY = Math.max(0, (img.offsetHeight * ZOOM_SCALE - container.offsetHeight) / (2 * ZOOM_SCALE));
+
+  zoomState.x = Math.max(-maxX, Math.min(maxX, zoomState.x));
+  zoomState.y = Math.max(-maxY, Math.min(maxY, zoomState.y));
+
+  img.style.transform = `scale(${ZOOM_SCALE}) translate(${zoomState.x}px, ${zoomState.y}px)`;
+}
+
+function initImageGestures() {
+  const container = document.getElementById('modalImgContainer');
+  if (!container) return;
+
+  /* ── Mouse: click-to-zoom + drag-to-pan ─────────────────── */
+  let mouseStartX, mouseStartY;
+
+  container.addEventListener('mousedown', (e) => {
+    if (!zoomState.active) return;
+    e.preventDefault();
+    zoomState.isDragging  = true;
+    zoomState.dragStarted = false;
+    mouseStartX = e.clientX - zoomState.x * ZOOM_SCALE;
+    mouseStartY = e.clientY - zoomState.y * ZOOM_SCALE;
+    container.style.cursor = 'grabbing';
+  });
+
+  window.addEventListener('mousemove', (e) => {
+    if (!zoomState.isDragging) return;
+    const newX = (e.clientX - mouseStartX) / ZOOM_SCALE;
+    const newY = (e.clientY - mouseStartY) / ZOOM_SCALE;
+    if (Math.abs(newX - zoomState.x) > 3 || Math.abs(newY - zoomState.y) > 3) {
+      zoomState.dragStarted = true;
+    }
+    zoomState.x = newX;
+    zoomState.y = newY;
+    requestAnimationFrame(applyTransform);
+  });
+
+  const endMouseDrag = () => {
+    if (!zoomState.isDragging) return;
+    zoomState.isDragging = false;
+    container.style.cursor = zoomState.active ? 'grab' : '';
+  };
+  window.addEventListener('mouseup',    endMouseDrag);
+  window.addEventListener('mouseleave', endMouseDrag);
+
+  container.addEventListener('click', (e) => {
+    if (zoomState.dragStarted) { e.stopPropagation(); return; }
+    toggleZoom(e);
+  });
+
+  /* ── Touch: swipe to navigate, pinch to zoom, drag to pan ── */
+  let touchStartX  = 0, touchStartY  = 0;
+  let panStartX    = 0, panStartY    = 0;
+  let pinching     = false;
+  let pinchStartDist = 0;
+  let touchMoved   = false;
+
+  container.addEventListener('touchstart', (e) => {
+    touchMoved = false;
+
+    if (e.touches.length === 2) {
+      // Two fingers — prepare pinch
+      pinching = true;
+      zoomState.isDragging = false;
+      pinchStartDist = Math.hypot(
+        e.touches[1].clientX - e.touches[0].clientX,
+        e.touches[1].clientY - e.touches[0].clientY
+      );
+      return;
+    }
+
+    pinching = false;
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+
+    if (zoomState.active) {
+      // Start drag-pan
+      zoomState.isDragging  = true;
+      zoomState.dragStarted = false;
+      panStartX = e.touches[0].clientX - zoomState.x * ZOOM_SCALE;
+      panStartY = e.touches[0].clientY - zoomState.y * ZOOM_SCALE;
+    }
+  }, { passive: true });
+
+  container.addEventListener('touchmove', (e) => {
+    touchMoved = true;
+
+    // Pinch: adjust zoom
+    if (e.touches.length === 2 && pinching) {
+      e.preventDefault();
+      const dist = Math.hypot(
+        e.touches[1].clientX - e.touches[0].clientX,
+        e.touches[1].clientY - e.touches[0].clientY
+      );
+      if (dist / pinchStartDist > 1.3 && !zoomState.active) {
+        zoomState.active = true;
+        zoomState.x = 0;
+        zoomState.y = 0;
+        container.classList.add('is-zoomed');
+        applyTransform();
+      } else if (dist / pinchStartDist < 0.72 && zoomState.active) {
+        resetZoom();
+      }
+      return;
+    }
+
+    // Single finger drag-pan when zoomed
+    if (e.touches.length === 1 && zoomState.isDragging && zoomState.active) {
+      e.preventDefault();
+      const newX = (e.touches[0].clientX - panStartX) / ZOOM_SCALE;
+      const newY = (e.touches[0].clientY - panStartY) / ZOOM_SCALE;
+      if (Math.abs(newX - zoomState.x) > 2 || Math.abs(newY - zoomState.y) > 2) {
+        zoomState.dragStarted = true;
+      }
+      zoomState.x = newX;
+      zoomState.y = newY;
+      requestAnimationFrame(applyTransform);
+    }
+  }, { passive: false });
+
+  container.addEventListener('touchend', (e) => {
+    zoomState.isDragging = false;
+
+    if (pinching) { pinching = false; return; }
+    if (e.changedTouches.length !== 1) return;
+
+    const dx    = e.changedTouches[0].clientX - touchStartX;
+    const dy    = e.changedTouches[0].clientY - touchStartY;
+    const absDx = Math.abs(dx);
+    const absDy = Math.abs(dy);
+
+    // Tap (tiny movement) → toggle zoom
+    if (!touchMoved || (absDx < 10 && absDy < 10)) {
+      if (!zoomState.dragStarted) toggleZoom(e);
+      zoomState.dragStarted = false;
+      return;
+    }
+
+    // Horizontal swipe when NOT zoomed → navigate images
+    if (!zoomState.active && absDx > 55 && absDx > absDy * 1.5) {
+      const imgs = activeProject[activeTab] || [];
+      if (dx < 0) {
+        setModalImage((currentImgIdx + 1) % imgs.length);               // swipe left = next
+      } else {
+        setModalImage((currentImgIdx - 1 + imgs.length) % imgs.length); // swipe right = prev
+      }
+    }
+
+    zoomState.dragStarted = false;
+  }, { passive: true });
+}
+
+function initModalEvents() {
+  const modal = document.getElementById('projectModal');
+  if (!modal) return;
+
+  const closeBtn = document.getElementById('modalClose');
+  const prevBtn = document.getElementById('modalPrev');
+  const nextBtn = document.getElementById('modalNext');
+
+  closeBtn?.addEventListener('click', () => {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+    resetZoom();
+  });
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+      resetZoom();
+    }
+  });
+
+  prevBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const imgs = activeProject[activeTab] || [];
+    setModalImage((currentImgIdx - 1 + imgs.length) % imgs.length);
+  });
+
+  nextBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const imgs = activeProject[activeTab] || [];
+    setModalImage((currentImgIdx + 1) % imgs.length);
+  });
+
+  document.querySelectorAll('.modal-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const type = tab.getAttribute('data-tab');
+      if (activeTab === type) return;
+      activeTab = type;
+      currentImgIdx = 0;
+      document.querySelectorAll('.modal-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      resetZoom();
+
+      // Fade wrapper out → swap content → fade back in
+      const wrapper = document.getElementById('modalImgContainer');
+      if (wrapper) {
+        wrapper.style.opacity = '0';
+        setTimeout(() => {
+          updateModalDisplay();
+          wrapper.style.opacity = '1';
+        }, 220);
+      } else {
+        updateModalDisplay();
+      }
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!modal.classList.contains('active')) return;
+    if (e.key === 'Escape') {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+      resetZoom();
+    } else if (e.key === 'ArrowLeft') {
+      const imgs = activeProject[activeTab] || [];
+      setModalImage((currentImgIdx - 1 + imgs.length) % imgs.length);
+    } else if (e.key === 'ArrowRight') {
+      const imgs = activeProject[activeTab] || [];
+      setModalImage((currentImgIdx + 1) % imgs.length);
+    }
+  });
+}
+
+function updateFilterLabels() {
+  document.querySelectorAll('.project-filters button[data-filter]').forEach(function (btn) {
+    var filterId = btn.getAttribute('data-filter');
+    if (filterId === 'all') {
+      btn.textContent = currentLang === 'ar' ? 'الكل' : 'All';
+      return;
+    }
+    var cat = POA_DATA.categories.find(function (c) { return c.id === filterId; });
+    if (cat) btn.textContent = cat[currentLang];
+  });
+}
+
+
+/* ── PROJECTS PAGE HERO ──────────────────────────────────── */
+function renderProjectsHero() {
+  const section = document.getElementById('projects-hero');
+  if (!section) return;
+
+  const project = POA_DATA.projects.find(function (p) { return p.featured; });
+  if (!project) return;
+
+  const lang = project[currentLang];
+
+  const el = function (id) { return document.getElementById(id); };
+
+  if (el('phLabel'))    el('phLabel').textContent    = t('projectsPage.featuredLabel');
+  if (el('phTitle'))    el('phTitle').textContent    = lang.name;
+  if (el('phLocation')) el('phLocation').textContent = lang.location + '\u2002·\u2002' + project.year;
+  if (el('phDesc'))     el('phDesc').textContent     = lang.description;
+  if (el('phBtn'))      el('phBtn').textContent      = t('projectsPage.viewProject');
+
+  const img = el('phImg');
+  if (img && img.getAttribute('data-loaded') !== project.id) {
+    img.src = project.image;
+    img.alt = lang.name;
+    img.setAttribute('data-loaded', project.id);
+  }
+
+  /* Trigger entrance animation on first render only */
+  if (!section.classList.contains('is-loaded')) {
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        section.classList.add('is-loaded');
+      });
+    });
+  }
+}
+
+function initProjectsHero() {
+  const btn = document.getElementById('phBtn');
+  if (!btn) return;
+  const project = POA_DATA.projects.find(function (p) { return p.featured; });
+  if (!project) return;
+  btn.addEventListener('click', function () {
+    openProjectModal(project.id);
+  });
+}
+
+
+function initProjectFilters() {
+  const filters = document.querySelectorAll('.project-filters button');
+  if (!filters.length) return;
+
+  filters.forEach(btn => {
+    btn.addEventListener('click', function() {
+      const filter = this.getAttribute('data-filter');
+      currentFilter = filter;
+
+      // Update active state
+      filters.forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+
+      // Re-render with fade + scale transition
+      const grid = document.getElementById('projects-grid');
+      if (grid) {
+        grid.classList.add('is-switching');
+        setTimeout(() => {
+          renderProjects(filter);
+          grid.classList.remove('is-switching');
+        }, 280);
+      }
+    });
+  });
+}
+
+
+/* ── FOOTER YEAR ─────────────────────────────────────────── */
+function setYear() {
+  const el = document.getElementById('year');
+  if (el) el.textContent = new Date().getFullYear();
+}
+
+
+/* ── INIT ────────────────────────────────────────────────── */
+document.addEventListener('DOMContentLoaded', function () {
+
+  /* 1. Restore saved language immediately to prevent flash */
+  const saved = localStorage.getItem('poa-lang');
+  if (saved && saved !== 'en') {
+    currentLang = saved;
+    document.documentElement.lang = saved;
+    document.documentElement.dir  = 'rtl';
+    document.querySelectorAll('.lang-switch').forEach(function (btn) {
+      btn.querySelector('.lang-switch__en').classList.remove('active');
+      btn.querySelector('.lang-switch__ar').classList.add('active');
+    });
+  }
+
+  /* 2. Render dynamic sections */
+  renderStats();
+  renderServices();
+  renderProcessStrip();
+  renderServicesPage();
+  renderFeatured();
+  renderProjectsHero();
+  renderProjects();
+
+  /* 3. Apply translations to static elements */
+  applyTranslations();
+
+  /* 4. Init behaviour */
+  initNavbar();
+  initHero();
+  initReveal();
+  initScrollProgress();
+  initRipple();
+  initImageParallax();
+  initServicesParallax();
+  initCardTilt();
+  initLangSwitch();
+  initProjectsHero();
+  initProjectFilters();
+  updateFilterLabels();
+  initModalEvents();
+  initImageGestures();
+  setYear();
+
+});

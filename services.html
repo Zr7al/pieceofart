@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — Piece of Art</title>
+  <meta name="description" content="Interior design, architecture, and project management for residential and commercial clients in Amman, Jordan. One studio, concept to completion." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="page-services">
+
+  <!-- Scroll progress line -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <header class="navbar scrolled" id="navbar">
+    <div class="navbar__inner">
+
+      <a href="index.html" class="navbar__logo" aria-label="Piece of Art — Home">
+        <img src="Assets/images/logo 2-01.png" alt="Piece of Art" />
+      </a>
+
+      <nav class="navbar__nav" id="mainNav" aria-label="Primary navigation">
+        <ul>
+          <li><a href="index.html"    class="nav-link" data-i18n="nav.home">Home</a></li>
+          <li><a href="about.html"    class="nav-link"        data-i18n="nav.about">About</a></li>
+          <li><a href="services.html" class="nav-link active" data-i18n="nav.services">Services</a></li>
+          <li><a href="projects.html" class="nav-link"        data-i18n="nav.projects">Projects</a></li>
+          <li><a href="careers.html"  class="nav-link"        data-i18n="nav.careers">Careers</a></li>
+          <li><a href="contact.html"  class="nav-link"        data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="navbar__actions">
+        <button class="lang-switch" id="langSwitch" aria-label="Switch language">
+          <span class="lang-switch__en active">EN</span>
+          <span class="lang-switch__divider">/</span>
+          <span class="lang-switch__ar">AR</span>
+        </button>
+
+        <button class="navbar__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Mobile nav overlay -->
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <ul>
+      <li><a href="index.html"    class="nav-link" data-i18n="nav.home">Home</a></li>
+      <li><a href="about.html"    class="nav-link" data-i18n="nav.about">About</a></li>
+      <li><a href="services.html" class="nav-link active" data-i18n="nav.services">Services</a></li>
+      <li><a href="projects.html" class="nav-link" data-i18n="nav.projects">Projects</a></li>
+      <li><a href="careers.html"  class="nav-link" data-i18n="nav.careers">Careers</a></li>
+      <li><a href="contact.html"  class="nav-link" data-i18n="nav.contact">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="services-hero reveal" data-reveal="fade">
+    <div class="container">
+      <div class="services-hero__content">
+        <span class="section-label" data-i18n="nav.services">What We Do</span>
+        <h1 class="services-hero__title" data-i18n="servicesPage.heroTitle">
+          We design spaces that<br />define how people experience them.
+        </h1>
+        <p class="services-hero__subtitle" data-i18n="servicesPage.heroSubtitle">
+          Architecture, interior design, and project management — delivered under one roof. We bring ambitious spaces from concept to completion, without compromise.
+        </p>
+        <div class="services-hero__actions">
+          <a href="contact.html" class="btn btn--dark" data-i18n="servicesPage.ctaPrimary">Book a Consultation</a>
+          <a href="projects.html" class="btn btn--outline" data-i18n="servicesPage.ctaSecondary">View Portfolio</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="hero__scroll-indicator">
+      <span></span>
+      <p>Scroll</p>
+    </div>
+  </section>
+
+  <!-- ===================== PROCESS STRIP ===================== -->
+  <section class="process-strip section section--gray">
+    <div class="container">
+      <div class="process-strip__grid" id="process-grid">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SERVICES LIST ===================== -->
+  <section class="services-list" id="services-page-list">
+    <!-- Populated by JS (Zig-Zag Layout) -->
+  </section>
+
+  <!-- ===================== FINAL CTA ===================== -->
+  <section class="cta section section--overlap" id="cta">
+    <div class="cta__bg" aria-hidden="true"></div>
+    <div class="container cta__inner reveal" data-reveal="scale">
+      <span class="section-label section-label--light" data-i18n="cta.label">Take the First Step</span>
+      <h2 class="cta__title" data-i18n="cta.title">Your project starts<br />with one conversation.</h2>
+      <p class="cta__subtitle" data-i18n="cta.subtitle">
+        Every space we have designed began with a client who had a vision and
+        needed the right team to realise it. Tell us what you are building.
+      </p>
+      <div class="cta__actions">
+        <a href="contact.html"  class="btn btn--light"         data-i18n="cta.primary">Get In Touch</a>
+        <a href="index.html" class="btn btn--outline-light">Back Home</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer" id="footer">
+    <!-- Footer content remains standard -->
+    <div class="container footer__main">
+      <div class="footer__brand">
+        <a href="index.html" class="footer__logo">
+          <img src="Assets/images/logo.png" alt="Piece of Art" />
+        </a>
+        <p class="footer__tagline">Design &amp; Project Management Studio.<br />Crafting spaces of lasting distinction.</p>
+        <div class="footer__social">
+          <a href="https://instagram.com/pieceofart.sa" target="_blank" rel="noopener" class="footer__social-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="https://wa.me/966500000000" target="_blank" rel="noopener" class="footer__social-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></a>
+          <a href="mailto:hello@pieceofart.sa" class="footer__social-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+        </div>
+      </div>
+      <nav class="footer__nav">
+        <div class="footer__col">
+          <h4 class="footer__heading">Navigation</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading">Services</h4>
+          <ul>
+            <li><a href="services.html#interior-design">Interior Design</a></li>
+            <li><a href="services.html#architecture">Architecture</a></li>
+            <li><a href="services.html#project-management">Project Management</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p>&copy; <span id="year"></span> Piece of Art. All rights reserved.</p>
+        <button class="lang-switch lang-switch--small" id="langSwitchFooter">
+          <span class="lang-switch__en active">EN</span> / <span class="lang-switch__ar">AR</span>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

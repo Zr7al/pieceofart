@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Projects — Piece of Art</title>
+  <meta name="description" content="Explore our portfolio of premium architectural and interior design projects." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Scroll progress line -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <header class="navbar scrolled" id="navbar">
+    <div class="navbar__inner">
+
+      <a href="index.html" class="navbar__logo" aria-label="Piece of Art — Home">
+        <img src="Assets/images/logo 2-01.png" alt="Piece of Art" />
+      </a>
+
+      <nav class="navbar__nav" id="mainNav" aria-label="Primary navigation">
+        <ul>
+          <li><a href="index.html"    class="nav-link" data-i18n="nav.home">Home</a></li>
+          <li><a href="about.html"    class="nav-link"        data-i18n="nav.about">About</a></li>
+          <li><a href="services.html" class="nav-link"        data-i18n="nav.services">Services</a></li>
+          <li><a href="projects.html" class="nav-link active" data-i18n="nav.projects">Projects</a></li>
+          <li><a href="careers.html"  class="nav-link"        data-i18n="nav.careers">Careers</a></li>
+          <li><a href="contact.html"  class="nav-link"        data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="navbar__actions">
+        <button class="lang-switch" id="langSwitch" aria-label="Switch language">
+          <span class="lang-switch__en active">EN</span>
+          <span class="lang-switch__divider">/</span>
+          <span class="lang-switch__ar">AR</span>
+        </button>
+
+        <button class="navbar__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Mobile nav overlay -->
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <ul>
+      <li><a href="index.html"    class="nav-link" data-i18n="nav.home">Home</a></li>
+      <li><a href="about.html"    class="nav-link" data-i18n="nav.about">About</a></li>
+      <li><a href="services.html" class="nav-link" data-i18n="nav.services">Services</a></li>
+      <li><a href="projects.html" class="nav-link active" data-i18n="nav.projects">Projects</a></li>
+      <li><a href="careers.html"  class="nav-link" data-i18n="nav.careers">Careers</a></li>
+      <li><a href="contact.html"  class="nav-link" data-i18n="nav.contact">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- ===================== PROJECTS HERO ===================== -->
+  <section class="projects-hero" id="projects-hero" aria-label="Featured project">
+    <div class="container projects-hero__inner">
+
+      <div class="projects-hero__text" id="phText">
+        <span class="projects-hero__label" id="phLabel">Featured Project</span>
+        <h1 class="projects-hero__title" id="phTitle"></h1>
+        <p class="projects-hero__location" id="phLocation"></p>
+        <p class="projects-hero__desc" id="phDesc"></p>
+        <button class="btn btn--light projects-hero__cta" id="phBtn">View Project</button>
+      </div>
+
+      <div class="projects-hero__image" id="phImageWrap">
+        <img id="phImg" src="" alt="" loading="eager" />
+        <div class="projects-hero__img-overlay" aria-hidden="true"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================== FILTERS + GRID ===================== -->
+  <section class="section section--compact" id="projects">
+    <div class="container">
+      
+      <!-- Filter Bar -->
+      <div class="project-filters reveal" data-reveal="up">
+        <button class="active" data-filter="all">All</button>
+        <button data-filter="villas">Private Villas</button>
+        <button data-filter="farms">Farm Estates</button>
+        <button data-filter="commercial">Offices & Commercial</button>
+        <button data-filter="restaurants">Restaurants</button>
+        <button data-filter="hospitality">Hospitality</button>
+        <button data-filter="administrative">Administrative</button>
+      </div>
+
+      <!-- Projects Grid -->
+      <div id="projects-grid" class="projects-grid" aria-live="polite">
+        <!-- Populated by renderProjects() in main.js -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================== PROJECTS MODAL ===================== -->
+  <div class="modal-overlay" id="projectModal" aria-hidden="true">
+    <div class="modal-container">
+      <button class="modal-close" id="modalClose" aria-label="Close modal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <div class="modal-content">
+        <!-- Left: Image Viewer -->
+        <div class="modal-viewer">
+          <div class="modal-tabs">
+            <button class="modal-tab active" data-tab="visuals" data-i18n="modal.visuals">3D Visuals</button>
+            <button class="modal-tab" data-tab="blueprints" data-i18n="modal.blueprints">Blueprints</button>
+          </div>
+
+          <div class="modal-counter" id="modalCounter">1 / 1</div>
+
+          <div class="modal-main-img-wrapper">
+            <button class="modal-nav modal-nav--prev" id="modalPrev" aria-label="Previous image">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            </button>
+
+            <div class="modal-main-img" id="modalImgContainer">
+              <img id="modalMainImg" src="" alt="" draggable="false" />
+            </div>
+
+            <button class="modal-nav modal-nav--next" id="modalNext" aria-label="Next image">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </button>
+          </div>
+
+          <div class="modal-thumbs" id="modalThumbs">
+            <!-- Thumbnails injected by JS -->
+          </div>
+        </div>
+
+        <!-- Right: Project Info -->
+        <div class="modal-details">
+          <div class="modal-header">
+            <span class="modal-category" id="modalCat">Category</span>
+            <h2 class="modal-title" id="modalTitle">Project Name</h2>
+            <p class="modal-location" id="modalLoc">Location</p>
+          </div>
+
+          <div class="modal-divider"></div>
+
+          <div class="modal-meta">
+            <div class="modal-meta-item">
+              <span class="modal-meta-label" data-i18n="modal.year">Year</span>
+              <span class="modal-meta-val" id="modalYear">2024</span>
+            </div>
+            <div class="modal-meta-item">
+              <span class="modal-meta-label" data-i18n="modal.area">Area</span>
+              <span class="modal-meta-val" id="modalArea">1,200 m²</span>
+            </div>
+          </div>
+
+          <div class="modal-philosophy">
+            <h3 class="modal-philosophy-label" data-i18n="modal.philosophy">Philosophy</h3>
+            <p class="modal-philosophy-text" id="modalPhilosophy">Project philosophy goes here...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== CALL TO ACTION ===================== -->
+  <section class="cta section section--overlap" id="cta">
+    <div class="cta__bg" aria-hidden="true"></div>
+    <div class="container cta__inner reveal" data-reveal="scale">
+      <span class="section-label section-label--light" data-i18n="cta.label">Start a Conversation</span>
+      <h2 class="cta__title" data-i18n="cta.title">Have a Project in Mind?</h2>
+      <p class="cta__subtitle" data-i18n="cta.subtitle">
+        Let's build something extraordinary together.
+        Reach out and we'll arrange a consultation.
+      </p>
+      <div class="cta__actions">
+        <a href="contact.html"  class="btn btn--light"         data-i18n="cta.primary">Get In Touch</a>
+        <a href="index.html" class="btn btn--outline-light">Back Home</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer" id="footer">
+    <div class="container footer__main">
+
+      <!-- Left: brand block -->
+      <div class="footer__brand">
+        <a href="index.html" class="footer__logo">
+          <img src="Assets/images/logo.png" alt="Piece of Art" />
+        </a>
+        <p class="footer__tagline" data-i18n-html="footer.tagline">
+          Design &amp; Project Management Studio.<br />
+          Crafting spaces of lasting distinction.
+        </p>
+        <div class="footer__social">
+          <a href="https://instagram.com/pieceofart.sa" target="_blank" rel="noopener" aria-label="Instagram" class="footer__social-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://wa.me/966500000000" target="_blank" rel="noopener" aria-label="WhatsApp" class="footer__social-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+          </a>
+          <a href="mailto:hello@pieceofart.sa" aria-label="Email" class="footer__social-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: nav columns -->
+      <nav class="footer__nav" aria-label="Footer navigation">
+
+        <div class="footer__col">
+          <h4 class="footer__heading" data-i18n="footer.navHeading">Navigation</h4>
+          <ul>
+            <li><a href="index.html"    data-i18n="nav.home">Home</a></li>
+            <li><a href="about.html"    data-i18n="nav.about">About</a></li>
+            <li><a href="services.html" data-i18n="nav.services">Services</a></li>
+            <li><a href="projects.html" data-i18n="nav.projects">Projects</a></li>
+            <li><a href="careers.html"  data-i18n="nav.careers">Careers</a></li>
+            <li><a href="contact.html"  data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4 class="footer__heading" data-i18n="footer.svcHeading">Services</h4>
+          <ul>
+            <li><a href="services.html#architecture"       data-svc-en="Architecture"       data-svc-ar="التصميم المعماري">Architecture</a></li>
+            <li><a href="services.html#interior-design"    data-svc-en="Interior Design"    data-svc-ar="التصميم الداخلي">Interior Design</a></li>
+            <li><a href="services.html#project-management" data-svc-en="Project Management" data-svc-ar="إدارة المشاريع">Project Management</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4 class="footer__heading" data-i18n="footer.conHeading">Contact</h4>
+          <ul>
+            <li><a href="tel:+966500000000">+966 50 000 0000</a></li>
+            <li><a href="mailto:hello@pieceofart.sa">hello@pieceofart.sa</a></li>
+            <li><span class="footer__plain">Amman, Jordan</span></li>
+          </ul>
+        </div>
+
+      </nav>
+
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p>&copy; <span id="year"></span> <span data-i18n="footer.copyright">Piece of Art. All rights reserved.</span></p>
+        <button class="lang-switch lang-switch--small" id="langSwitchFooter" aria-label="Switch language">
+          <span class="lang-switch__en active">EN</span>
+          <span class="lang-switch__divider">/</span>
+          <span class="lang-switch__ar">AR</span>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
