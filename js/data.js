@@ -235,28 +235,28 @@ const POA_DATA = {
       year:     '2024',
       size:     '1200 m² per villa (2 villas)',
       featured: false,
-      image:    'assets/projects/haddad-villas/thumbnail.jpg',
+      image:    'Assets/projects/haddad-villas/thumbnail.jpg',
       visuals: [
-        'assets/projects/haddad-villas/visuals/1.jpg',
-        'assets/projects/haddad-villas/visuals/2.jpg',
-        'assets/projects/haddad-villas/visuals/3.jpg',
-        'assets/projects/haddad-villas/visuals/4.jpg',
-        'assets/projects/haddad-villas/visuals/5.jpg',
-        'assets/projects/haddad-villas/visuals/6.jpg',
-        'assets/projects/haddad-villas/visuals/7.jpg',
-        'assets/projects/haddad-villas/visuals/8.jpg',
-        'assets/projects/haddad-villas/visuals/9.jpg',
-        'assets/projects/haddad-villas/visuals/10.jpg',
-        'assets/projects/haddad-villas/visuals/11.jpg',
-        'assets/projects/haddad-villas/visuals/12.jpg',
-        'assets/projects/haddad-villas/visuals/13.jpg',
+        'Assets/projects/haddad-villas/visuals/1.jpg',
+        'Assets/projects/haddad-villas/visuals/2.jpg',
+        'Assets/projects/haddad-villas/visuals/3.jpg',
+        'Assets/projects/haddad-villas/visuals/4.jpg',
+        'Assets/projects/haddad-villas/visuals/5.jpg',
+        'Assets/projects/haddad-villas/visuals/6.jpg',
+        'Assets/projects/haddad-villas/visuals/7.jpg',
+        'Assets/projects/haddad-villas/visuals/8.jpg',
+        'Assets/projects/haddad-villas/visuals/9.jpg',
+        'Assets/projects/haddad-villas/visuals/10.jpg',
+        'Assets/projects/haddad-villas/visuals/11.jpg',
+        'Assets/projects/haddad-villas/visuals/12.jpg',
+        'Assets/projects/haddad-villas/visuals/13.jpg',
       ],
       blueprints: [
-        'assets/projects/haddad-villas/blueprints/1.jpg',
-        'assets/projects/haddad-villas/blueprints/2.jpg',
-        'assets/projects/haddad-villas/blueprints/3.jpg',
-        'assets/projects/haddad-villas/blueprints/4.jpeg',
-        'assets/projects/haddad-villas/blueprints/5.jpeg'
+        'Assets/projects/haddad-villas/blueprints/1.jpg',
+        'Assets/projects/haddad-villas/blueprints/2.jpg',
+        'Assets/projects/haddad-villas/blueprints/3.jpg',
+        'Assets/projects/haddad-villas/blueprints/4.jpeg',
+        'Assets/projects/haddad-villas/blueprints/5.jpeg'
       ],
       en: {
         name:        'Haddad Villas',
@@ -278,17 +278,17 @@ const POA_DATA = {
       year:     '2020',
       size:     '250 m²',
       featured: false,
-      image:    'assets/projects/daher-villa/thumbnail.jpg',
+      image:    'Assets/projects/daher-villa/thumbnail.jpg',
       visuals: [
-        'assets/projects/daher-villa/visuals/1.jpeg',
-        'assets/projects/daher-villa/visuals/2.jpeg',
-        'assets/projects/daher-villa/visuals/3.jpeg',
-        'assets/projects/daher-villa/visuals/4.jpeg',
-        'assets/projects/daher-villa/visuals/5.jpeg',
-        'assets/projects/daher-villa/visuals/6.jpeg'
+        'Assets/projects/daher-villa/visuals/1.jpeg',
+        'Assets/projects/daher-villa/visuals/2.jpeg',
+        'Assets/projects/daher-villa/visuals/3.jpeg',
+        'Assets/projects/daher-villa/visuals/4.jpeg',
+        'Assets/projects/daher-villa/visuals/5.jpeg',
+        'Assets/projects/daher-villa/visuals/6.jpeg'
       ],
       blueprints: [
-        'assets/projects/daher-villa/blueprints/1.jpg'
+        'Assets/projects/daher-villa/blueprints/1.jpg'
       ],
       en: {
         name:        'Daher Villa',
@@ -310,33 +310,33 @@ const POA_DATA = {
       year:     '2021',
       size:     '700 m² + landscape works',
       featured: false,
-      image:    'assets/projects/qassiyeh-farm/thumbnail.jpeg',
+      image:    'Assets/projects/qassiyeh-farm/thumbnail.jpeg',
       visuals: [
-        'assets/projects/qassiyeh-farm/visuals/1.jpeg',
-        'assets/projects/qassiyeh-farm/visuals/2.jpeg',
-        'assets/projects/qassiyeh-farm/visuals/3.jpeg',
-        'assets/projects/qassiyeh-farm/visuals/4.jpeg',
-        'assets/projects/qassiyeh-farm/visuals/5.jpeg',
-        'assets/projects/qassiyeh-farm/visuals/6.jpeg',
-        'assets/projects/qassiyeh-farm/visuals/7.jpeg',
-        'assets/projects/qassiyeh-farm/visuals/8.jpeg',
-        'assets/projects/qassiyeh-farm/visuals/9.jpeg',
-        'assets/projects/qassiyeh-farm/visuals/10.jpeg',
-        'assets/projects/qassiyeh-farm/visuals/11.jpeg',
-        'assets/projects/qassiyeh-farm/visuals/12.jpeg',
-        'assets/projects/qassiyeh-farm/visuals/13.jpeg',
-        'assets/projects/qassiyeh-farm/visuals/14.jpeg',
-        'assets/projects/qassiyeh-farm/visuals/15.jpeg'
+        'Assets/projects/qassiyeh-farm/visuals/1.jpeg',
+        'Assets/projects/qassiyeh-farm/visuals/2.jpeg',
+        'Assets/projects/qassiyeh-farm/visuals/3.jpeg',
+        'Assets/projects/qassiyeh-farm/visuals/4.jpeg',
+        'Assets/projects/qassiyeh-farm/visuals/5.jpeg',
+        'Assets/projects/qassiyeh-farm/visuals/6.jpeg',
+        'Assets/projects/qassiyeh-farm/visuals/7.jpeg',
+        'Assets/projects/qassiyeh-farm/visuals/8.jpeg',
+        'Assets/projects/qassiyeh-farm/visuals/9.jpeg',
+        'Assets/projects/qassiyeh-farm/visuals/10.jpeg',
+        'Assets/projects/qassiyeh-farm/visuals/11.jpeg',
+        'Assets/projects/qassiyeh-farm/visuals/12.jpeg',
+        'Assets/projects/qassiyeh-farm/visuals/13.jpeg',
+        'Assets/projects/qassiyeh-farm/visuals/14.jpeg',
+        'Assets/projects/qassiyeh-farm/visuals/15.jpeg'
       ],
       blueprints: [
-        'assets/projects/qassiyeh-farm/blueprints/1.jpg',
-        'assets/projects/qassiyeh-farm/blueprints/2.jpg',
-        'assets/projects/qassiyeh-farm/blueprints/3.jpg',
-        'assets/projects/qassiyeh-farm/blueprints/4.jpg',
-        'assets/projects/qassiyeh-farm/blueprints/5.jpg',
-        'assets/projects/qassiyeh-farm/blueprints/6.jpg',
-        'assets/projects/qassiyeh-farm/blueprints/7.jpg',
-        'assets/projects/qassiyeh-farm/blueprints/8.jpg'
+        'Assets/projects/qassiyeh-farm/blueprints/1.jpg',
+        'Assets/projects/qassiyeh-farm/blueprints/2.jpg',
+        'Assets/projects/qassiyeh-farm/blueprints/3.jpg',
+        'Assets/projects/qassiyeh-farm/blueprints/4.jpg',
+        'Assets/projects/qassiyeh-farm/blueprints/5.jpg',
+        'Assets/projects/qassiyeh-farm/blueprints/6.jpg',
+        'Assets/projects/qassiyeh-farm/blueprints/7.jpg',
+        'Assets/projects/qassiyeh-farm/blueprints/8.jpg'
       ],
       en: {
         name:        'Qassiyeh Villa & Farm',
@@ -358,38 +358,38 @@ const POA_DATA = {
       year:     '',
       size:     '850 m² (multiple buildings)',
       featured: false,
-      image:    'assets/projects/daher-farm/thumbnail.jpeg',
+      image:    'Assets/projects/daher-farm/thumbnail.jpeg',
       visuals: [
-        'assets/projects/daher-farm/visuals/1.jpeg',
-        'assets/projects/daher-farm/visuals/2.jpeg',
-        'assets/projects/daher-farm/visuals/3.jpeg',
-        'assets/projects/daher-farm/visuals/4.jpeg',
-        'assets/projects/daher-farm/visuals/5.jpeg',
-        'assets/projects/daher-farm/visuals/6.jpg',
-        'assets/projects/daher-farm/visuals/7.jpg',
-        'assets/projects/daher-farm/visuals/8.jpg',
-        'assets/projects/daher-farm/visuals/9.jpg',
-        'assets/projects/daher-farm/visuals/10.jpeg',
-        'assets/projects/daher-farm/visuals/11.jpeg',
-        'assets/projects/daher-farm/visuals/12.jpeg',
-        'assets/projects/daher-farm/visuals/13.jpeg',
-        'assets/projects/daher-farm/visuals/14.jpeg',
-        'assets/projects/daher-farm/visuals/15.jpeg',
-        'assets/projects/daher-farm/visuals/16.jpeg',
-        'assets/projects/daher-farm/visuals/17.jpeg',
-        'assets/projects/daher-farm/visuals/18.jpeg',
-        'assets/projects/daher-farm/visuals/19.jpeg',
-        'assets/projects/daher-farm/visuals/20.jpeg',
-        'assets/projects/daher-farm/visuals/21.jpeg',
-        'assets/projects/daher-farm/visuals/22.jpeg'
+        'Assets/projects/daher-farm/visuals/1.jpeg',
+        'Assets/projects/daher-farm/visuals/2.jpeg',
+        'Assets/projects/daher-farm/visuals/3.jpeg',
+        'Assets/projects/daher-farm/visuals/4.jpeg',
+        'Assets/projects/daher-farm/visuals/5.jpeg',
+        'Assets/projects/daher-farm/visuals/6.jpg',
+        'Assets/projects/daher-farm/visuals/7.jpg',
+        'Assets/projects/daher-farm/visuals/8.jpg',
+        'Assets/projects/daher-farm/visuals/9.jpg',
+        'Assets/projects/daher-farm/visuals/10.jpeg',
+        'Assets/projects/daher-farm/visuals/11.jpeg',
+        'Assets/projects/daher-farm/visuals/12.jpeg',
+        'Assets/projects/daher-farm/visuals/13.jpeg',
+        'Assets/projects/daher-farm/visuals/14.jpeg',
+        'Assets/projects/daher-farm/visuals/15.jpeg',
+        'Assets/projects/daher-farm/visuals/16.jpeg',
+        'Assets/projects/daher-farm/visuals/17.jpeg',
+        'Assets/projects/daher-farm/visuals/18.jpeg',
+        'Assets/projects/daher-farm/visuals/19.jpeg',
+        'Assets/projects/daher-farm/visuals/20.jpeg',
+        'Assets/projects/daher-farm/visuals/21.jpeg',
+        'Assets/projects/daher-farm/visuals/22.jpeg'
       ],
       blueprints: [
-        'assets/projects/daher-farm/blueprints/1.jpg',
-        'assets/projects/daher-farm/blueprints/2.jpg',
-        'assets/projects/daher-farm/blueprints/3.jpg',
-        'assets/projects/daher-farm/blueprints/4.jpg',
-        'assets/projects/daher-farm/blueprints/5.jpeg',
-        'assets/projects/daher-farm/blueprints/6.jpg'
+        'Assets/projects/daher-farm/blueprints/1.jpg',
+        'Assets/projects/daher-farm/blueprints/2.jpg',
+        'Assets/projects/daher-farm/blueprints/3.jpg',
+        'Assets/projects/daher-farm/blueprints/4.jpg',
+        'Assets/projects/daher-farm/blueprints/5.jpeg',
+        'Assets/projects/daher-farm/blueprints/6.jpg'
       ],
       en: {
         name:        'Daher Farm',
@@ -411,14 +411,14 @@ const POA_DATA = {
       year:     '2025',
       size:     '10,100 m²',
       featured: true,
-      image:    'assets/projects/palmira/thumbnail.jpg',
+      image:    'Assets/projects/palmira/thumbnail.jpg',
       visuals: [
-        'assets/projects/palmira/visuals/1.jpg',
-        'assets/projects/palmira/visuals/2.jpg',
-        'assets/projects/palmira/visuals/4.jpg'
+        'Assets/projects/palmira/visuals/1.jpg',
+        'Assets/projects/palmira/visuals/2.jpg',
+        'Assets/projects/palmira/visuals/4.jpg'
       ],
       blueprints: [
-        'assets/projects/palmira/blueprints/1.jpg'
+        'Assets/projects/palmira/blueprints/1.jpg'
       ],
       en: {
         name:        'Palmira',
@@ -440,28 +440,21 @@ const POA_DATA = {
       year:     '2023',
       size:     '500 m²',
       featured: false,
-      image:    'assets/projects/beit-halima/thumbnail.jpg',
+      image:    'Assets/projects/beit-halima/thumbnail.jpg',
       visuals: [
-        'assets/projects/beit-halima/visuals/1.jpeg',
-        'assets/projects/beit-halima/visuals/2.jpg',
-        'assets/projects/beit-halima/visuals/3.jpg',
-        'assets/projects/beit-halima/visuals/4.jpg',
-        'assets/projects/beit-halima/visuals/5.jpg',
-        'assets/projects/beit-halima/visuals/6.jpg',
-        'assets/projects/beit-halima/visuals/7.jpg',
-        'assets/projects/beit-halima/visuals/8.jpg',
-        'assets/projects/beit-halima/visuals/9.jpg',
-        'assets/projects/beit-halima/visuals/10.jpg',
-        'assets/projects/beit-halima/visuals/11.jpg',
-        'assets/projects/beit-halima/visuals/12.jpg',
-        'assets/projects/beit-halima/visuals/13.jpg',
-        'assets/projects/beit-halima/visuals/14.jpg',
-        'assets/projects/beit-halima/visuals/15.jpg',
-        'assets/projects/beit-halima/visuals/16.jpg'
+        'Assets/projects/beit-halima/visuals/1.jpeg',
+        'Assets/projects/beit-halima/visuals/2.jpg',
+        'Assets/projects/beit-halima/visuals/3.jpg',
+        'Assets/projects/beit-halima/visuals/4.jpg',
+        'Assets/projects/beit-halima/visuals/5.jpg',
+        'Assets/projects/beit-halima/visuals/6.jpg',
+        'Assets/projects/beit-halima/visuals/7.jpg',
+        'Assets/projects/beit-halima/visuals/8.jpg',
+        'Assets/projects/beit-halima/visuals/9.jpg'
       ],
       blueprints: [
-        'assets/projects/beit-halima/blueprints/1.jpg',
-        'assets/projects/beit-halima/blueprints/2.jpg'
+        'Assets/projects/beit-halima/blueprints/1.jpg',
+        'Assets/projects/beit-halima/blueprints/2.jpg'
       ],
       en: {
         name:        'Beit Halima',
@@ -483,16 +476,16 @@ const POA_DATA = {
       year:     '2025',
       size:     '250 m²',
       featured: false,
-      image:    'assets/projects/yaseen-farm/thumbnail.jpg',
+      image:    'Assets/projects/yaseen-farm/thumbnail.jpg',
       visuals: [
-        'assets/projects/yaseen-farm/visuals/2.jpg',
-        'assets/projects/yaseen-farm/visuals/3.jpg',
-        'assets/projects/yaseen-farm/visuals/4.jpg',
-        'assets/projects/yaseen-farm/visuals/5.jpg'
+        'Assets/projects/yaseen-farm/visuals/2.jpg',
+        'Assets/projects/yaseen-farm/visuals/3.jpg',
+        'Assets/projects/yaseen-farm/visuals/4.jpg',
+        'Assets/projects/yaseen-farm/visuals/5.jpg'
       ],
       blueprints: [
-        'assets/projects/yaseen-farm/blueprints/1.jpg',
-        'assets/projects/yaseen-farm/blueprints/2.jpg'
+        'Assets/projects/yaseen-farm/blueprints/1.jpg',
+        'Assets/projects/yaseen-farm/blueprints/2.jpg'
       ],
       en: {
         name:        'Yaseen Farm',
@@ -514,21 +507,21 @@ const POA_DATA = {
       year:     '2025',
       size:     '80 m²',
       featured: false,
-      image:    'assets/projects/najlaa/thumbnail.jpg',
+      image:    'Assets/projects/najlaa/thumbnail.jpg',
       visuals: [
-        'assets/projects/najlaa/visuals/1.jpg',
-        'assets/projects/najlaa/visuals/2.jpg',
-        'assets/projects/najlaa/visuals/3.jpg',
-        'assets/projects/najlaa/visuals/4.jpg',
-        'assets/projects/najlaa/visuals/5.jpg',
-        'assets/projects/najlaa/visuals/6.jpg',
-        'assets/projects/najlaa/visuals/7.jpg',
-        'assets/projects/najlaa/visuals/8.jpg',
-        'assets/projects/najlaa/visuals/9.jpg',
-        'assets/projects/najlaa/visuals/10.jpg'
+        'Assets/projects/najlaa/visuals/1.jpg',
+        'Assets/projects/najlaa/visuals/2.jpg',
+        'Assets/projects/najlaa/visuals/3.jpg',
+        'Assets/projects/najlaa/visuals/4.jpg',
+        'Assets/projects/najlaa/visuals/5.jpg',
+        'Assets/projects/najlaa/visuals/6.jpg',
+        'Assets/projects/najlaa/visuals/7.jpg',
+        'Assets/projects/najlaa/visuals/8.jpg',
+        'Assets/projects/najlaa/visuals/9.jpg',
+        'Assets/projects/najlaa/visuals/10.jpg'
       ],
       blueprints: [
-        'assets/projects/najlaa/blueprints/1.jpg'
+        'Assets/projects/najlaa/blueprints/1.jpg'
       ],
       en: {
         name:        'Najlaa',
@@ -550,24 +543,24 @@ const POA_DATA = {
       year:     '2025',
       size:     '280 m²',
       featured: false,
-      image:    'assets/projects/reflection-office/thumbnail.jpeg',
+      image:    'Assets/projects/reflection-office/thumbnail.jpeg',
       visuals: [
-        'assets/projects/reflection-office/visuals/1.jpeg',
-        'assets/projects/reflection-office/visuals/2.jpeg',
-        'assets/projects/reflection-office/visuals/3.jpeg',
-        'assets/projects/reflection-office/visuals/4.jpeg',
-        'assets/projects/reflection-office/visuals/5.jpeg',
-        'assets/projects/reflection-office/visuals/6.jpeg',
-        'assets/projects/reflection-office/visuals/7.jpeg',
-        'assets/projects/reflection-office/visuals/8.jpeg',
-        'assets/projects/reflection-office/visuals/10.jpeg',
-        'assets/projects/reflection-office/visuals/11.jpeg',
-        'assets/projects/reflection-office/visuals/12.jpeg',
-        'assets/projects/reflection-office/visuals/13.jpeg',
-        'assets/projects/reflection-office/visuals/14.jpeg'
+        'Assets/projects/reflection-office/visuals/1.jpeg',
+        'Assets/projects/reflection-office/visuals/2.jpeg',
+        'Assets/projects/reflection-office/visuals/3.jpeg',
+        'Assets/projects/reflection-office/visuals/4.jpeg',
+        'Assets/projects/reflection-office/visuals/5.jpeg',
+        'Assets/projects/reflection-office/visuals/6.jpeg',
+        'Assets/projects/reflection-office/visuals/7.jpeg',
+        'Assets/projects/reflection-office/visuals/8.jpeg',
+        'Assets/projects/reflection-office/visuals/10.jpeg',
+        'Assets/projects/reflection-office/visuals/11.jpeg',
+        'Assets/projects/reflection-office/visuals/12.jpeg',
+        'Assets/projects/reflection-office/visuals/13.jpeg',
+        'Assets/projects/reflection-office/visuals/14.jpeg'
       ],
       blueprints: [
-        'assets/projects/reflection-office/blueprints/1.jpg'
+        'Assets/projects/reflection-office/blueprints/1.jpg'
       ],
       en: {
         name:        'Reflection Company',
@@ -589,18 +582,18 @@ const POA_DATA = {
       year:     '2019',
       size:     'Aqaba, Jordan',
       featured: false,
-      image:    'assets/projects/aqaba-villa/thumbnail.jpeg',
+      image:    'Assets/projects/aqaba-villa/thumbnail.jpeg',
       visuals: [
-        'assets/projects/aqaba-villa/visuals/1.jpeg',
-        'assets/projects/aqaba-villa/visuals/2.jpeg',
-        'assets/projects/aqaba-villa/visuals/3.jpeg',
-        'assets/projects/aqaba-villa/visuals/4.jpeg',
-        'assets/projects/aqaba-villa/visuals/5.jpeg',
-        'assets/projects/aqaba-villa/visuals/6.jpeg',
-        'assets/projects/aqaba-villa/visuals/7.jpeg'
+        'Assets/projects/aqaba-villa/visuals/1.jpeg',
+        'Assets/projects/aqaba-villa/visuals/2.jpeg',
+        'Assets/projects/aqaba-villa/visuals/3.jpeg',
+        'Assets/projects/aqaba-villa/visuals/4.jpeg',
+        'Assets/projects/aqaba-villa/visuals/5.jpeg',
+        'Assets/projects/aqaba-villa/visuals/6.jpeg',
+        'Assets/projects/aqaba-villa/visuals/7.jpeg'
       ],
       blueprints: [
-        'assets/projects/aqaba-villa/blueprints/1.jpg'
+        'Assets/projects/aqaba-villa/blueprints/1.jpg'
       ],
       en: {
         name:        'Aqaba Seaside Villa',
@@ -622,22 +615,22 @@ const POA_DATA = {
       year:     '2025',
       size:     '750 m²',
       featured: false,
-      image:    'assets/projects/omar-badran/thumbnail.jpg',
+      image:    'Assets/projects/omar-badran/thumbnail.jpg',
       visuals: [
-        'assets/projects/omar-badran/visuals/1.jpg',
-        'assets/projects/omar-badran/visuals/2.jpg',
-        'assets/projects/omar-badran/visuals/3.jpg',
-        'assets/projects/omar-badran/visuals/4.jpg',
-        'assets/projects/omar-badran/visuals/5.jpg',
-        'assets/projects/omar-badran/visuals/6.jpg',
-        'assets/projects/omar-badran/visuals/7.jpg',
-        'assets/projects/omar-badran/visuals/8.jpg',
-        'assets/projects/omar-badran/visuals/9.jpg',
-        'assets/projects/omar-badran/visuals/10.jpg',
-        'assets/projects/omar-badran/visuals/11.jpg'
+        'Assets/projects/omar-badran/visuals/1.jpg',
+        'Assets/projects/omar-badran/visuals/2.jpg',
+        'Assets/projects/omar-badran/visuals/3.jpg',
+        'Assets/projects/omar-badran/visuals/4.jpg',
+        'Assets/projects/omar-badran/visuals/5.jpg',
+        'Assets/projects/omar-badran/visuals/6.jpg',
+        'Assets/projects/omar-badran/visuals/7.jpg',
+        'Assets/projects/omar-badran/visuals/8.jpg',
+        'Assets/projects/omar-badran/visuals/9.jpg',
+        'Assets/projects/omar-badran/visuals/10.jpg',
+        'Assets/projects/omar-badran/visuals/11.jpg'
       ],
       blueprints: [
-        'assets/projects/omar-badran/blueprints/1.jpg'
+        'Assets/projects/omar-badran/blueprints/1.jpg'
       ],
       en: {
         name:        'Omar Badran Residence',
