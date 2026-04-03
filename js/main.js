@@ -788,12 +788,26 @@ let activeProject = null;
 let activeTab = 'visuals';
 let currentImgIdx = 0;
 let imgSwapTimer = null;
+let tabSwitchTimer = null;
+
+function closeModal() {
+  const modal = document.getElementById('projectModal');
+  if (!modal) return;
+  modal.classList.remove('active');
+  document.body.style.overflow = '';
+  clearTimeout(imgSwapTimer);
+  clearTimeout(tabSwitchTimer);
+  resetZoom();
+}
 
 function openProjectModal(projectId) {
   const project = POA_DATA.projects.find(p => p.id === projectId);
   if (!project) return;
 
+  // Cancel any pending timers from previous modal
   clearTimeout(imgSwapTimer);
+  clearTimeout(tabSwitchTimer);
+
   activeProject = project;
   activeTab = 'visuals';
   currentImgIdx = 0;
@@ -828,7 +842,15 @@ function openProjectModal(projectId) {
     t.classList.toggle('active', t.getAttribute('data-tab') === 'visuals');
   });
 
+  // Reset image wrapper opacity (may be 0 from a pending tab switch)
+  const wrapper = document.getElementById('modalImgContainer');
+  if (wrapper) wrapper.style.opacity = '1';
+
   updateModalDisplay();
+
+  // Scroll container to top so the image is visible
+  const container = modal.querySelector('.modal-container');
+  if (container) container.scrollTop = 0;
 
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
@@ -1109,18 +1131,10 @@ function initModalEvents() {
   const prevBtn = document.getElementById('modalPrev');
   const nextBtn = document.getElementById('modalNext');
 
-  closeBtn?.addEventListener('click', () => {
-    modal.classList.remove('active');
-    document.body.style.overflow = '';
-    resetZoom();
-  });
+  closeBtn?.addEventListener('click', () => closeModal());
 
   modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      modal.classList.remove('active');
-      document.body.style.overflow = '';
-      resetZoom();
-    }
+    if (e.target === modal) closeModal();
   });
 
   prevBtn?.addEventListener('click', (e) => {
@@ -1149,7 +1163,7 @@ function initModalEvents() {
       const wrapper = document.getElementById('modalImgContainer');
       if (wrapper) {
         wrapper.style.opacity = '0';
-        setTimeout(() => {
+        tabSwitchTimer = setTimeout(() => {
           updateModalDisplay();
           wrapper.style.opacity = '1';
         }, 220);
@@ -1162,9 +1176,7 @@ function initModalEvents() {
   document.addEventListener('keydown', (e) => {
     if (!modal.classList.contains('active')) return;
     if (e.key === 'Escape') {
-      modal.classList.remove('active');
-      document.body.style.overflow = '';
-      resetZoom();
+      closeModal();
     } else if (e.key === 'ArrowLeft') {
       const imgs = activeProject[activeTab] || [];
       setModalImage((currentImgIdx - 1 + imgs.length) % imgs.length);
