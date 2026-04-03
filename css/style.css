@@ -1307,8 +1307,33 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   20%  { opacity: 0.06; }
   100% { stroke-dashoffset: 0;   opacity: 0.05; }
 }
+
+/* Staggered hero content reveal */
+.bp-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  animation: bpReveal 0.7s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  animation-delay: calc(var(--r) * 0.15s + 0.1s);
+}
+@keyframes bpReveal {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Blueprint lines draw AFTER text lands */
+.bp-line  { animation-delay: calc(var(--r, 1) * 0.2s + 0.9s); }
+.bp-line--1 { --r: 1; }
+.bp-line--2 { --r: 2; }
+.bp-line--3 { --r: 3; }
+.bp-line--4 { --r: 4; }
+.bp-line--diag { animation-delay: 1.6s; }
+.bp-circle     { animation-delay: 1.8s; }
+.bp-circle--sm { animation-delay: 2.2s; }
+
+.page-header__content { position: relative; z-index: 1; }
+
 @media (prefers-reduced-motion: reduce) {
   .bp-line, .bp-circle { animation: none; opacity: 0.04; stroke-dashoffset: 0; }
+  .bp-reveal { animation: none; opacity: 1; transform: none; }
 }
 .page-header__title {
   font-family: var(--font-primary);
@@ -3602,50 +3627,41 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .project-card:nth-child(n) .project-card__img { height: 260px; }
   .project-filters { gap: 0.75rem; font-size: 0.65rem; }
 
-  /* ── Modal: native mobile gallery ── */
+  /* ── Modal: full-screen mobile gallery ── */
   .modal-overlay {
     padding: 0;
-    align-items: flex-end;        /* sheet slides up from bottom */
+    align-items: stretch;
   }
   .modal-container {
     width: 100%;
     max-width: 100%;
-    height: 96dvh;
-    border-radius: 18px 18px 0 0;
+    height: 100dvh;
+    border-radius: 0;
     overflow-y: auto;
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
     transform: translateY(100%);
-    transition: transform 0.42s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: transform 0.38s cubic-bezier(0.165, 0.84, 0.44, 1);
     padding: 0;
-    box-shadow: 0 -20px 60px rgba(0,0,0,0.5);
+    box-shadow: none;
   }
   .modal-overlay.active .modal-container {
     transform: translateY(0);
   }
 
-  /* Drag handle pill */
-  .modal-container::before {
-    content: '';
-    display: block;
-    width: 36px;
-    height: 4px;
-    background: rgba(255,255,255,0.2);
-    border-radius: 2px;
-    margin: 8px auto 0;
-    flex-shrink: 0;
-  }
+  /* No drag handle on full-screen */
+  .modal-container::before { display: none; }
 
   /* Close button: fixed top-right, larger tap area */
   .modal-close {
     position: fixed;
-    top: calc(4dvh + 12px);
-    right: 16px;
-    width: 44px;
-    height: 44px;
-    background: rgba(0,0,0,0.55);
-    border: 1px solid rgba(255,255,255,0.18);
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    background: rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.15);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     z-index: 10001;
@@ -3671,33 +3687,33 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
   /* Tabs row */
   .modal-tabs {
-    padding: 0 10px;
+    padding: 0 8px;
     border-bottom: 1px solid rgba(255,255,255,0.08);
   }
   .modal-tab {
-    padding: 0.7rem 1rem 0.7rem 0;
-    font-size: 0.58rem;
+    padding: 0.55rem 0.8rem 0.55rem 0;
+    font-size: 0.55rem;
   }
 
-  /* Main image: constrained height, rounded corners */
+  /* Main image: edge-to-edge, no border-radius */
   .modal-main-img-wrapper {
     flex: none;
     height: 46vmax;
-    max-height: 52vh;
+    max-height: 54vh;
     min-height: 200px;
-    margin: 6px 10px 0;
-    border-radius: 10px;
+    margin: 0;
+    border-radius: 0;
     overflow: hidden;
     position: relative;
   }
   .modal-main-img {
-    border-radius: 10px;
+    border-radius: 0;
     overflow: hidden;
     cursor: default;
   }
   .modal-main-img img {
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 0;
   }
 
   /* Counter: overlay on image bottom-right */
@@ -3716,50 +3732,50 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   /* Arrow nav: hidden (swipe handles navigation) */
   .modal-nav { display: none; }
 
-  /* Thumbnails: square, horizontally scrollable */
+  /* Thumbnails: compact strip */
   .modal-thumbs {
-    padding: 8px 10px;
-    gap: 6px;
+    padding: 6px 8px;
+    gap: 5px;
     border-top: none;
   }
   .modal-thumb {
-    width: 56px;
-    height: 56px;
-    border-radius: 6px;
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
     overflow: hidden;
-    opacity: 0.35;
+    opacity: 0.3;
   }
   .modal-thumb.active {
     opacity: 1;
-    outline: 2px solid rgba(255,255,255,0.7);
+    outline: 1.5px solid rgba(255,255,255,0.65);
     outline-offset: 1px;
-    border-radius: 6px;
+    border-radius: 4px;
   }
-  .modal-thumb img { border-radius: 6px; }
+  .modal-thumb img { border-radius: 4px; }
 
   /* Info panel: full-width below image */
   .modal-details {
     flex: none;
     width: 100%;
-    padding: 14px 14px 24px;
+    padding: 10px 12px 20px;
     overflow-y: visible;
     border-left: none;
     border-top: 1px solid rgba(255,255,255,0.08);
   }
-  .modal-header  { margin-bottom: 0.8rem; }
-  .modal-category { margin-bottom: 0.4rem; font-size: 0.55rem; }
-  .modal-title   { font-size: 1.5rem; line-height: 1.15; padding-bottom: 0.6rem; margin-bottom: 0.35rem; }
-  .modal-location { font-size: 0.75rem; margin-top: 0.4rem; }
-  .modal-divider { margin: 0.7rem 0; }
-  .modal-meta    { gap: 0; margin-bottom: 1rem; }
-  .modal-meta-item { padding-right: 1rem; }
-  .modal-meta-item:last-child { padding-left: 1rem; }
-  .modal-meta-label { font-size: 0.52rem; margin-bottom: 0.25rem; }
-  .modal-meta-val { font-size: 1rem; }
-  .modal-philosophy-label { margin-bottom: 0.5rem; }
+  .modal-header  { margin-bottom: 0.5rem; }
+  .modal-category { margin-bottom: 0.3rem; font-size: 0.52rem; }
+  .modal-title   { font-size: 1.35rem; line-height: 1.15; padding-bottom: 0.5rem; margin-bottom: 0.25rem; }
+  .modal-location { font-size: 0.72rem; margin-top: 0.3rem; }
+  .modal-divider { margin: 0.5rem 0; }
+  .modal-meta    { gap: 0; margin-bottom: 0.75rem; }
+  .modal-meta-item { padding-right: 0.8rem; }
+  .modal-meta-item:last-child { padding-left: 0.8rem; }
+  .modal-meta-label { font-size: 0.5rem; margin-bottom: 0.2rem; }
+  .modal-meta-val { font-size: 0.95rem; }
+  .modal-philosophy-label { margin-bottom: 0.35rem; font-size: 0.5rem; }
   .modal-philosophy-text {
-    font-size: 0.82rem;
-    line-height: 1.8;
+    font-size: 0.78rem;
+    line-height: 1.7;
     max-width: none;
   }
 
@@ -3848,13 +3864,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .projects-hero__desc  { -webkit-line-clamp: 3; }
 
   /* Modal: small phones */
-  .modal-main-img-wrapper { height: 50vmax; max-height: 42vh; margin: 6px 8px 0; }
-  .modal-details  { padding: 12px 12px 20px; }
-  .modal-title    { font-size: 1.35rem; }
-  .modal-meta-val { font-size: 0.95rem; }
-  .modal-thumb    { width: 48px; height: 48px; }
-  .modal-thumbs   { padding: 6px 8px; gap: 5px; }
-  .modal-philosophy-text { font-size: 0.78rem; line-height: 1.7; }
+  .modal-main-img-wrapper { height: 48vmax; max-height: 42vh; }
+  .modal-details  { padding: 8px 10px 16px; }
+  .modal-title    { font-size: 1.2rem; }
+  .modal-meta-val { font-size: 0.9rem; }
+  .modal-thumb    { width: 42px; height: 42px; }
+  .modal-thumbs   { padding: 5px 6px; gap: 4px; }
+  .modal-philosophy-text { font-size: 0.75rem; line-height: 1.65; }
 
   /* Footer */
   .footer__main  { gap: 2rem; }
@@ -3911,7 +3927,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   }
 
   /* Thumbnails: square on touch devices */
-  .modal-thumb { width: 56px; height: 56px; border-radius: 6px; }
+  .modal-thumb { width: 50px; height: 50px; border-radius: 4px; }
 
   /* Zoom cursor hint on touch */
   .modal-main-img { cursor: default; }
