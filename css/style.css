@@ -1241,6 +1241,75 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .page-header--services {
   background: linear-gradient(180deg, #ffffff 0%, var(--color-light-bg) 55%, #ffffff 100%);
 }
+
+/* ── Blueprint animated background (Careers hero) ─────────── */
+.page-header--blueprint {
+  position: relative;
+  overflow: hidden;
+}
+.blueprint-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  color: var(--color-dark);
+}
+.blueprint-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Drafting lines — subtle, slow-drawing */
+.bp-line {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 0.5;
+  opacity: 0.06;
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: bpDraw 6s ease-out forwards;
+}
+.bp-line--1 { animation-delay: 0.3s; }
+.bp-line--2 { animation-delay: 0.8s; }
+.bp-line--3 { animation-delay: 1.4s; opacity: 0.04; }
+.bp-line--4 { animation-delay: 2.0s; opacity: 0.04; }
+.bp-line--diag {
+  animation-delay: 1.0s;
+  opacity: 0.03;
+  stroke-dasharray: 3000;
+  stroke-dashoffset: 3000;
+}
+
+/* Compass / circle marks */
+.bp-circle {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 0.4;
+  opacity: 0;
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation: bpCircle 4s ease-out forwards;
+  animation-delay: 1.5s;
+}
+.bp-circle--sm {
+  animation-delay: 2.2s;
+  stroke-width: 0.3;
+}
+
+@keyframes bpDraw {
+  to {
+    stroke-dashoffset: 0;
+    opacity: 0.06;
+  }
+}
+@keyframes bpCircle {
+  0%   { stroke-dashoffset: 400; opacity: 0; }
+  20%  { opacity: 0.06; }
+  100% { stroke-dashoffset: 0;   opacity: 0.05; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bp-line, .bp-circle { animation: none; opacity: 0.04; stroke-dashoffset: 0; }
+}
 .page-header__title {
   font-family: var(--font-primary);
   font-size: clamp(2rem, 4vw, 3.2rem);
