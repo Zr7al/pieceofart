@@ -39,7 +39,7 @@ const POA_DATA = {
       image:  'Assets/images/interior-design.jpg',
       en: {
         title:       'Interior Design',
-        description: 'Most interiors look finished but never feel right. We solve that. Our team designs environments where every material, proportion, and detail is chosen with purpose — creating spaces that feel effortless to inhabit and impossible to forget.',
+        description: 'Crafting functional interior spaces that focus on details and authentic materials — creating environments that feel effortless to inhabit and impossible to forget.',
         bullets: [
           'Space planning that maximises how every room functions',
           'Curated materials, finishes & furniture selection',
@@ -50,7 +50,7 @@ const POA_DATA = {
       },
       ar: {
         title:       'التصميم الداخلي',
-        description: 'معظم التصاميم الداخلية تبدو مكتملة ولكنها لا تمنح الشعور الصحيح. نحن نعالج ذلك؛ حيث يصمم فريقنا بيئات تُختار فيها كل مادة وكل تفصيلة بدقة متناهية، لنخلق مساحات مريحة للسكن وعصية على النسيان.',
+        description: 'صياغة فضاءات داخلية عملية، تركز على التفاصيل والخامات الأصيلة.',
         bullets: [
           'تخطيط المساحات لتحقيق أقصى استفادة من وظائف الغرف',
           'اختيار منسق للمواد والتشطيبات والأثاث',
@@ -68,7 +68,7 @@ const POA_DATA = {
       image:  'Assets/images/Architecture.jpg',
       en: {
         title:       'Architecture',
-        description: 'Architecture is more than what a building looks like — it is how it makes people feel and how it performs over decades. We design across project types: villas, farm estates, office buildings, and hospitality — each resolved with the same rigour.',
+        description: 'Creating unique structural forms that echo their environment and defy time. We design across project types: villas, farm estates, office buildings, and hospitality — each resolved with the same rigour.',
         bullets: [
           'Concept design that translates your brief into a clear vision',
           'Full architectural drawings & permit coordination',
@@ -79,7 +79,7 @@ const POA_DATA = {
       },
       ar: {
         title:       'التصميم المعماري',
-        description: 'العمارة تتجاوز مظهر المبنى؛ فهي تتعلق بكيفية شعور الناس داخله وكفاءة أدائه عبر العقود. نصمم مختلف أنواع المشاريع: الفلل، المزارع، المكاتب، والضيافة — وكل منها يُنفذ بنفس الدقة والاتقان.',
+        description: 'خلق كتل هندسية فريدة تحاكي بيئتها وتتحدى الزمن.',
         bullets: [
           'تصميم مفاهيمي يترجم متطلباتك إلى رؤية واضحة',
           'رسومات معمارية كاملة وتنسيق التراخيص',
@@ -97,7 +97,7 @@ const POA_DATA = {
       image:  'Assets/images/Project Management.jpg',
       en: {
         title:       'Project Management',
-        description: 'Construction projects fail when oversight fails. We step in as your dedicated project manager — holding contractors accountable, protecting your budget, and keeping your project moving while you stay informed at every stage.',
+        description: 'We ensure paper blueprints become tangible reality with the highest standards of quality and professionalism, with meticulous oversight at every stage of the work.',
         bullets: [
           'A detailed plan so every phase is mapped and on track',
           'Budget management that eliminates costly surprises',
@@ -108,7 +108,7 @@ const POA_DATA = {
       },
       ar: {
         title:       'إدارة المشاريع',
-        description: 'تفشل مشاريع البناء عندما يفشل الإشراف. نحن نتدخل كمدير مشروع مخصص لك — نحاسب المقاولين، نحمي ميزانيتك، ونحافظ على سير العمل مع إبقائك على اطلاع دائم في كل مرحلة.',
+        description: 'نضمن تحويل المخططات الورقية إلى واقع ملموس بأعلى معايير الجودة والاحترافية، مع إشراف دقيق على كافة مراحل العمل.',
         bullets: [
           'خطة مفصلة بحيث تكون كل مرحلة محددة وتحت السيطرة',
           'إدارة الميزانية التي تلغي المفاجآت المكلفة',
@@ -662,8 +662,8 @@ const POA_DATA = {
       },
       hero: {
         eyebrow:  'Design & Project Management',
-        title:    'Piece of Art',
-        subtitle: 'Two decades of shaping space<br/>and crafting architectural vision.',
+        title:    'Piece of Art Design: Twenty years of sculpting space and shaping architectural vision.',
+        subtitle: '',
         cta:      'Explore Our Work'
       },
       servicesPage: {
@@ -684,13 +684,13 @@ const POA_DATA = {
 
         label:    'Who We Are',
         title:    'Thoughtful Design.<br/>Flawless Execution.',
-        body:     'At Piece of Art Design, we believe architecture is not merely construction — it is an expression of identity and harmony with the environment. With over two decades of experience across the Jordanian and regional markets, we have developed a distinctive architectural language that blends the wisdom of experience with contemporary boldness. We do not deliver standard designs; we create bespoke pieces of art that reflect the uniqueness of each space and the ambitions of its owners.',
+        body:     'At Piece of Art Design, we believe architecture is not merely construction — it is an expression of identity and harmony with the land. With over twenty years of experience in the Jordanian and regional markets, we have forged a distinctive architectural language that blends the wisdom of deep experience with the boldness of a contemporary spirit. We do not deliver ready-made designs; we create bespoke "pieces of art" that breathe with the uniqueness of each place and fulfill the ambitions of business owners and corporations.',
         cta:      'Learn More'
       },
       services: {
         label:    'What We Do',
         title:    'Our Services',
-        intro:    'We partner with you from the very first idea, delivering integrated services that ensure precision in execution and excellence in outcome:'
+        intro:    'We are your companions from the very first idea, delivering integrated services that ensure precision in execution and beauty in outcome:'
       },
       philosophy: {
         label:    'Our Approach',
@@ -701,7 +701,7 @@ const POA_DATA = {
       whyus: {
         label:    'Why Choose Us',
         title:    'Vision Meets<br/>Precision.',
-        body:     'We combine the vision of an artist with the precision of an executive. We understand the needs of businesses and professionals in creating environments that reflect their standards and support their goals — backed by a team with a proven track record of transforming complex architectural challenges into visual success.',
+        body:     'Because we combine the vision of an artist-engineer with the precision of an executive director. We understand the needs of business owners and corporations in creating living and working environments that reflect their refinement and serve their goals — through a team with a long archive of architectural challenges transformed into visual successes.',
         p1title:  '20+ Years Experience',
         p2title:  'On-Time Delivery',
         p3title:  'Bespoke Approach'
@@ -780,10 +780,9 @@ const POA_DATA = {
         stat3lbl:     'Clients served',
         stat4val:     '6',
         stat4lbl:     'Project disciplines',
-        storyLabel:   'Our Story',
-        storyLead:    'At Piece of Art Design, we believe architecture is not merely construction — it is an expression of identity and harmony with the environment.',
-        storyP1:      'With over two decades of experience across the Jordanian and regional markets, we have developed a distinctive architectural language that blends the wisdom of experience with contemporary boldness.',
-        storyP2:      'We do not deliver standard designs; we create bespoke pieces of art that reflect the uniqueness of each space and the ambitions of its owners — from private villas and farm estates to offices, commercial complexes, restaurants, and large-scale hospitality projects.',
+        storyLead:    'At Piece of Art Design, we believe architecture is not merely construction — it is an expression of identity and harmony with the land.',
+        storyP1:      'With over twenty years of experience in the Jordanian and regional markets, we have forged a distinctive architectural language that blends the wisdom of deep experience with the boldness of a contemporary spirit.',
+        storyP2:      'We do not deliver ready-made designs; we create bespoke "pieces of art" that breathe with the uniqueness of each place and fulfill the ambitions of business owners and corporations — from private villas and farm estates to offices, commercial complexes, restaurants, and large-scale hospitality projects.',
         storyP3:      'The approach has not changed: every project begins with curiosity, proceeds with rigour, and finishes only when the space is exactly what it needs to be.',
         visualQuote:  '"Architecture is not merely construction — it is an expression of identity."',
         scopeLabel:   'Our Scope',
@@ -801,8 +800,8 @@ const POA_DATA = {
         scope6name:   'Administrative Buildings',
         scope6desc:   'Institutional buildings that communicate authority through architectural clarity.',
         whyLabel:     'Why Choose Us',
-        whyH2:        'We combine the vision of an artist with the precision of an executive.',
-        whySub:       'We understand the needs of businesses and professionals in creating environments that reflect their standards and support their goals — backed by a team with a proven track record of transforming complex architectural challenges into visual success.',
+        whyH2:        'We combine the vision of an artist-engineer with the precision of an executive director.',
+        whySub:       'We understand the needs of business owners and corporations in creating living and working environments that reflect their refinement and serve their goals — through a team with a long archive of architectural challenges transformed into visual successes.',
         why1title:    'Everything under one roof',
         why1body:     'Architecture, interior design, and project management as a single coordinated service — no separate consultants, no conflicting advice, no gaps.',
         why2title:    'What you see is what gets built',
@@ -831,8 +830,8 @@ const POA_DATA = {
       },
       hero: {
         eyebrow:  'تصميم وإدارة مشاريع',
-        title:    'Piece of Art',
-        subtitle: 'القطعة الفنية للتصميم: عشرون عاماً من الخبرة<br/>بنحت الفراغ وتشكيل الرؤى المعمارية.',
+        title:    'القطعة الفنية للتصميم: عشرون عاماً من الخبرة بنحت الفراغ وتشكيل الرؤى المعمارية.',
+        subtitle: '',
         cta:      'استعرض أعمالنا'
       },
       servicesPage: {
@@ -960,7 +959,6 @@ const POA_DATA = {
         stat3lbl:     'عميل راضٍ',
         stat4val:     '٦',
         stat4lbl:     'تخصصات مشاريع',
-        storyLabel:   'قصتنا',
         storyLead:    'في القطعة الفنية للتصميم، نؤمن بأن العمارة ليست مجرد بناء، بل هي تجسيد للهوية وتناغم مع الأرض.',
         storyP1:      'بخبرة تمتد لأكثر من عشرين عاماً في السوق الأردني والإقليمي، نجحنا في صياغة لغة معمارية خاصة تمزج بين حكمة الخبرة الطويلة وجرأة الروح العصرية.',
         storyP2:      'نحن لا نقدم تصاميم جاهزة، بل نخلق "قطعاً فنية" تتنفس بخصوصية المكان وتلبي طموحات أصحاب الأعمال والشركات — من الفلل الخاصة والمزارع إلى المكاتب والمجمعات التجارية والمطاعم والمشاريع السياحية الكبرى.',
