@@ -422,6 +422,7 @@ function initNavbar() {
     hamburger.addEventListener('click', function () {
       const isOpen = mobileNav.classList.toggle('open');
       hamburger.classList.toggle('open', isOpen);
+      navbar.classList.toggle('nav-open', isOpen);
       hamburger.setAttribute('aria-expanded', String(isOpen));
       mobileNav.setAttribute('aria-hidden', String(!isOpen));
       document.body.style.overflow = isOpen ? 'hidden' : '';
@@ -431,6 +432,7 @@ function initNavbar() {
       link.addEventListener('click', function () {
         mobileNav.classList.remove('open');
         hamburger.classList.remove('open');
+        navbar.classList.remove('nav-open');
         hamburger.setAttribute('aria-expanded', 'false');
         mobileNav.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';

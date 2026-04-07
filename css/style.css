@@ -492,6 +492,27 @@ h2 { margin-bottom: 1.25rem; }
 .navbar__hamburger.open span:nth-child(2) { opacity: 0; }
 .navbar__hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
+/* ── Navbar: black when mobile nav is open ── */
+.navbar.nav-open {
+  background: var(--color-black) !important;
+}
+.navbar.nav-open .nav-link {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+.navbar.nav-open .navbar__hamburger span {
+  background: #fff !important;
+}
+.navbar.nav-open .lang-switch {
+  color: rgba(255, 255, 255, 0.75) !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+}
+.navbar.nav-open .lang-switch__divider {
+  color: rgba(255, 255, 255, 0.3) !important;
+}
+.navbar.nav-open .navbar__logo img {
+  filter: brightness(0) invert(1) !important;
+}
+
 
 /* ── MOBILE NAV ──────────────────────────────────────────── */
 .mobile-nav {
