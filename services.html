@@ -22,14 +22,15 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Montserrat:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" /></noscript>
 
-  <link rel="stylesheet" href="css/style.css?v=33" />
+  <link rel="stylesheet" href="css/style.min.css?v=34" />
 
   <!-- Service imagery (same paths as POA_DATA.services[].image in js/data.js) -->
-  <link rel="preload" as="image" href="Assets/images/interior-design.jpg" />
-  <link rel="preload" as="image" href="Assets/images/Architecture.jpg" />
-  <link rel="preload" as="image" href="Assets/images/Project Management.jpg" />
+  <link rel="preload" as="image" href="Assets/images/webp/interior-design.webp" />
+  <link rel="preload" as="image" href="Assets/images/webp/Architecture.webp" />
+  <link rel="preload" as="image" href="Assets/images/webp/Project Management.webp" />
 </head>
 <body class="page-static page-services">
 
@@ -108,16 +109,16 @@
           <p class="services-hero__visual-label section-label" data-i18n="servicesPage.visualLabel">Our disciplines</p>
           <nav class="services-hero__montage" aria-label="Service sections">
             <a href="#interior-design" class="services-hero__card services-hero__card--primary">
-              <img src="Assets/images/interior-design.jpg" alt="" width="800" height="600" loading="eager" decoding="async" />
+              <img src="Assets/images/webp/interior-design.webp" alt="" width="800" height="600" loading="eager" decoding="async" />
               <span class="services-hero__card-label"><span class="services-hero__card-num">01</span> <span data-i18n="servicesPage.montageInterior">Interior Design</span></span>
             </a>
             <div class="services-hero__montage-row">
               <a href="#architecture" class="services-hero__card services-hero__card--secondary">
-                <img src="Assets/images/Architecture.jpg" alt="" width="600" height="480" loading="lazy" decoding="async" />
+                <img src="Assets/images/webp/Architecture.webp" alt="" width="600" height="480" loading="lazy" decoding="async" />
                 <span class="services-hero__card-label"><span class="services-hero__card-num">02</span> <span data-i18n="servicesPage.montageArchitecture">Architecture</span></span>
               </a>
               <a href="#project-management" class="services-hero__card services-hero__card--secondary">
-                <img src="Assets/images/Project Management.jpg" alt="" width="600" height="480" loading="lazy" decoding="async" />
+                <img src="Assets/images/webp/Project Management.webp" alt="" width="600" height="480" loading="lazy" decoding="async" />
                 <span class="services-hero__card-label"><span class="services-hero__card-num">03</span> <span data-i18n="servicesPage.montagePM">Project Management</span></span>
               </a>
             </div>
@@ -226,7 +227,7 @@
     </div>
   </footer>
 
-  <script defer src="js/data.js?v=5"></script>
-  <script defer src="js/main.js?v=7"></script>
+  <script defer src="js/data.min.js?v=10"></script>
+  <script defer src="js/main.min.js?v=12"></script>
 </body>
 </html>

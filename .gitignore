@@ -21,3 +21,9 @@ desktop.ini
 .vscode/
 *.sublime-project
 *.sublime-workspace
+
+# Node.js build tools
+node_modules/
+package.json
+package-lock.json
+optimize.js

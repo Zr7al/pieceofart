@@ -37,7 +37,7 @@ const POA_DATA = {
       slug:   'interior-design',
       number: '01',
       icon:   'interior',
-      image:  'Assets/images/interior-design.jpg',
+      image:  'Assets/images/webp/interior-design.webp',
       en: {
         title:       'Interior Design',
         description: 'Most interiors look finished but never feel right. We solve that. Our team designs environments where every material, proportion, and detail is chosen with purpose — creating spaces that feel effortless to inhabit and impossible to forget.',
@@ -66,7 +66,7 @@ const POA_DATA = {
       slug:   'architecture',
       number: '02',
       icon:   'arch',
-      image:  'Assets/images/Architecture.jpg',
+      image:  'Assets/images/webp/Architecture.webp',
       en: {
         title:       'Architecture',
         description: 'Architecture is more than what a building looks like — it is how it makes people feel and how it performs over decades. We design across project types: villas, farm estates, office buildings, and hospitality — each resolved with the same rigour.',
@@ -95,7 +95,7 @@ const POA_DATA = {
       slug:   'project-management',
       number: '03',
       icon:   'management',
-      image:  'Assets/images/Project Management.jpg',
+      image:  'Assets/images/webp/Project Management.webp',
       en: {
         title:       'Project Management',
         description: 'Construction projects fail when oversight fails. We step in as your dedicated project manager — holding contractors accountable, protecting your budget, and keeping your project moving while you stay informed at every stage.',
@@ -800,7 +800,7 @@ const POA_DATA = {
         label:    'Who We Are',
         title:    'Thoughtful Design.<br/>Flawless Execution.',
         body:     'At Piece of Art Design, we believe architecture is not merely construction — it is an expression of identity and harmony with the land. With over twenty years of experience in the Jordanian and regional markets, we have forged a distinctive architectural language that blends the wisdom of deep experience with the boldness of a contemporary spirit. We do not deliver ready-made designs; we create bespoke "pieces of art" that breathe with the uniqueness of each place and fulfill the ambitions of business owners and corporations.',
-        cta:      'Learn More'
+        cta:      'About Our Studio'
       },
       services: {
         label:    'What We Do',
