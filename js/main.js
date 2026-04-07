@@ -119,7 +119,7 @@ function renderServices() {
     return `
       <article class="svc-card ${mod}">
         <div class="svc-card__bg">
-          <img src="${img}" alt="${lang.title}" loading="lazy" />
+          <img src="${img}" alt="${lang.title}" width="900" height="700" loading="lazy" decoding="async" />
         </div>
         <div class="svc-card__overlay"></div>
         <div class="svc-card__body">
@@ -1223,30 +1223,32 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  /* 2. Render dynamic sections */
+  /* 2. Hero first (parallax + .loaded) — before heavy DOM work for LCP / main-thread */
+  initNavbar();
+  initHero();
+
+  /* 3. Renders + init split across frames (shorter tasks, content still prompt) */
   renderServices();
   renderProcessStrip();
   renderServicesPage();
   renderFeatured();
-  renderProjectsHero();
-  renderProjects();
-
-  /* 3. Apply translations to static elements */
-  applyTranslations();
-
-  /* 4. Init behaviour */
-  initNavbar();
-  initHero();
-  initReveal();
-  initScrollProgress();
-  initRipple();
-  initCardTilt();
-  initLangSwitch();
-  initProjectsHero();
-  initProjectFilters();
-  updateFilterLabels();
-  initModalEvents();
-  initImageGestures();
-  setYear();
+  requestAnimationFrame(function () {
+    renderProjectsHero();
+    renderProjects();
+    applyTranslations();
+    requestAnimationFrame(function () {
+      initReveal();
+      initScrollProgress();
+      initRipple();
+      initCardTilt();
+      initLangSwitch();
+      initProjectsHero();
+      initProjectFilters();
+      updateFilterLabels();
+      initModalEvents();
+      initImageGestures();
+      setYear();
+    });
+  });
 
 });

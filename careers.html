@@ -8,22 +8,23 @@
   <link rel="apple-touch-icon" href="Assets/images/logo.png" />
   <title>Careers — Piece of Art</title>
   <meta name="description" content="Join the Piece of Art team. Explore open positions at our design and project management studio in Amman, Jordan." />
-  <link rel="canonical" href="https://zaidrahhal.me/careers.html" />
+  <link rel="canonical" href="https://zaidrahhal.me/pieceofart/careers.html" />
   <meta property="og:type"        content="website" />
-  <meta property="og:url"         content="https://zaidrahhal.me/careers.html" />
+  <meta property="og:url"         content="https://zaidrahhal.me/pieceofart/careers.html" />
   <meta property="og:title"       content="Careers — Piece of Art" />
   <meta property="og:description" content="Join the Piece of Art team. Explore open positions at our design and project management studio in Amman, Jordan." />
-  <meta property="og:image"       content="https://zaidrahhal.me/Assets/images/hero-main.jpg" />
+  <meta property="og:image"       content="https://zaidrahhal.me/pieceofart/Assets/images/hero-main.jpg" />
   <meta name="twitter:card"        content="summary_large_image" />
   <meta name="twitter:title"       content="Careers — Piece of Art" />
   <meta name="twitter:description" content="Join the Piece of Art team. Explore open positions at our design and project management studio in Amman, Jordan." />
-  <meta name="twitter:image"       content="https://zaidrahhal.me/Assets/images/hero-main.jpg" />
+  <meta name="twitter:image"       content="https://zaidrahhal.me/pieceofart/Assets/images/hero-main.jpg" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Montserrat:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript><link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" /></noscript>
-  <link rel="stylesheet" href="css/style.min.css?v=34" />
+  <link rel="preload" href="css/style.min.css?v=35" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="css/style.min.css?v=35" /></noscript>
 </head>
 <body class="page-static page-careers">
 
@@ -31,7 +32,10 @@
   <header class="navbar" id="navbar">
     <div class="navbar__inner container">
       <a href="index.html" class="navbar__logo" aria-label="Piece of Art — Home">
-        <img src="Assets/images/logo 2-01.png" alt="Piece of Art" />
+        <picture>
+          <source srcset="Assets/images/webp/logo 2-01.webp" type="image/webp" />
+          <img src="Assets/images/logo 2-01.png" alt="Piece of Art" width="280" height="80" decoding="async" />
+        </picture>
       </a>
       <nav class="navbar__nav" id="mainNav" aria-label="Primary navigation">
         <ul>
@@ -328,7 +332,10 @@
     <div class="container footer__main">
       <div class="footer__brand">
         <a href="index.html" class="footer__logo">
-          <img src="Assets/images/logo.png" alt="Piece of Art" />
+          <picture>
+            <source srcset="Assets/images/webp/logo.webp" type="image/webp" />
+            <img src="Assets/images/logo.png" alt="Piece of Art" width="140" height="42" decoding="async" />
+          </picture>
         </a>
         <p class="footer__tagline">Design &amp; Project Management Studio.<br />Crafting spaces of lasting distinction.</p>
         <div class="footer__social">
@@ -345,7 +352,7 @@
       </div>
       <nav class="footer__nav" aria-label="Footer navigation">
         <div class="footer__col">
-          <h4 class="footer__heading">Navigation</h4>
+          <h3 class="footer__heading">Navigation</h3>
           <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
@@ -356,7 +363,7 @@
           </ul>
         </div>
         <div class="footer__col">
-          <h4 class="footer__heading">Services</h4>
+          <h3 class="footer__heading">Services</h3>
           <ul>
             <li><a href="services.html#architecture">Architecture</a></li>
             <li><a href="services.html#interior-design">Interior Design</a></li>
@@ -364,7 +371,7 @@
           </ul>
         </div>
         <div class="footer__col">
-          <h4 class="footer__heading">Contact</h4>
+          <h3 class="footer__heading">Contact</h3>
           <ul>
             <li><a href="tel:+962798184862">+962 79 818 4862</a></li>
             <li><a href="mailto:info@pieceofartjo.com">info@pieceofartjo.com</a></li>
@@ -448,8 +455,8 @@
   </div>
 
 
-  <script defer src="js/data.min.js?v=10"></script>
-  <script defer src="js/main.min.js?v=12"></script>
+  <script defer src="js/data.min.js?v=11"></script>
+  <script defer src="js/main.min.js?v=13"></script>
   <script>
   (function () {
     'use strict';

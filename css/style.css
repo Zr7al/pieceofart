@@ -67,6 +67,12 @@ body {
   overflow-x: hidden;
 }
 
+/* Home: no entrance fade — it hid the hero (including LCP text) on first paint */
+body.page-home {
+  animation: none;
+  opacity: 1;
+}
+
 img {
   max-width: 100%;
   height: auto;
@@ -130,6 +136,18 @@ section {
 }
 
 .section--gray { background: var(--color-light-bg); }
+
+/* Stronger contrast on gray band (services) — meets WCAG for small caps labels */
+.section--gray .section-intro__index,
+.section--gray .section-intro__tag {
+  color: #4a4a4a;
+}
+.section--gray .section-intro__index {
+  border-color: #c8c8c8;
+}
+.section--gray .section-intro__label {
+  border-bottom-color: rgba(0, 0, 0, 0.12);
+}
 
 /* Legacy class — body padding-top now handles offset universally.
    Kept as no-op so existing HTML doesn't need to change. */
@@ -386,10 +404,10 @@ h2 { margin-bottom: 1.25rem; }
 .lang-switch--small {
   font-size: 0.6rem;
   padding: 0.3rem 0.6rem;
-  color: rgba(255,255,255,0.45);
+  color: rgba(255, 255, 255, 0.72);
   border-color: rgba(255,255,255,0.15);
 }
-.lang-switch--small:hover { color: rgba(255,255,255,0.9); border-color: rgba(255,255,255,0.4); }
+.lang-switch--small:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
 
 
 /* ── NAVBAR ──────────────────────────────────────────────── */
@@ -2504,7 +2522,7 @@ body.page-contact {
 /* ── FOOTER ──────────────────────────────────────────────── */
 .footer {
   background: #0e0d0b;
-  color: rgba(255,255,255,0.55);
+  color: rgba(255, 255, 255, 0.72);
   padding: 5rem 0 0;
 }
 
@@ -2532,7 +2550,7 @@ body.page-contact {
   font-size: 0.82rem;
   font-weight: 300;
   line-height: 1.85;
-  color: rgba(255,255,255,0.42);
+  color: rgba(255, 255, 255, 0.78);
   margin-bottom: 2rem;
   max-width: 28ch;
 }
@@ -2548,7 +2566,7 @@ body.page-contact {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255,255,255,0.42);
+  color: rgba(255, 255, 255, 0.78);
   transition: all 0.3s ease;
 }
 .footer__social-link:hover {
@@ -2571,7 +2589,7 @@ body.page-contact {
   font-weight: 600;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.85);
+  color: rgba(255, 255, 255, 0.92);
   margin-bottom: 1.6rem;
 }
 
@@ -2584,10 +2602,10 @@ body.page-contact {
 .footer__plain {
   font-size: 0.82rem;
   font-weight: 300;
-  color: rgba(255,255,255,0.42);
+  color: rgba(255, 255, 255, 0.78);
   transition: color 0.3s ease;
 }
-.footer__col ul li a:hover { color: rgba(255,255,255,0.85); }
+.footer__col ul li a:hover { color: #fff; }
 
 .footer__bottom {
   border-top: 1px solid rgba(255,255,255,0.07);
@@ -2603,7 +2621,7 @@ body.page-contact {
 .footer__bottom p {
   font-size: 0.72rem;
   font-weight: 300;
-  color: rgba(255,255,255,0.28);
+  color: rgba(255, 255, 255, 0.62);
 }
 
 
