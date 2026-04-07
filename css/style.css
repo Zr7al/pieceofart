@@ -4051,6 +4051,25 @@ body.page-contact {
 
   /* Prefooter actions: stack on very small screens */
   .prefooter__actions { gap: 1rem; }
+
+  /* ── Hero button: less padding on narrow screens ── */
+  .btn--hero {
+    padding: 0.85rem 1.8rem;
+    letter-spacing: 0.16em;
+    font-size: 0.68rem;
+  }
+
+  /* ── Projects hero: hide tall portrait image on mobile ── */
+  .projects-hero__image { display: none; }
+
+  /* ── Footer: shrink padding + 2-col nav grid ── */
+  .footer { padding-top: 2.5rem; }
+  .footer__main { padding-bottom: 1.5rem; gap: 1.5rem; }
+  .footer__nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
 }
 
 
