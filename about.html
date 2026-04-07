@@ -9,15 +9,16 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=5" />
-  <link rel="stylesheet" href="css/about.css" />
+  <link rel="stylesheet" href="css/style.css?v=31" />
+  <link rel="stylesheet" href="css/about.css?v=14" />
 </head>
-<body>
+<body class="page-static page-about">
 
   <div id="scroll-progress" aria-hidden="true"></div>
 
-  <header class="navbar navbar--light" id="navbar">
-    <div class="navbar__inner">
+  <!-- ===================== NAVBAR ===================== -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner container">
       <a href="index.html" class="navbar__logo" aria-label="Piece of Art — Home">
         <img src="Assets/images/logo 2-01.png" alt="Piece of Art" />
       </a>
@@ -44,49 +45,75 @@
     </div>
   </header>
 
-  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" aria-hidden="true">
     <ul>
       <li><a href="index.html"    class="nav-link" data-i18n="nav.home">Home</a></li>
-      <li><a href="about.html"    class="nav-link" data-i18n="nav.about">About</a></li>
+      <li><a href="about.html"    class="nav-link active" data-i18n="nav.about">About</a></li>
       <li><a href="services.html" class="nav-link" data-i18n="nav.services">Services</a></li>
       <li><a href="projects.html" class="nav-link" data-i18n="nav.projects">Projects</a></li>
       <li><a href="careers.html"  class="nav-link" data-i18n="nav.careers">Careers</a></li>
       <li><a href="contact.html"  class="nav-link" data-i18n="nav.contact">Contact</a></li>
     </ul>
-  </div>
+  </nav>
 
+  <main class="page-content--offset">
 
   <!-- ══════════════════════════════════════
-       HERO
+       1. PAGE HEADER — minimal editorial
   ══════════════════════════════════════ -->
-  <section class="ab-hero">
-    <div class="ab-hero__bg" aria-hidden="true">
-      <img
-        src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&q=85&fit=crop"
-        alt=""
-        loading="eager"
-      />
+  <section class="ab-header">
+    <div class="container">
+    <div class="section-inner ab-header__inner">
+      <div class="ab-header__left reveal" data-reveal="up">
+        <span class="section-label" data-i18n="aboutPage.heroEyebrow">Est. 2004 · Amman, Jordan</span>
+        <h1 class="ab-header__title" data-i18n="aboutPage.heroTitle">
+          A studio that designs the way spaces make people feel.
+        </h1>
+      </div>
+      <div class="ab-header__right reveal reveal--delay" data-reveal="fade">
+        <p class="ab-header__sub" data-i18n="aboutPage.storyLead">
+          At Piece of Art Design, we believe architecture is not merely construction — it is an expression of identity and harmony with the land.
+        </p>
+        <a href="#ab-who" class="ab-header__anchor">
+          <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M7 2v10M2 7l5 5 5-5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span data-i18n="aboutPage.heroAnchor">Our Story</span>
+        </a>
+      </div>
     </div>
-    <div class="ab-hero__overlay" aria-hidden="true"></div>
-    <div class="ab-hero__content container">
-      <p class="ab-hero__eyebrow" data-i18n="aboutPage.heroEyebrow">
-        Est. 2004 · Amman, Jordan
-      </p>
-      <h1 class="ab-hero__title" data-i18n="aboutPage.heroTitle">
-        A studio that designs the way spaces make people feel.
-      </h1>
-      <a href="#ab-story" class="ab-hero__anchor">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-          <path d="M7 2v10M2 7l5 5 5-5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <span data-i18n="aboutPage.heroAnchor">Our Story</span>
-      </a>
     </div>
   </section>
 
 
   <!-- ══════════════════════════════════════
-       STATS
+       2. WHO WE ARE — split text + image
+  ══════════════════════════════════════ -->
+  <section class="ab-who" id="ab-who">
+    <div class="ab-who__text reveal" data-reveal="fade">
+      <div class="section-inner">
+      <span class="section-label" data-i18n="aboutPage.whoLabel">Who We Are</span>
+      <h2 class="ab-who__heading" data-i18n="aboutPage.whoHeading">
+        Twenty years of sculpting space and shaping vision.
+      </h2>
+      <div class="ab-who__body">
+        <p data-i18n="aboutPage.storyP1">
+          With over twenty years of experience in the Jordanian and regional markets, we have forged a distinctive architectural language that blends the wisdom of deep experience with the boldness of a contemporary spirit.
+        </p>
+        <p data-i18n="aboutPage.storyP2">
+          We do not deliver ready-made designs; we create bespoke "pieces of art" that breathe with the uniqueness of each place and fulfill the ambitions of business owners and corporations — from private villas and farm estates to offices, commercial complexes, restaurants, and large-scale hospitality projects.
+        </p>
+      </div>
+      </div>
+    </div>
+    <div class="ab-who__media" aria-hidden="true">
+      <img src="Assets/images/Architecture.jpg" alt="" loading="lazy" />
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       3. STATS
   ══════════════════════════════════════ -->
   <div class="ab-stats">
     <div class="ab-stats__inner container">
@@ -114,78 +141,26 @@
 
 
   <!-- ══════════════════════════════════════
-       STORY
+       4. PHILOSOPHY — dark statement
   ══════════════════════════════════════ -->
-  <section class="ab-story" id="ab-story">
-    <div class="ab-story__container container">
-
-      <div class="ab-story__lead-col reveal">
-        <span class="section-label" data-i18n="aboutPage.storyLabel">Our Story</span>
-        <p class="ab-story__lead" data-i18n="aboutPage.storyLead">
-          At Piece of Art Design, we believe architecture is not merely construction — it is an expression of identity and harmony with the environment.
-        </p>
-      </div>
-
-      <div class="ab-story__body reveal reveal--delay">
-        <p data-i18n="aboutPage.storyP1">
-          With over two decades of experience across the Jordanian and regional markets, we have developed a distinctive architectural language that blends the wisdom of experience with contemporary boldness.
-        </p>
-        <p data-i18n="aboutPage.storyP2">
-          We do not deliver standard designs; we create bespoke pieces of art that reflect the uniqueness of each space and the ambitions of its owners — from private villas and farm estates to offices, commercial complexes, restaurants, and large-scale hospitality projects.
-        </p>
-        <p data-i18n="aboutPage.storyP3">
-          The approach has not changed: every project begins with curiosity, proceeds with rigour, and finishes only when the space is exactly what it needs to be.
-        </p>
-      </div>
-
+  <section class="ab-philosophy" id="ab-philosophy">
+    <div class="container">
+    <div class="section-inner ab-philosophy__inner">
+      <span class="section-label section-label--light reveal" data-reveal="fade" data-i18n="philosophy.label">Our Approach</span>
+      <blockquote class="ab-philosophy__quote reveal" data-reveal="up">
+        <span class="ab-philosophy__quote-mark" aria-hidden="true">"</span>
+        <p data-i18n="philosophy.quote">Respecting nature... is our philosophy of building.</p>
+      </blockquote>
+      <p class="ab-philosophy__body reveal reveal--delay" data-reveal="up" data-i18n="philosophy.body">
+        We adopt principles of organic architecture, designing in harmony with the land by preserving natural elements such as rocks and trees — allowing the structure to become an extension of its environment rather than an intrusion.
+      </p>
+    </div>
     </div>
   </section>
 
 
   <!-- ══════════════════════════════════════
-       PHILOSOPHY
-  ══════════════════════════════════════ -->
-  <section class="philosophy section" id="philosophy">
-    <div class="philosophy__inner">
-      <div class="container">
-        <div class="philosophy__grid">
-
-          <div class="philosophy__text reveal" data-reveal="left">
-            <div class="section-intro section-intro--light">
-              <div class="section-intro__label">
-                <span class="section-intro__index">[02b]</span>
-                <span class="section-intro__tag" data-i18n="philosophy.label">Our Approach</span>
-              </div>
-              <h2 class="section-intro__heading" data-i18n="philosophy.title">Respecting Nature.</h2>
-            </div>
-            <blockquote class="philosophy__quote reveal reveal--delay" data-reveal="fade">
-              <span class="philosophy__quote-mark" aria-hidden="true">"</span>
-              <p data-i18n="philosophy.quote">Respecting nature... is our philosophy of building.</p>
-            </blockquote>
-            <p class="philosophy__body body-text reveal reveal--delay-2" data-reveal="up" data-i18n="philosophy.body">
-              We adopt principles of organic architecture, designing in harmony with the land by preserving natural elements such as rocks and trees — allowing the structure to become an extension of its environment rather than an intrusion.
-            </p>
-          </div>
-
-          <div class="philosophy__visual reveal" data-reveal="right">
-            <div class="philosophy__img-wrap">
-              <img
-                src="https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?w=900&q=85&fit=crop"
-                alt="Organic architecture detail"
-                loading="lazy"
-              />
-            </div>
-            <div class="philosophy__accent-line" aria-hidden="true"></div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ══════════════════════════════════════
-       VISUAL BREAK
+       5. VISUAL BREAK
   ══════════════════════════════════════ -->
   <div class="ab-visual">
     <img
@@ -200,127 +175,120 @@
 
 
   <!-- ══════════════════════════════════════
-       SCOPE
+       6. SCOPE — project type cards
   ══════════════════════════════════════ -->
   <section class="ab-scope">
     <div class="container">
-
-      <header class="ab-scope__header reveal">
+      <div class="section-inner">
+      <header class="ab-scope__header reveal" data-reveal="up">
         <span class="section-label" data-i18n="aboutPage.scopeLabel">Our Scope</span>
         <h2 class="ab-scope__h2" data-i18n-html="aboutPage.scopeH2">Every project type.<br/>One standard of work.</h2>
       </header>
 
-      <ol class="ab-scope__list" role="list">
-        <li class="ab-scope__row reveal" style="--i:0">
+      <div class="ab-scope__grid">
+        <div class="ab-scope__card reveal" data-reveal="up" style="--i:0">
           <span class="ab-scope__num">01</span>
           <strong class="ab-scope__name" data-i18n="aboutPage.scope1name">Private Villas</strong>
           <p class="ab-scope__desc" data-i18n="aboutPage.scope1desc">Residences designed around how a family actually lives — organic, private, and built to endure.</p>
-        </li>
-        <li class="ab-scope__row reveal" style="--i:1">
+        </div>
+        <div class="ab-scope__card reveal" data-reveal="up" style="--i:1">
           <span class="ab-scope__num">02</span>
           <strong class="ab-scope__name" data-i18n="aboutPage.scope2name">Farm Estates</strong>
           <p class="ab-scope__desc" data-i18n="aboutPage.scope2desc">Agricultural and rural properties that balance practicality with a strong sense of place.</p>
-        </li>
-        <li class="ab-scope__row reveal" style="--i:2">
+        </div>
+        <div class="ab-scope__card reveal" data-reveal="up" style="--i:2">
           <span class="ab-scope__num">03</span>
           <strong class="ab-scope__name" data-i18n-html="aboutPage.scope3name">Offices &amp; Commercial</strong>
           <p class="ab-scope__desc" data-i18n="aboutPage.scope3desc">Workplaces and commercial complexes that project identity and drive productivity.</p>
-        </li>
-        <li class="ab-scope__row reveal" style="--i:3">
+        </div>
+        <div class="ab-scope__card reveal" data-reveal="up" style="--i:3">
           <span class="ab-scope__num">04</span>
           <strong class="ab-scope__name" data-i18n="aboutPage.scope4name">Restaurants</strong>
           <p class="ab-scope__desc" data-i18n="aboutPage.scope4desc">Hospitality environments where atmosphere is as considered as the menu.</p>
-        </li>
-        <li class="ab-scope__row reveal" style="--i:4">
+        </div>
+        <div class="ab-scope__card reveal" data-reveal="up" style="--i:4">
           <span class="ab-scope__num">05</span>
           <strong class="ab-scope__name" data-i18n-html="aboutPage.scope5name">Hospitality &amp; Tourism</strong>
           <p class="ab-scope__desc" data-i18n="aboutPage.scope5desc">Resorts, lodges, and guest experiences built to leave a lasting impression.</p>
-        </li>
-        <li class="ab-scope__row reveal" style="--i:5">
+        </div>
+        <div class="ab-scope__card reveal" data-reveal="up" style="--i:5">
           <span class="ab-scope__num">06</span>
           <strong class="ab-scope__name" data-i18n="aboutPage.scope6name">Administrative Buildings</strong>
           <p class="ab-scope__desc" data-i18n="aboutPage.scope6desc">Institutional buildings that communicate authority through architectural clarity.</p>
-        </li>
-      </ol>
-
+        </div>
+      </div>
+      </div>
     </div>
   </section>
 
 
   <!-- ══════════════════════════════════════
-       WHY US
+       7. WHY US — feature cards
   ══════════════════════════════════════ -->
   <section class="ab-why">
     <div class="container">
-
-      <header class="ab-why__header reveal">
-        <div>
-          <span class="section-label" data-i18n="aboutPage.whyLabel">Why Choose Us</span>
-          <h2 class="ab-why__h2" data-i18n="aboutPage.whyH2">We combine the vision of an artist with the precision of an executive.</h2>
-        </div>
-        <p class="ab-why__sub" data-i18n="aboutPage.whySub">
-          We understand the needs of businesses and professionals in creating environments that reflect their standards and support their goals — backed by a team with a proven track record of transforming complex architectural challenges into visual success.
-        </p>
+      <div class="section-inner">
+      <header class="ab-why__header reveal" data-reveal="up">
+        <span class="section-label" data-i18n="aboutPage.whyLabel">Why Choose Us</span>
+        <h2 class="ab-why__h2" data-i18n="aboutPage.whyH2">We combine the vision of an artist-engineer with the precision of an executive director.</h2>
       </header>
 
-      <div class="ab-why__list">
-        <div class="ab-why__item reveal" style="--i:0">
+      <div class="ab-why__grid">
+        <div class="ab-why__card reveal" data-reveal="up" style="--i:0">
           <span class="ab-why__num">01</span>
-          <div class="ab-why__content">
-            <h3 class="ab-why__title" data-i18n="aboutPage.why1title">Everything under one roof</h3>
-            <p class="ab-why__body" data-i18n="aboutPage.why1body">Architecture, interior design, and project management as a single coordinated service — no separate consultants, no conflicting advice, no gaps.</p>
-          </div>
+          <h3 class="ab-why__title" data-i18n="aboutPage.why1title">Everything under one roof</h3>
+          <p class="ab-why__body" data-i18n="aboutPage.why1body">Architecture, interior design, and project management as a single coordinated service — no separate consultants, no conflicting advice, no gaps.</p>
         </div>
-        <div class="ab-why__item reveal" style="--i:1">
+        <div class="ab-why__card reveal" data-reveal="up" style="--i:1">
           <span class="ab-why__num">02</span>
-          <div class="ab-why__content">
-            <h3 class="ab-why__title" data-i18n="aboutPage.why2title">What you see is what gets built</h3>
-            <p class="ab-why__body" data-i18n="aboutPage.why2body">We produce fully resolved drawings and 3D visuals before construction begins. The space delivered matches the space designed — every time.</p>
-          </div>
+          <h3 class="ab-why__title" data-i18n="aboutPage.why2title">What you see is what gets built</h3>
+          <p class="ab-why__body" data-i18n="aboutPage.why2body">We produce fully resolved drawings and 3D visuals before construction begins. The space delivered matches the space designed — every time.</p>
         </div>
-        <div class="ab-why__item reveal" style="--i:2">
+        <div class="ab-why__card reveal" data-reveal="up" style="--i:2">
           <span class="ab-why__num">03</span>
-          <div class="ab-why__content">
-            <h3 class="ab-why__title" data-i18n="aboutPage.why3title">Honest budgets from day one</h3>
-            <p class="ab-why__body" data-i18n="aboutPage.why3body">We cost projects accurately before they start. Rigorous budget tracking means no costly surprises mid-construction.</p>
-          </div>
+          <h3 class="ab-why__title" data-i18n="aboutPage.why3title">Honest budgets from day one</h3>
+          <p class="ab-why__body" data-i18n="aboutPage.why3body">We cost projects accurately before they start. Rigorous budget tracking means no costly surprises mid-construction.</p>
         </div>
-        <div class="ab-why__item reveal" style="--i:3">
+        <div class="ab-why__card reveal" data-reveal="up" style="--i:3">
           <span class="ab-why__num">04</span>
-          <div class="ab-why__content">
-            <h3 class="ab-why__title" data-i18n="aboutPage.why4title">We tell you what the space needs</h3>
-            <p class="ab-why__body" data-i18n="aboutPage.why4body">We are honest with our clients — even when it is not what they want to hear. The best projects happen when there is trust on both sides.</p>
-          </div>
+          <h3 class="ab-why__title" data-i18n="aboutPage.why4title">We tell you what the space needs</h3>
+          <p class="ab-why__body" data-i18n="aboutPage.why4body">We are honest with our clients — even when it is not what they want to hear. The best projects happen when there is trust on both sides.</p>
         </div>
-        <div class="ab-why__item reveal" style="--i:4">
+        <div class="ab-why__card reveal" data-reveal="up" style="--i:4">
           <span class="ab-why__num">05</span>
-          <div class="ab-why__content">
-            <h3 class="ab-why__title" data-i18n="aboutPage.why5title">You are never chasing us</h3>
-            <p class="ab-why__body" data-i18n="aboutPage.why5body">Regular updates, a single point of contact, and a team that stays on top of your project so you do not have to.</p>
-          </div>
+          <h3 class="ab-why__title" data-i18n="aboutPage.why5title">You are never chasing us</h3>
+          <p class="ab-why__body" data-i18n="aboutPage.why5body">Regular updates, a single point of contact, and a team that stays on top of your project so you do not have to.</p>
         </div>
       </div>
-
+      </div>
     </div>
   </section>
 
 
   <!-- ══════════════════════════════════════
-       CLOSING CTA
+       8. CTA — slim bar
   ══════════════════════════════════════ -->
   <section class="ab-cta">
-    <div class="ab-cta__inner container">
-      <span class="section-label section-label--light reveal" data-i18n="aboutPage.ctaLabel">Start Here</span>
-      <p class="ab-cta__script reveal" data-i18n-html="aboutPage.ctaScript">Let's build<br/>something<br/>remarkable.</p>
-      <div class="ab-cta__actions reveal reveal--delay">
-        <a href="contact.html"  class="btn btn--light"         data-i18n="aboutPage.ctaBtn1">Get In Touch</a>
-        <a href="projects.html" class="btn btn--outline-light" data-i18n="aboutPage.ctaBtn2">View Our Work</a>
+    <div class="container">
+    <div class="section-inner ab-cta__inner">
+      <div class="ab-cta__text reveal" data-reveal="fade">
+        <span class="section-label" data-i18n="aboutPage.ctaLabel">Start Here</span>
+        <p class="ab-cta__line" data-i18n="aboutPage.ctaLine">Have a project in mind? Let's talk.</p>
       </div>
+      <div class="ab-cta__actions reveal reveal--delay" data-reveal="fade">
+        <a href="contact.html"  class="btn btn--dark"    data-i18n="aboutPage.ctaBtn1">Get In Touch</a>
+        <a href="projects.html" class="btn btn--outline" data-i18n="aboutPage.ctaBtn2">View Our Work</a>
+      </div>
+    </div>
     </div>
   </section>
 
 
-  <!-- FOOTER -->
+  <!-- ===================== FOOTER ===================== -->
+
+
+  </main>
+
   <footer class="footer" id="footer">
     <div class="container footer__main">
       <div class="footer__brand">
@@ -357,9 +325,9 @@
         <div class="footer__col">
           <h4 class="footer__heading" data-i18n="footer.svcHeading">Services</h4>
           <ul>
-            <li><a href="services.html#architecture"       data-svc-en="Architectural Design"  data-svc-ar="التصميم المعماري">Architectural Design</a></li>
-            <li><a href="services.html#interior-design"    data-svc-en="Interior Design"        data-svc-ar="التصميم الداخلي">Interior Design</a></li>
-            <li><a href="services.html#project-management" data-svc-en="Project Management"     data-svc-ar="إدارة المشاريع">Project Management</a></li>
+            <li><a href="services.html#architecture">Architectural Design</a></li>
+            <li><a href="services.html#interior-design">Interior Design</a></li>
+            <li><a href="services.html#project-management">Project Management</a></li>
           </ul>
         </div>
         <div class="footer__col">
@@ -384,7 +352,7 @@
     </div>
   </footer>
 
-  <script src="js/data.js?v=5"></script>
-  <script src="js/main.js?v=5"></script>
+  <script src="js/data.js?v=9"></script>
+  <script src="js/main.js?v=10"></script>
 </body>
 </html>

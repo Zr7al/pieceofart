@@ -3,24 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a0a0a" />
   <title>Piece of Art — Design &amp; Project Management</title>
   <meta name="description" content="Piece of Art is a premium design and project management studio crafting spaces of lasting distinction." />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/style.css?v=5" />
+  <link rel="stylesheet" href="css/style.css?v=31" />
 </head>
-<body>
+<body class="page-home">
 
   <!-- Scroll progress line -->
   <div id="scroll-progress" aria-hidden="true"></div>
 
   <!-- ===================== NAVBAR ===================== -->
   <header class="navbar" id="navbar">
-    <div class="navbar__inner">
+    <div class="navbar__inner container">
 
       <a href="index.html" class="navbar__logo" aria-label="Piece of Art — Home">
         <img src="Assets/images/logo 2-01.png" alt="Piece of Art" />
@@ -53,75 +54,55 @@
   </header>
 
   <!-- Mobile nav overlay -->
-  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" aria-hidden="true">
     <ul>
-      <li><a href="index.html"    class="nav-link" data-i18n="nav.home">Home</a></li>
+      <li><a href="index.html"    class="nav-link active" data-i18n="nav.home">Home</a></li>
       <li><a href="about.html"    class="nav-link" data-i18n="nav.about">About</a></li>
       <li><a href="services.html" class="nav-link" data-i18n="nav.services">Services</a></li>
       <li><a href="projects.html" class="nav-link" data-i18n="nav.projects">Projects</a></li>
       <li><a href="careers.html"  class="nav-link" data-i18n="nav.careers">Careers</a></li>
       <li><a href="contact.html"  class="nav-link" data-i18n="nav.contact">Contact</a></li>
     </ul>
-  </div>
+  </nav>
 
+  <main>
 
-  <!-- ===================== HERO ===================== -->
-  <section class="hero" id="hero">
-    <style>
-      .hero__bg img {
-        animation: heroImgFadeIn 1.1s ease forwards, kenBurns 15s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
-      }
-      @keyframes heroImgFadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-      }
-      .hero__overlay {
-        box-shadow: inset 0 0 160px rgba(6, 5, 3, 0.45);
-      }
-      @media (prefers-reduced-motion: reduce) {
-        .hero__bg img {
-          animation: none;
-          opacity: 1;
-        }
-      }
-    </style>
+  <!-- home-hero: premium minimal stack (labels in data.js → hero.*) -->
+  <section class="hero">
     <div class="hero__bg">
-      <img
-        src="Assets/images/hero-main.jpg"
-        alt="Piece of Art featured project"
-        aria-hidden="true"
-      />
-      <div class="hero__overlay"></div>
+      <div class="hero__parallax">
+        <img
+          class="hero__media"
+          src="Assets/images/hero-main.jpg"
+          alt=""
+          width="1920"
+          height="1080"
+          decoding="async"
+          fetchpriority="high"
+        />
+      </div>
+      <div class="hero__overlay" aria-hidden="true"></div>
     </div>
-
-    <!-- Structural left grid line -->
-    <div class="hero__gridline" aria-hidden="true"></div>
 
     <div class="hero__content">
-      <!-- Section index + discipline label -->
-      <div class="hero__meta">
-        <span class="hero__index" aria-hidden="true">[01]</span>
-        <p class="hero__eyebrow" data-i18n="hero.eyebrow">Design &amp; Project Management</p>
+      <div class="container">
+        <div class="hero__copy flow">
+          <p class="hero__label" data-i18n="hero.eyebrow">Design &amp; Project Management</p>
+          <h1 class="hero__accent" data-i18n="hero.accent">Piece of Art</h1>
+          <a href="projects.html" class="btn btn--hero" data-i18n="hero.cta">Explore Our Work</a>
+        </div>
       </div>
-      <h1 class="hero__title" data-i18n="hero.title">Piece of Art</h1>
-      <p class="hero__subtitle" data-i18n-html="hero.subtitle">
-        We craft spaces of lasting distinction —<br />where vision meets precision.
-      </p>
-      <a href="projects.html" class="btn btn--light" data-i18n="hero.cta">Explore Our Work</a>
-    </div>
-
-    <div class="hero__scroll-indicator" aria-hidden="true">
-      <span></span>
-      <p>Scroll</p>
     </div>
   </section>
 
 
   <!-- ===================== ABOUT PREVIEW ===================== -->
-  <section class="about-preview section section--compact about-preview--sticky" id="about">
-    <div class="container about-preview__grid">
+  <section class="about-preview about-preview--sticky" id="about">
+    <div class="container">
+      <div class="section-inner">
+      <div class="about-preview__grid">
 
-      <div class="about-preview__text reveal" data-reveal="left">
+      <div class="about-preview__text reveal flow" data-reveal="left">
         <div class="section-intro">
           <div class="section-intro__label">
             <span class="section-intro__index">[02]</span>
@@ -154,59 +135,44 @@
         </div>
       </div>
 
-    </div>
-  </section>
-
-
-  <!-- ===================== PHILOSOPHY ===================== -->
-  <section class="philosophy section" id="philosophy">
-    <div class="philosophy__inner">
-      <div class="container">
-        <div class="philosophy__grid">
-
-          <div class="philosophy__text reveal" data-reveal="left">
-            <div class="section-intro section-intro--light">
-              <div class="section-intro__label">
-                <span class="section-intro__index">[02b]</span>
-                <span class="section-intro__tag" data-i18n="philosophy.label">Our Approach</span>
-              </div>
-              <h2 class="section-intro__heading" data-i18n="philosophy.title">Respecting Nature.</h2>
-            </div>
-            <blockquote class="philosophy__quote reveal reveal--delay" data-reveal="fade">
-              <span class="philosophy__quote-mark" aria-hidden="true">"</span>
-              <p data-i18n="philosophy.quote">Respecting nature... is our philosophy of building.</p>
-            </blockquote>
-            <p class="philosophy__body body-text reveal reveal--delay-2" data-reveal="up" data-i18n="philosophy.body">
-              We adopt principles of organic architecture, designing in harmony with the land by preserving natural elements such as rocks and trees — allowing the structure to become an extension of its environment rather than an intrusion.
-            </p>
-          </div>
-
-          <div class="philosophy__visual reveal" data-reveal="right">
-            <div class="philosophy__img-wrap">
-              <img
-                src="https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?w=900&q=85&fit=crop"
-                alt="Organic architecture detail"
-                loading="lazy"
-              />
-            </div>
-            <div class="philosophy__accent-line" aria-hidden="true"></div>
-          </div>
-
-        </div>
+      </div>
       </div>
     </div>
   </section>
 
 
-  <!-- ===================== STATS ===================== -->
-  <!--
-    Values come from js/data.js → POA_DATA.stats
-    To update numbers or labels, edit data.js only.
-  -->
-  <section class="stats section--overlap-sm" id="stats">
+  <!-- ===================== PHILOSOPHY ===================== -->
+  <section class="philosophy" id="philosophy">
     <div class="container">
-      <!-- Populated by renderStats() in main.js — items get data-stagger via JS -->
-      <div class="stats__grid" id="stats-grid" aria-live="polite" data-stagger></div>
+      <div class="section-inner">
+      <div class="philosophy__grid">
+
+      <div class="philosophy__text reveal flow" data-reveal="fade">
+        <div class="section-intro section-intro--light">
+          <div class="section-intro__label">
+            <span class="section-intro__tag" data-i18n="philosophy.label">Our Approach</span>
+          </div>
+          <h2 class="section-intro__heading" data-i18n="philosophy.title">Respecting Nature.</h2>
+        </div>
+        <blockquote class="philosophy__quote reveal reveal--delay" data-reveal="fade">
+          <span class="philosophy__quote-mark" aria-hidden="true">"</span>
+          <p data-i18n="philosophy.quote">Respecting nature... is our philosophy of building.</p>
+        </blockquote>
+        <p class="philosophy__body body-text reveal reveal--delay-2" data-reveal="up" data-i18n="philosophy.body">
+          We adopt principles of organic architecture, designing in harmony with the land by preserving natural elements such as rocks and trees — allowing the structure to become an extension of its environment rather than an intrusion.
+        </p>
+      </div>
+
+      <div class="philosophy__visual reveal" data-reveal="fade">
+        <img
+          src="https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?w=900&q=85&fit=crop"
+          alt="Organic architecture detail"
+          loading="lazy"
+        />
+      </div>
+
+      </div>
+      </div>
     </div>
   </section>
 
@@ -218,30 +184,80 @@
     Recommended logo size: any height, roughly 120–180px wide, PNG with transparent background.
   -->
   <section class="partners" id="partners">
-    <div class="partners__header">
-      <span class="section-label">Trusted Partners</span>
-    </div>
-    <div class="partners__marquee" aria-label="Companies we have worked with">
-      <div class="partners__track">
-        <div class="partners__logo"><img src="Assets/images/partners/partner-1.png" alt="Partner 1" /></div>
-        <div class="partners__logo"><img src="Assets/images/partners/partner-2.png" alt="Partner 2" /></div>
-        <div class="partners__logo"><img src="Assets/images/partners/partner-3.png" alt="Partner 3" /></div>
-        <div class="partners__logo"><img src="Assets/images/partners/partner-4.png" alt="Partner 4" /></div>
-        <div class="partners__logo"><img src="Assets/images/partners/partner-5.png" alt="Partner 5" /></div>
-        <div class="partners__logo"><img src="Assets/images/partners/partner-6.png" alt="Partner 6" /></div>
-        <div class="partners__logo"><img src="Assets/images/partners/partner-7.png" alt="Partner 7" /></div>
-        <div class="partners__logo"><img src="Assets/images/partners/partner-8.png" alt="Partner 8" /></div>
+    <div class="container">
+      <div class="partners__header">
+        <span class="section-label">Trusted Partners</span>
       </div>
-      <!-- Duplicate track for seamless loop -->
-      <div class="partners__track" aria-hidden="true">
-        <div class="partners__logo"><img src="Assets/images/partners/partner-1.png" alt="" /></div>
-        <div class="partners__logo"><img src="Assets/images/partners/partner-2.png" alt="" /></div>
-        <div class="partners__logo"><img src="Assets/images/partners/partner-3.png" alt="" /></div>
-        <div class="partners__logo"><img src="Assets/images/partners/partner-4.png" alt="" /></div>
-        <div class="partners__logo"><img src="Assets/images/partners/partner-5.png" alt="" /></div>
-        <div class="partners__logo"><img src="Assets/images/partners/partner-6.png" alt="" /></div>
-        <div class="partners__logo"><img src="Assets/images/partners/partner-7.png" alt="" /></div>
-        <div class="partners__logo"><img src="Assets/images/partners/partner-8.png" alt="" /></div>
+  
+      <div class="partners__marquee" aria-label="Companies we have worked with">
+  
+        <!-- TRACK 1 -->
+        <div class="partners__track">
+          <div class="partners__logo"><img src="assets/logos/ALWATANIYEH.png" alt="Alwataniyeh" /></div>
+          <div class="partners__logo"><img src="assets/logos/LEOMARMI.png" alt="Leo Marmi" /></div>
+          <div class="partners__logo"><img src="assets/logos/ATG.png" alt="ATG" /></div>
+          <div class="partners__logo"><img src="assets/logos/WOODMAKER.png" alt="Wood Maker" /></div>
+          <div class="partners__logo"><img src="assets/logos/ABDEEN.png" alt="Abdeen Glass" /></div>
+          <div class="partners__logo"><img src="assets/logos/MANASEER.png" alt="Manaseer Group" /></div>
+          <div class="partners__logo"><img src="assets/logos/HATEM.png" alt="Hatem Group" /></div>
+  
+          <div class="partners__logo"><img src="assets/logos/ALMADAR.png" alt="Almadar" /></div>
+          <div class="partners__logo"><img src="assets/logos/MEGNA.png" alt="Megna" /></div>
+          <div class="partners__logo"><img src="assets/logos/ABRAJ.png" alt="Abraj Almeenas" /></div>
+          <div class="partners__logo"><img src="assets/logos/MADARAT.png" alt="Madarat Engineering" /></div>
+          <div class="partners__logo"><img src="assets/logos/UPB.png" alt="UPB" /></div>
+          <div class="partners__logo"><img src="assets/logos/ID.png" alt="ID" /></div>
+          <div class="partners__logo"><img src="assets/logos/MIX.png" alt="Mix Glass" /></div>
+  
+          <div class="partners__logo"><img src="assets/logos/ABUNASRA.png" alt="Abu Nasra" /></div>
+          <div class="partners__logo"><img src="assets/logos/ALMUNA.png" alt="Almuna" /></div>
+          <div class="partners__logo"><img src="assets/logos/MAJESTIC.png" alt="Majestic Home" /></div>
+          <div class="partners__logo"><img src="assets/logos/MARAQA.png" alt="Maraqa Ceramica" /></div>
+          <div class="partners__logo"><img src="assets/logos/IZZAT.png" alt="Izzat Marji" /></div>
+          <div class="partners__logo"><img src="assets/logos/VEINS.png" alt="Veins" /></div>
+          <div class="partners__logo"><img src="assets/logos/SIKA.png" alt="Sika" /></div>
+  
+          <div class="partners__logo"><img src="assets/logos/SILCA.png" alt="Silica" /></div>
+          <div class="partners__logo"><img src="assets/logos/PETRA.png" alt="Petra Aluminum" /></div>
+          <div class="partners__logo"><img src="assets/logos/NOOR.png" alt="Noor Ala Noor" /></div>
+          <div class="partners__logo"><img src="assets/logos/LAFARGE.png" alt="Lafarge" /></div>
+          <div class="partners__logo"><img src="assets/logos/AMAD.png" alt="Nabulsi & Amad" /></div>
+        </div>
+  
+        <!-- TRACK 2 (duplicate for seamless infinite scroll) -->
+        <div class="partners__track" aria-hidden="true">
+          <!-- just duplicate EXACT same list -->
+          <div class="partners__logo"><img src="assets/logos/ALWATANIYEH.png" /></div>
+          <div class="partners__logo"><img src="assets/logos/LEOMARMI.png" /></div>
+          <div class="partners__logo"><img src="assets/logos/ATG.png" /></div>
+          <div class="partners__logo"><img src="assets/logos/WOODMAKER.png" /></div>
+          <div class="partners__logo"><img src="assets/logos/ABDEEN.png" /></div>
+          <div class="partners__logo"><img src="assets/logos/MANASEER.png" /></div>
+          <div class="partners__logo"><img src="assets/logos/HATEM.png" /></div>
+  
+          <div class="partners__logo"><img src="assets/logos/ALMADAR.png" /></div>
+          <div class="partners__logo"><img src="assets/logos/MEGNA.png" /></div>
+          <div class="partners__logo"><img src="assets/logos/ABRAJ.png" /></div>
+          <div class="partners__logo"><img src="assets/logos/MADARAT.png" /></div>
+          <div class="partners__logo"><img src="assets/logos/UPB.png" /></div>
+          <div class="partners__logo"><img src="assets/logos/ID.png" /></div>
+          <div class="partners__logo"><img src="assets/logos/MIX.png" /></div>
+  
+          <div class="partners__logo"><img src="assets/logos/ABUNASRA.png" /></div>
+          <div class="partners__logo"><img src="assets/logos/ALMUNA.png" /></div>
+          <div class="partners__logo"><img src="assets/logos/MAJESTIC.png" /></div>
+          <div class="partners__logo"><img src="assets/logos/MARAQA.png" /></div>
+          <div class="partners__logo"><img src="assets/logos/IZZAT.png" /></div>
+          <div class="partners__logo"><img src="assets/logos/VEINS.png" /></div>
+          <div class="partners__logo"><img src="assets/logos/SIKA.png" /></div>
+  
+          <div class="partners__logo"><img src="assets/logos/SILCA.png" /></div>
+          <div class="partners__logo"><img src="assets/logos/PETRA.png" /></div>
+          <div class="partners__logo"><img src="assets/logos/NOOR.png" /></div>
+          <div class="partners__logo"><img src="assets/logos/LAFARGE.png" /></div>
+          <div class="partners__logo"><img src="assets/logos/AMAD.png" /></div>
+        </div>
+  
       </div>
     </div>
   </section>
@@ -252,22 +268,21 @@
     Content rendered dynamically from js/data.js → POA_DATA.services
     To update service content, edit js/data.js only.
   -->
-  <section class="services section section--gray" id="services">
+  <section class="services section--gray" id="services">
     <div class="container">
-
-      <div class="section-intro reveal">
-        <div class="section-intro__label">
-          <span class="section-intro__index">[03]</span>
-          <span class="section-intro__tag" data-i18n="services.label">What We Do</span>
+      <div class="section-inner">
+        <div class="section-intro reveal">
+          <div class="section-intro__label">
+            <span class="section-intro__index">[03]</span>
+            <span class="section-intro__tag" data-i18n="services.label">What We Do</span>
+          </div>
+          <h2 class="section-intro__heading" data-i18n="services.title">Our Services</h2>
+          <p class="section-intro__sub" data-i18n="services.intro">We partner with you from the very first idea, delivering integrated services that ensure precision in execution and excellence in outcome:</p>
         </div>
-        <h2 class="section-intro__heading" data-i18n="services.title">Our Services</h2>
-        <p class="section-intro__sub" data-i18n="services.intro">We partner with you from the very first idea, delivering integrated services that ensure precision in execution and excellence in outcome:</p>
       </div>
-
-      <!-- Populated by renderServices() in main.js -->
-      <div class="services__grid" id="services-grid" aria-live="polite"></div>
-
     </div>
+    <!-- Populated by renderServices() in main.js — full-width band, same gutters as .container -->
+    <div class="services__grid" id="services-grid" aria-live="polite"></div>
   </section>
 
 
@@ -292,117 +307,42 @@
   </section>
 
 
-  <!-- ===================== TESTIMONIALS ===================== -->
-  <section class="testimonials section" id="testimonials">
-    <div class="container">
-
-      <div class="section-intro section-intro--center reveal" data-reveal="fade">
-        <div class="section-intro__label">
-          <span class="section-intro__index">[05]</span>
-          <span class="section-intro__tag" data-i18n="testimonials.label">Client Words</span>
-        </div>
-        <h2 class="section-intro__heading section-intro__heading--script" data-i18n="testimonials.title">What They Say</h2>
-      </div>
-
-      <div class="testimonials__grid" data-stagger>
-
-        <blockquote class="testimonial reveal" data-reveal="up">
-          <div class="testimonial__quote-mark" aria-hidden="true">"</div>
-          <p class="testimonial__text">
-            Piece of Art transformed our vision into something we could never have imagined on our own.
-            Every detail was considered. The result is simply extraordinary.
-          </p>
-          <footer class="testimonial__author">
-            <strong>Mohammed Al-Rashid</strong>
-            <span>Private Client, Amman</span>
-          </footer>
-        </blockquote>
-
-        <blockquote class="testimonial reveal" data-reveal="up">
-          <div class="testimonial__quote-mark" aria-hidden="true">"</div>
-          <p class="testimonial__text">
-            Working with this team was seamless. Their project management expertise meant
-            everything was delivered on time and above expectation. Truly professional.
-          </p>
-          <footer class="testimonial__author">
-            <strong>Sarah Al-Tamimi</strong>
-            <span>CEO, Tamimi Developments</span>
-          </footer>
-        </blockquote>
-
-        <blockquote class="testimonial reveal" data-reveal="up">
-          <div class="testimonial__quote-mark" aria-hidden="true">"</div>
-          <p class="testimonial__text">
-            The interior they designed for our headquarters speaks of quality and intention.
-            Clients constantly comment on how the space feels — calm, confident, and remarkable.
-          </p>
-          <footer class="testimonial__author">
-            <strong>Khalid Bin Fahad</strong>
-            <span>Director, Bin Fahad Group</span>
-          </footer>
-        </blockquote>
-
-      </div>
-    </div>
-  </section>
-
-
   <!-- ===================== WHY US ===================== -->
-  <section class="whyus section" id="whyus">
+  <section class="whyus" id="whyus">
     <div class="container">
-      <div class="whyus__inner reveal" data-reveal="scale">
-
-        <div class="section-intro section-intro--center">
-          <div class="section-intro__label">
-            <span class="section-intro__index">[05b]</span>
-            <span class="section-intro__tag" data-i18n="whyus.label">Why Choose Us</span>
+      <div class="section-inner">
+        <div class="whyus__inner reveal" data-reveal="scale">
+          <div class="section-intro section-intro--center">
+            <div class="section-intro__label">
+              <span class="section-intro__index">[04]</span>
+              <span class="section-intro__tag" data-i18n="whyus.label">Why Choose Us</span>
+            </div>
+            <h2 class="section-intro__heading" data-i18n-html="whyus.title">Vision Meets<br/>Precision.</h2>
           </div>
-          <h2 class="section-intro__heading" data-i18n-html="whyus.title">Vision Meets<br/>Precision.</h2>
+          <p class="whyus__body" data-i18n="whyus.body">
+            We combine the vision of an artist with the precision of an executive.
+          </p>
         </div>
-
-        <p class="whyus__body" data-i18n="whyus.body">
-          We combine the vision of an artist with the precision of an executive.
-        </p>
-
-        <div class="whyus__pillars" data-stagger>
-          <div class="whyus__pillar reveal" data-reveal="up">
-            <div class="whyus__pillar-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-            </div>
-            <h3 class="whyus__pillar-title" data-i18n="whyus.p1title">20+ Years Experience</h3>
-          </div>
-          <div class="whyus__pillar reveal" data-reveal="up">
-            <div class="whyus__pillar-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-            </div>
-            <h3 class="whyus__pillar-title" data-i18n="whyus.p2title">On-Time Delivery</h3>
-          </div>
-          <div class="whyus__pillar reveal" data-reveal="up">
-            <div class="whyus__pillar-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-            </div>
-            <h3 class="whyus__pillar-title" data-i18n="whyus.p3title">Bespoke Approach</h3>
-          </div>
-        </div>
-
       </div>
-    </div>
-  </section>
-
-
-  <!-- ===================== CALL TO ACTION ===================== -->
-  <section class="cta section section--overlap" id="cta">
-    <div class="cta__bg" aria-hidden="true"></div>
-    <div class="container cta__inner reveal" data-reveal="scale">
-      <span class="section-label section-label--light" data-i18n="cta.label">Start a Conversation</span>
-      <h2 class="cta__title" data-i18n="cta.title">Have a Project in Mind?</h2>
-      <p class="cta__subtitle" data-i18n="cta.subtitle">
-        Let's build something extraordinary together.
-        Reach out and we'll arrange a consultation.
-      </p>
-      <div class="cta__actions">
-        <a href="contact.html"  class="btn btn--light"         data-i18n="cta.primary">Get In Touch</a>
-        <a href="projects.html" class="btn btn--outline-light" data-i18n="cta.secondary">Our Work</a>
+      <div class="whyus__pillars" data-stagger>
+        <div class="whyus__pillar reveal" data-reveal="up">
+          <div class="whyus__pillar-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3 class="whyus__pillar-title" data-i18n="whyus.p1title">20+ Years Experience</h3>
+        </div>
+        <div class="whyus__pillar reveal" data-reveal="up">
+          <div class="whyus__pillar-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <h3 class="whyus__pillar-title" data-i18n="whyus.p2title">On-Time Delivery</h3>
+        </div>
+        <div class="whyus__pillar reveal" data-reveal="up">
+          <div class="whyus__pillar-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          </div>
+          <h3 class="whyus__pillar-title" data-i18n="whyus.p3title">Bespoke Approach</h3>
+        </div>
       </div>
     </div>
   </section>
@@ -410,7 +350,6 @@
 
   <!-- ===================== PRE-FOOTER CTA ===================== -->
   <section class="prefooter" aria-label="Contact invitation">
-    <div class="prefooter__watermark" aria-hidden="true">POA</div>
     <div class="prefooter__inner container">
       <div class="prefooter__left reveal" data-reveal="left">
         <span class="section-label section-label--light">Begin Here</span>
@@ -430,6 +369,10 @@
   </section>
 
   <!-- ===================== FOOTER ===================== -->
+
+
+  </main>
+
   <footer class="footer" id="footer">
     <div class="container footer__main">
 
@@ -506,9 +449,8 @@
     </div>
   </footer>
 
-
   <!-- Data must load before main.js -->
   <script src="js/data.js?v=5"></script>
-  <script src="js/main.js?v=5"></script>
+  <script src="js/main.js?v=7"></script>
 </body>
 </html>

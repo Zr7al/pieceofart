@@ -11,21 +11,21 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/style.css?v=5" />
+  <link rel="stylesheet" href="css/style.css?v=31" />
 
   <!-- Service imagery (same paths as POA_DATA.services[].image in js/data.js) -->
   <link rel="preload" as="image" href="Assets/images/interior-design.jpg" />
   <link rel="preload" as="image" href="Assets/images/Architecture.jpg" />
   <link rel="preload" as="image" href="Assets/images/Project Management.jpg" />
 </head>
-<body class="page-services">
+<body class="page-static page-services">
 
   <!-- Scroll progress line -->
   <div id="scroll-progress" aria-hidden="true"></div>
 
   <!-- ===================== NAVBAR ===================== -->
-  <header class="navbar scrolled" id="navbar">
-    <div class="navbar__inner">
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner container">
 
       <a href="index.html" class="navbar__logo" aria-label="Piece of Art — Home">
         <img src="Assets/images/logo 2-01.png" alt="Piece of Art" />
@@ -58,7 +58,7 @@
   </header>
 
   <!-- Mobile nav overlay -->
-  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" aria-hidden="true">
     <ul>
       <li><a href="index.html"    class="nav-link" data-i18n="nav.home">Home</a></li>
       <li><a href="about.html"    class="nav-link" data-i18n="nav.about">About</a></li>
@@ -67,45 +67,49 @@
       <li><a href="careers.html"  class="nav-link" data-i18n="nav.careers">Careers</a></li>
       <li><a href="contact.html"  class="nav-link" data-i18n="nav.contact">Contact</a></li>
     </ul>
-  </div>
+  </nav>
+
+  <main>
 
   <!-- ===================== HERO ===================== -->
   <section class="services-hero reveal" data-reveal="fade">
     <div class="services-hero__accent" aria-hidden="true"></div>
 
-    <div class="container services-hero__layout">
-      <div class="services-hero__content">
-        <span class="section-label" data-i18n="nav.services">What We Do</span>
-        <h1 class="services-hero__title" data-i18n-html="servicesPage.heroTitle">
-          We design spaces that<br />define how people experience them.
-        </h1>
-        <p class="services-hero__subtitle" data-i18n="servicesPage.heroSubtitle">
-          Architecture, interior design, and project management — delivered under one roof. We bring ambitious spaces from concept to completion, without compromise.
-        </p>
-        <div class="services-hero__actions">
-          <a href="contact.html" class="btn btn--dark" data-i18n="servicesPage.ctaPrimary">Book a Consultation</a>
-          <a href="projects.html" class="btn btn--outline" data-i18n="servicesPage.ctaSecondary">View Portfolio</a>
-        </div>
-      </div>
-
-      <div class="services-hero__visual reveal reveal--delay" data-reveal="up">
-        <p class="services-hero__visual-label section-label" data-i18n="servicesPage.visualLabel">Our disciplines</p>
-        <nav class="services-hero__montage" aria-label="Service sections">
-          <a href="#interior-design" class="services-hero__card services-hero__card--primary">
-            <img src="Assets/images/interior-design.jpg" alt="" width="800" height="600" loading="eager" decoding="async" />
-            <span class="services-hero__card-label"><span class="services-hero__card-num">01</span> <span data-i18n="servicesPage.montageInterior">Interior Design</span></span>
-          </a>
-          <div class="services-hero__montage-row">
-            <a href="#architecture" class="services-hero__card services-hero__card--secondary">
-              <img src="Assets/images/Architecture.jpg" alt="" width="600" height="480" loading="lazy" decoding="async" />
-              <span class="services-hero__card-label"><span class="services-hero__card-num">02</span> <span data-i18n="servicesPage.montageArchitecture">Architecture</span></span>
-            </a>
-            <a href="#project-management" class="services-hero__card services-hero__card--secondary">
-              <img src="Assets/images/Project Management.jpg" alt="" width="600" height="480" loading="lazy" decoding="async" />
-              <span class="services-hero__card-label"><span class="services-hero__card-num">03</span> <span data-i18n="servicesPage.montagePM">Project Management</span></span>
-            </a>
+    <div class="container">
+      <div class="services-hero__layout">
+        <div class="services-hero__content">
+          <span class="section-label" data-i18n="nav.services">What We Do</span>
+          <h1 class="services-hero__title" data-i18n-html="servicesPage.heroTitle">
+            We design spaces that<br />define how people experience them.
+          </h1>
+          <p class="services-hero__subtitle" data-i18n="servicesPage.heroSubtitle">
+            Architecture, interior design, and project management — delivered under one roof. We bring ambitious spaces from concept to completion, without compromise.
+          </p>
+          <div class="services-hero__actions">
+            <a href="contact.html" class="btn btn--dark" data-i18n="servicesPage.ctaPrimary">Book a Consultation</a>
+            <a href="projects.html" class="btn btn--outline" data-i18n="servicesPage.ctaSecondary">View Portfolio</a>
           </div>
-        </nav>
+        </div>
+
+        <div class="services-hero__visual reveal reveal--delay" data-reveal="up">
+          <p class="services-hero__visual-label section-label" data-i18n="servicesPage.visualLabel">Our disciplines</p>
+          <nav class="services-hero__montage" aria-label="Service sections">
+            <a href="#interior-design" class="services-hero__card services-hero__card--primary">
+              <img src="Assets/images/interior-design.jpg" alt="" width="800" height="600" loading="eager" decoding="async" />
+              <span class="services-hero__card-label"><span class="services-hero__card-num">01</span> <span data-i18n="servicesPage.montageInterior">Interior Design</span></span>
+            </a>
+            <div class="services-hero__montage-row">
+              <a href="#architecture" class="services-hero__card services-hero__card--secondary">
+                <img src="Assets/images/Architecture.jpg" alt="" width="600" height="480" loading="lazy" decoding="async" />
+                <span class="services-hero__card-label"><span class="services-hero__card-num">02</span> <span data-i18n="servicesPage.montageArchitecture">Architecture</span></span>
+              </a>
+              <a href="#project-management" class="services-hero__card services-hero__card--secondary">
+                <img src="Assets/images/Project Management.jpg" alt="" width="600" height="480" loading="lazy" decoding="async" />
+                <span class="services-hero__card-label"><span class="services-hero__card-num">03</span> <span data-i18n="servicesPage.montagePM">Project Management</span></span>
+              </a>
+            </div>
+          </nav>
+        </div>
       </div>
     </div>
 
@@ -116,7 +120,7 @@
   </section>
 
   <!-- ===================== PROCESS STRIP ===================== -->
-  <section class="process-strip section section--gray">
+  <section class="process-strip section--gray">
     <div class="container">
       <header class="process-strip__header reveal" data-reveal="up">
         <span class="section-label" data-i18n="servicesPage.processLabel">How we work</span>
@@ -140,7 +144,7 @@
   </section>
 
   <!-- ===================== FINAL CTA ===================== -->
-  <section class="cta section section--overlap" id="cta">
+  <section class="cta" id="cta">
     <div class="cta__bg" aria-hidden="true"></div>
     <div class="container cta__inner reveal" data-reveal="scale">
       <span class="section-label section-label--light" data-i18n="cta.label">Take the First Step</span>
@@ -157,6 +161,10 @@
   </section>
 
   <!-- ===================== FOOTER ===================== -->
+
+
+  </main>
+
   <footer class="footer" id="footer">
     <!-- Footer content remains standard -->
     <div class="container footer__main">
@@ -204,6 +212,6 @@
   </footer>
 
   <script src="js/data.js?v=5"></script>
-  <script src="js/main.js?v=5"></script>
+  <script src="js/main.js?v=7"></script>
 </body>
 </html>

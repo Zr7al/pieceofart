@@ -9,13 +9,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=5" />
+  <link rel="stylesheet" href="css/style.css?v=33" />
 </head>
-<body>
+<body class="page-static page-careers">
 
   <!-- ===================== NAVBAR ===================== -->
-  <header class="navbar navbar--light" id="navbar">
-    <div class="navbar__inner">
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner container">
       <a href="index.html" class="navbar__logo" aria-label="Piece of Art — Home">
         <img src="Assets/images/logo 2-01.png" alt="Piece of Art" />
       </a>
@@ -43,49 +43,29 @@
   </header>
 
   <!-- Mobile nav -->
-  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" aria-hidden="true">
     <ul>
       <li><a href="index.html"    class="nav-link">Home</a></li>
       <li><a href="about.html"    class="nav-link">About</a></li>
       <li><a href="services.html" class="nav-link">Services</a></li>
       <li><a href="projects.html" class="nav-link">Projects</a></li>
-      <li><a href="careers.html"  class="nav-link">Careers</a></li>
+      <li><a href="careers.html"  class="nav-link active">Careers</a></li>
       <li><a href="contact.html"  class="nav-link">Contact</a></li>
     </ul>
-  </div>
+  </nav>
 
+  <main class="page-content--offset">
 
   <!-- ===================== PAGE HEADER ===================== -->
-  <section class="page-header page-header--blueprint">
-    <div class="blueprint-bg" aria-hidden="true">
-      <svg class="blueprint-svg" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-        <!-- Grid -->
-        <defs>
-          <pattern id="bpSmall" width="40" height="40" patternUnits="userSpaceOnUse">
-            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" stroke-width="0.3" opacity="0.08"/>
-          </pattern>
-          <pattern id="bpLarge" width="200" height="200" patternUnits="userSpaceOnUse">
-            <rect width="200" height="200" fill="url(#bpSmall)"/>
-            <path d="M 200 0 L 0 0 0 200" fill="none" stroke="currentColor" stroke-width="0.6" opacity="0.1"/>
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#bpLarge)"/>
-        <!-- Animated drafting lines -->
-        <line class="bp-line bp-line--1" x1="0" y1="30%" x2="100%" y2="30%" />
-        <line class="bp-line bp-line--2" x1="65%" y1="0" x2="65%" y2="100%" />
-        <line class="bp-line bp-line--3" x1="0" y1="75%" x2="100%" y2="75%" />
-        <line class="bp-line bp-line--4" x1="25%" y1="0" x2="25%" y2="100%" />
-        <!-- Diagonal construction line -->
-        <line class="bp-line bp-line--diag" x1="0" y1="100%" x2="100%" y2="0" />
-        <!-- Animated circle / compass mark -->
-        <circle class="bp-circle" cx="65%" cy="30%" r="60" />
-        <circle class="bp-circle bp-circle--sm" cx="25%" cy="75%" r="35" />
-      </svg>
+  <section class="page-header page-header--careers">
+    <div class="page-header--careers__visual" aria-hidden="true">
+      <div class="page-header--careers__photo"></div>
+      <div class="page-header--careers__scrim"></div>
     </div>
     <div class="container page-header__content">
-      <span class="section-label bp-reveal" style="--r:1">Join Our Team</span>
-      <h1 class="page-header__title bp-reveal" style="--r:2">Build Your Career With Us</h1>
-      <p class="page-header__subtitle bp-reveal" style="--r:3">
+      <span class="section-label careers-hero__label">Join Our Team</span>
+      <h1 class="page-header__title careers-hero__title">Build Your Career With Us</h1>
+      <p class="page-header__subtitle careers-hero__sub">
         We are building a studio of exceptional talent — architects, designers, and
         project managers who believe great spaces change lives.
       </p>
@@ -98,31 +78,33 @@
     <div class="container">
 
       <div class="jobs-header">
-        <p class="jobs-count"><span id="openCount">4</span> Open Positions</p>
+        <p class="jobs-count">4 open positions</p>
       </div>
 
-      <div class="jobs-table-head" aria-hidden="true">
-        <div>Position</div>
-        <div>Location</div>
-        <div>Department</div>
-        <div>Posted</div>
-        <div></div>
-      </div>
-
-      <div id="jobsList">
+      <div id="jobsList" class="jobs-list">
 
         <!-- ─ JOB 1 ─ -->
         <article class="job-item reveal" data-job-id="1">
           <div class="job-row" role="button" tabindex="0" aria-expanded="false" aria-controls="job-drawer-1">
-            <div class="job-cell job-title">
-              Architectural Designer
-              <span class="job-badge">New</span>
+            <div class="job-row__left">
+              <div class="job-row__titleline">
+                <h3 class="job-title">Architectural Designer</h3>
+                <span class="job-badge">New</span>
+              </div>
+              <p class="job-meta">
+                <span class="job-meta__loc">Amman, Jordan</span>
+                <span class="job-meta__sep" aria-hidden="true">•</span>
+                <span class="job-meta__dept">Architecture</span>
+              </p>
             </div>
-            <div class="job-cell">Amman, Jordan</div>
-            <div class="job-cell">Architecture</div>
-            <div class="job-cell job-date">Mar 2026</div>
-            <div class="job-toggle" aria-hidden="true">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            <div class="job-row__right">
+              <time class="job-date" datetime="2026-03">Mar 2026</time>
+              <span class="job-arrow" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </span>
+              <span class="job-toggle" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
             </div>
           </div>
           <div class="job-drawer" id="job-drawer-1" hidden>
@@ -156,12 +138,24 @@
         <!-- ─ JOB 2 ─ -->
         <article class="job-item reveal reveal--delay" data-job-id="2">
           <div class="job-row" role="button" tabindex="0" aria-expanded="false" aria-controls="job-drawer-2">
-            <div class="job-cell job-title">Interior Design Specialist</div>
-            <div class="job-cell">Amman, Jordan</div>
-            <div class="job-cell">Interior Design</div>
-            <div class="job-cell job-date">Mar 2026</div>
-            <div class="job-toggle" aria-hidden="true">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            <div class="job-row__left">
+              <div class="job-row__titleline">
+                <h3 class="job-title">Interior Design Specialist</h3>
+              </div>
+              <p class="job-meta">
+                <span class="job-meta__loc">Amman, Jordan</span>
+                <span class="job-meta__sep" aria-hidden="true">•</span>
+                <span class="job-meta__dept">Interior Design</span>
+              </p>
+            </div>
+            <div class="job-row__right">
+              <time class="job-date" datetime="2026-03">Mar 2026</time>
+              <span class="job-arrow" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </span>
+              <span class="job-toggle" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
             </div>
           </div>
           <div class="job-drawer" id="job-drawer-2" hidden>
@@ -195,12 +189,24 @@
         <!-- ─ JOB 3 ─ -->
         <article class="job-item reveal reveal--delay" data-job-id="3">
           <div class="job-row" role="button" tabindex="0" aria-expanded="false" aria-controls="job-drawer-3">
-            <div class="job-cell job-title">Project Manager</div>
-            <div class="job-cell">Amman, Jordan</div>
-            <div class="job-cell">Project Management</div>
-            <div class="job-cell job-date">Feb 2026</div>
-            <div class="job-toggle" aria-hidden="true">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            <div class="job-row__left">
+              <div class="job-row__titleline">
+                <h3 class="job-title">Project Manager</h3>
+              </div>
+              <p class="job-meta">
+                <span class="job-meta__loc">Amman, Jordan</span>
+                <span class="job-meta__sep" aria-hidden="true">•</span>
+                <span class="job-meta__dept">Project Management</span>
+              </p>
+            </div>
+            <div class="job-row__right">
+              <time class="job-date" datetime="2026-02">Feb 2026</time>
+              <span class="job-arrow" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </span>
+              <span class="job-toggle" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
             </div>
           </div>
           <div class="job-drawer" id="job-drawer-3" hidden>
@@ -234,12 +240,24 @@
         <!-- ─ JOB 4 ─ -->
         <article class="job-item reveal reveal--delay-2" data-job-id="4">
           <div class="job-row" role="button" tabindex="0" aria-expanded="false" aria-controls="job-drawer-4">
-            <div class="job-cell job-title">3D Visualization Artist</div>
-            <div class="job-cell">Amman, Jordan</div>
-            <div class="job-cell">Design</div>
-            <div class="job-cell job-date">Feb 2026</div>
-            <div class="job-toggle" aria-hidden="true">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            <div class="job-row__left">
+              <div class="job-row__titleline">
+                <h3 class="job-title">3D Visualization Artist</h3>
+              </div>
+              <p class="job-meta">
+                <span class="job-meta__loc">Amman, Jordan</span>
+                <span class="job-meta__sep" aria-hidden="true">•</span>
+                <span class="job-meta__dept">Design</span>
+              </p>
+            </div>
+            <div class="job-row__right">
+              <time class="job-date" datetime="2026-02">Feb 2026</time>
+              <span class="job-arrow" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </span>
+              <span class="job-toggle" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
             </div>
           </div>
           <div class="job-drawer" id="job-drawer-4" hidden>
@@ -278,16 +296,20 @@
   <!-- ===================== CTA STRIP ===================== -->
   <section class="careers-cta">
     <div class="container careers-cta__inner">
-      <div>
-        <h3 class="careers-cta__title">Don't See the Right Role?</h3>
-        <p class="careers-cta__sub">We're always open to exceptional talent. Send your CV and we'll reach out when a matching position opens.</p>
+      <div class="careers-cta__copy">
+        <h3 class="careers-cta__title">Don't see your role?</h3>
+        <p class="careers-cta__sub">We're always open to exceptional talent. Send your CV and we'll reach out when something fits.</p>
       </div>
-      <a href="contact.html" class="btn btn--light">Get In Touch</a>
+      <a href="contact.html" class="btn btn--light careers-cta__btn">Send us your CV</a>
     </div>
   </section>
 
 
   <!-- ===================== FOOTER ===================== -->
+
+
+  </main>
+
   <footer class="footer" id="footer">
     <div class="container footer__main">
       <div class="footer__brand">
@@ -348,7 +370,6 @@
       </div>
     </div>
   </footer>
-
 
   <!-- ===================== APPLY MODAL ===================== -->
   <div class="apply-modal" id="applyModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
@@ -414,7 +435,7 @@
 
 
   <script src="js/data.js?v=5"></script>
-  <script src="js/main.js?v=5"></script>
+  <script src="js/main.js?v=7"></script>
   <script>
   (function () {
     'use strict';

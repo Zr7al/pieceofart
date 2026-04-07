@@ -11,16 +11,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/style.css?v=5" />
+  <link rel="stylesheet" href="css/style.css?v=31" />
 </head>
-<body>
+<body class="page-hero">
 
   <!-- Scroll progress line -->
   <div id="scroll-progress" aria-hidden="true"></div>
 
   <!-- ===================== NAVBAR ===================== -->
-  <header class="navbar scrolled" id="navbar">
-    <div class="navbar__inner">
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner container">
 
       <a href="index.html" class="navbar__logo" aria-label="Piece of Art — Home">
         <img src="Assets/images/logo 2-01.png" alt="Piece of Art" />
@@ -53,7 +53,7 @@
   </header>
 
   <!-- Mobile nav overlay -->
-  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" aria-hidden="true">
     <ul>
       <li><a href="index.html"    class="nav-link" data-i18n="nav.home">Home</a></li>
       <li><a href="about.html"    class="nav-link" data-i18n="nav.about">About</a></li>
@@ -62,30 +62,34 @@
       <li><a href="careers.html"  class="nav-link" data-i18n="nav.careers">Careers</a></li>
       <li><a href="contact.html"  class="nav-link" data-i18n="nav.contact">Contact</a></li>
     </ul>
-  </div>
+  </nav>
+
+  <main>
 
   <!-- ===================== PROJECTS HERO ===================== -->
   <section class="projects-hero" id="projects-hero" aria-label="Featured project">
-    <div class="container projects-hero__inner">
+    <div class="container">
+      <div class="projects-hero__inner">
 
-      <div class="projects-hero__text" id="phText">
-        <span class="projects-hero__label" id="phLabel">Featured Project</span>
-        <h1 class="projects-hero__title" id="phTitle"></h1>
-        <p class="projects-hero__location" id="phLocation"></p>
-        <p class="projects-hero__desc" id="phDesc"></p>
-        <button class="btn btn--light projects-hero__cta" id="phBtn">View Project</button>
+        <div class="projects-hero__text" id="phText">
+          <span class="projects-hero__label" id="phLabel">Featured Project</span>
+          <h1 class="projects-hero__title" id="phTitle"></h1>
+          <p class="projects-hero__location" id="phLocation"></p>
+          <p class="projects-hero__desc" id="phDesc"></p>
+          <button class="btn btn--light projects-hero__cta" id="phBtn">View Project</button>
+        </div>
+
+        <div class="projects-hero__image" id="phImageWrap">
+          <img id="phImg" src="" alt="" loading="eager" fetchpriority="high" decoding="async" />
+          <div class="projects-hero__img-overlay" aria-hidden="true"></div>
+        </div>
+
       </div>
-
-      <div class="projects-hero__image" id="phImageWrap">
-        <img id="phImg" src="" alt="" loading="eager" />
-        <div class="projects-hero__img-overlay" aria-hidden="true"></div>
-      </div>
-
     </div>
   </section>
 
   <!-- ===================== FILTERS + GRID ===================== -->
-  <section class="section section--compact" id="projects">
+  <section id="projects">
     <div class="container">
       
       <!-- Filter Bar -->
@@ -93,7 +97,6 @@
         <button class="active" data-filter="all">All</button>
         <button data-filter="villas">Private Villas</button>
         <button data-filter="farms">Farm Estates</button>
-        <button data-filter="commercial">Offices & Commercial</button>
         <button data-filter="restaurants">Restaurants</button>
         <button data-filter="hospitality">Hospitality</button>
         <button data-filter="administrative">Administrative</button>
@@ -174,7 +177,7 @@
   </div>
 
   <!-- ===================== CALL TO ACTION ===================== -->
-  <section class="cta section section--overlap" id="cta">
+  <section class="cta" id="cta">
     <div class="cta__bg" aria-hidden="true"></div>
     <div class="container cta__inner reveal" data-reveal="scale">
       <span class="section-label section-label--light" data-i18n="cta.label">Start a Conversation</span>
@@ -191,6 +194,10 @@
   </section>
 
   <!-- ===================== FOOTER ===================== -->
+
+
+  </main>
+
   <footer class="footer" id="footer">
     <div class="container footer__main">
 
@@ -266,7 +273,7 @@
     </div>
   </footer>
 
-  <script src="js/data.js?v=5"></script>
-  <script src="js/main.js?v=5"></script>
+  <script src="js/data.js?v=9"></script>
+  <script src="js/main.js?v=10"></script>
 </body>
 </html>

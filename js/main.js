@@ -235,7 +235,7 @@ function renderServicesPage() {
  * Links:    "View Project"       → project-detail.html?id=PROJECT_ID
  *           "View All Projects"  → projects.html
  *
- * Thumbnail: POA_DATA uses project.image (singular). Gallery rows use project.visuals / blueprints.
+ * Thumbnail: project.image → main.jpeg. Galleries: visuals[] → 3d/, blueprints[] → pdf/.
  *
  * To change the featured project: open data.js, set featured: true on the
  * desired project and featured: false on the current one.
@@ -305,7 +305,7 @@ function renderFeatured() {
         <p class="fp-card__desc">${lang.description}</p>
 
         <div class="fp-card__actions">
-          <a href="project-detail.html?id=${project.id}" class="btn btn--dark">${ctaView}</a>
+          <a href="#" onclick="openProjectModal('${project.id}'); return false;" class="btn btn--dark">${ctaView}</a>
           <a href="projects.html" class="btn btn--outline">${ctaAll}</a>
         </div>
 
@@ -396,40 +396,27 @@ function initNavbar() {
 
   if (!navbar) return;
 
-  const isLightNav = navbar.classList.contains('navbar--light');
-  const logoImg    = navbar.querySelector('.navbar__logo img');
+  /* ── Scroll: dark-hero pages after hero; page-static (about, services, careers, contact, …): after small scroll ───────── */
+  var body = document.body;
+  var heroNav =
+    body.classList.contains('page-home') || body.classList.contains('page-hero');
+  var staticNav = body.classList.contains('page-static');
 
-  /* ── Scroll handler ─────────────────────────────────────── */
   function onScroll() {
-    var scrollY = window.scrollY;
-    var past    = scrollY > 50;
-    navbar.classList.toggle('scrolled', past);
-
-    if (isLightNav) {
-      navbar.style.backdropFilter = 'none';
-      navbar.style.webkitBackdropFilter = 'none';
-    }
-
-    /* Proportional opacity transition while logo crosses the
-       hero/glass boundary (0 → 120px scroll range).
-       This creates a gentle "fade through" as the filter switches.
-       After the logo CSS animation completes (~1.4s), the inline
-       opacity is released so CSS transitions take over cleanly. */
-    if (logoImg) {
-      var crossfadeRange = 120;
-      if (scrollY <= crossfadeRange) {
-        var progress = scrollY / crossfadeRange;
-        /* Dip to ~0.78 at midpoint, full opacity at both ends */
-        var dip     = Math.sin(progress * Math.PI) * 0.22;
-        logoImg.style.opacity = String(1 - dip);
-      } else {
-        /* Past the crossfade zone — let CSS take over */
-        logoImg.style.opacity = '';
-      }
+    if (heroNav) {
+      var threshold = window.innerHeight * 0.6;
+      navbar.classList.toggle('scrolled', window.scrollY > threshold);
+    } else if (staticNav) {
+      navbar.classList.toggle('scrolled', window.scrollY > 32);
     }
   }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+
+  if (heroNav || staticNav) {
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  } else {
+    navbar.classList.remove('scrolled');
+  }
 
   if (hamburger && mobileNav) {
     hamburger.addEventListener('click', function () {
@@ -458,16 +445,39 @@ function initHero() {
   var hero = document.querySelector('.hero');
   if (!hero) return;
 
-  /* Ken Burns now runs as a pure CSS animation — the `loaded`
-     class is kept for potential future use but no longer drives
-     the zoom transition. */
+  var parallaxLayer = hero.querySelector('.hero__parallax');
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var isMobileQuery = window.matchMedia('(max-width: 768px)');
+  var maxShift = 36;
+  function onHeroScroll() {
+    if (!parallaxLayer || isMobileQuery.matches) {
+      if (parallaxLayer) parallaxLayer.style.transform = 'none';
+      return;
+    }
+    var rect = hero.getBoundingClientRect();
+    var total = rect.height + window.innerHeight;
+    var p = total > 0 ? (window.innerHeight - rect.top) / total : 0;
+    p                                     = Math.min(1, Math.max(0, p));
+    var y = (p - 0.35) * maxShift;
+    parallaxLayer.style.transform = 'translate3d(0, ' + y + 'px, 0)';
+  }
+
   requestAnimationFrame(function () {
     requestAnimationFrame(function () {
       hero.classList.add('loaded');
     });
   });
 
-  /* Hero background: no scroll-parallax (keeps imagery and edges stable for reading). */
+  /* Subtle scroll parallax on background (disabled if user prefers reduced motion). */
+  if (!isMobileQuery.matches && parallaxLayer && !reduceMotion) {
+    window.addEventListener('scroll', onHeroScroll, { passive: true });
+    window.addEventListener('resize', onHeroScroll);
+    onHeroScroll();
+  } else {
+    window.removeEventListener('scroll', onHeroScroll);
+    window.removeEventListener('resize', onHeroScroll);
+    if (parallaxLayer) parallaxLayer.style.transform = 'none';
+  }
 }
 
 
@@ -489,6 +499,14 @@ function observeReveal(elements) {
 }
 
 function initReveal() {
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+  if (isMobile) {
+    document.querySelectorAll('.reveal').forEach(function (el) {
+      el.classList.add('is-visible');
+    });
+    return;
+  }
+
   /* Auto-stagger: assign --stagger-i CSS var to .reveal children
      inside any element marked [data-stagger] */
   document.querySelectorAll('[data-stagger]').forEach(function (group) {
@@ -507,11 +525,17 @@ function initScrollProgress() {
   var bar = document.getElementById('scroll-progress');
   if (!bar) return;
 
+  var scrollTicking = false;
   window.addEventListener('scroll', function () {
-    var scrollTop = window.scrollY || document.documentElement.scrollTop;
-    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-    bar.style.width = pct + '%';
+    if (!scrollTicking) {
+      requestAnimationFrame(function () {
+        var scrollTop = window.scrollY;
+        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.width = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + '%';
+        scrollTicking = false;
+      });
+      scrollTicking = true;
+    }
   }, { passive: true });
 }
 
@@ -553,26 +577,43 @@ function initRipple() {
 
 /* ── CARD 3-D TILT ───────────────────────────────────────── */
 function initCardTilt() {
+  if ('ontouchstart' in window) return; // no-op on touch devices
+
   document.querySelectorAll('.project-card, .service-card').forEach(function (card) {
+    var rect = null;
+    var rafId = null;
+    var pendingCx = 0, pendingCy = 0;
+
     card.addEventListener('mouseenter', function () {
+      rect = card.getBoundingClientRect(); // cache once per hover, not per frame
       card.style.transition = 'transform 0.08s ease';
-    });
+    }, { passive: true });
 
     card.addEventListener('mousemove', function (e) {
-      var rect = card.getBoundingClientRect();
-      var cx   = (e.clientX - rect.left) / rect.width  - 0.5;
-      var cy   = (e.clientY - rect.top)  / rect.height - 0.5;
-      card.style.transform = 'perspective(900px) rotateY(' + (cx * 10) + 'deg) rotateX(' + (-cy * 8) + 'deg) translateY(-6px)';
-    });
+      if (!rect) return;
+      pendingCx = (e.clientX - rect.left) / rect.width  - 0.5;
+      pendingCy = (e.clientY - rect.top)  / rect.height - 0.5;
+      if (!rafId) {
+        rafId = requestAnimationFrame(function () {
+          card.style.transform =
+            'perspective(900px) rotateY(' + (pendingCx * 10) + 'deg) ' +
+            'rotateX(' + (-pendingCy * 8) + 'deg) ' +
+            'translate3d(0,-6px,0)';
+          rafId = null;
+        });
+      }
+    }, { passive: true });
 
     card.addEventListener('mouseleave', function () {
+      rect = null;
+      if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
       card.style.transition = 'transform 0.65s var(--ease-out)';
       card.style.transform  = '';
       card.addEventListener('transitionend', function restore() {
         card.style.transition = '';
         card.removeEventListener('transitionend', restore);
       });
-    });
+    }, { passive: true });
   });
 }
 
@@ -686,7 +727,7 @@ function populateModal(project) {
 }
 
 function openProjectModal(projectId) {
-  const project = POA_DATA.projects.find(p => p.id === projectId);
+  const project = POA_DATA.projects.find(p => String(p.id) === String(projectId));
   if (!project) return;
 
   clearTimeout(imgSwapTimer);
@@ -772,6 +813,7 @@ function setModalImage(idx) {
 
   // Reset zoom on image switch
   resetZoom();
+  clearTimeout(imgSwapTimer);
 
   if (main) {
     main.style.opacity = '0';
@@ -855,6 +897,12 @@ function applyTransform() {
 function initImageGestures() {
   const container = document.getElementById('modalImgContainer');
   if (!container) return;
+  const isMobile = () => window.matchMedia('(max-width: 768px)').matches;
+
+  if (isMobile()) {
+    resetZoom();
+    return;
+  }
 
   /* ── Mouse: click-to-zoom + drag-to-pan ─────────────────── */
   let mouseStartX, mouseStartY;
@@ -1036,6 +1084,7 @@ function initModalEvents() {
       const wrapper = document.getElementById('modalImgContainer');
       if (wrapper) {
         wrapper.style.opacity = '0';
+        clearTimeout(tabSwitchTimer);
         tabSwitchTimer = setTimeout(() => {
           updateModalDisplay();
           wrapper.style.opacity = '1';
@@ -1095,6 +1144,8 @@ function renderProjectsHero() {
   if (img && img.getAttribute('data-loaded') !== project.id) {
     img.src = project.image;
     img.alt = lang.name;
+    img.setAttribute('fetchpriority', 'high');
+    img.decoding = 'async';
     img.setAttribute('data-loaded', project.id);
   }
 
@@ -1138,6 +1189,8 @@ function initProjectFilters() {
         grid.classList.add('is-switching');
         setTimeout(() => {
           renderProjects(filter);
+          // Immediately reveal all cards — don't wait for IntersectionObserver
+          grid.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
           grid.classList.remove('is-switching');
         }, 280);
       }
