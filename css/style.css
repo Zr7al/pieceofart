@@ -4178,6 +4178,9 @@ body.page-contact {
 [dir="rtl"] .prefooter__inner { direction: rtl; }
 [dir="rtl"] .prefooter__watermark { right: auto; left: 0; }
 
+/* Reset letter-spacing globally for Arabic — positive values break letter connections */
+[dir="rtl"] * { letter-spacing: 0 !important; }
+
 /* Buttons */
 [dir="rtl"] .btn { letter-spacing: 0; }
 
