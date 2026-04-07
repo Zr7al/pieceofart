@@ -4,15 +4,59 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0a0a0a" />
+  <link rel="icon" type="image/png" href="Assets/images/logo.png" />
+  <link rel="apple-touch-icon" href="Assets/images/logo.png" />
   <title>Piece of Art — Design &amp; Project Management</title>
   <meta name="description" content="Piece of Art is a premium design and project management studio crafting spaces of lasting distinction." />
+  <link rel="canonical" href="https://zaidrahhal.me/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://zaidrahhal.me/" />
+  <meta property="og:title"       content="Piece of Art — Design &amp; Project Management" />
+  <meta property="og:description" content="Piece of Art is a premium design and project management studio crafting spaces of lasting distinction." />
+  <meta property="og:image"       content="https://zaidrahhal.me/Assets/images/hero-main.jpg" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Piece of Art — Design &amp; Project Management" />
+  <meta name="twitter:description" content="Piece of Art is a premium design and project management studio crafting spaces of lasting distinction." />
+  <meta name="twitter:image"       content="https://zaidrahhal.me/Assets/images/hero-main.jpg" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
+  <!-- Preload hero image for faster LCP -->
+  <link rel="preload" as="image" href="Assets/images/hero-main.jpg" fetchpriority="high" />
+
   <link rel="stylesheet" href="css/style.css?v=33" />
+
+  <!-- JSON-LD structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Piece of Art",
+    "url": "https://zaidrahhal.me",
+    "logo": "https://zaidrahhal.me/Assets/images/logo.png",
+    "image": "https://zaidrahhal.me/Assets/images/hero-main.jpg",
+    "description": "Premium design and project management studio crafting spaces of lasting distinction.",
+    "address": { "@type": "PostalAddress", "addressLocality": "Amman", "addressCountry": "JO" },
+    "telephone": "+962798184862",
+    "email": "info@pieceofartjo.com",
+    "sameAs": ["https://instagram.com/pieceofart.sa"],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Design Services",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Architecture" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Interior Design" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Project Management" } }
+      ]
+    }
+  }
+  </script>
 </head>
 <body class="page-home">
 
@@ -130,6 +174,8 @@
           <img
             src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=900&q=85&fit=crop"
             alt="Piece of Art studio"
+            width="900" height="700"
+            loading="lazy"
           />
           <div class="about-preview__accent"></div>
         </div>
@@ -167,6 +213,7 @@
         <img
           src="https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?w=900&q=85&fit=crop"
           alt="Organic architecture detail"
+          width="900" height="600"
           loading="lazy"
         />
       </div>
@@ -227,35 +274,35 @@
         <!-- TRACK 2 (duplicate for seamless infinite scroll) -->
         <div class="partners__track" aria-hidden="true">
           <!-- just duplicate EXACT same list -->
-          <div class="partners__logo"><img src="assets/logos/ALWATANIYEH.png" /></div>
-          <div class="partners__logo"><img src="assets/logos/LEOMARMI.png" /></div>
-          <div class="partners__logo"><img src="assets/logos/ATG.png" /></div>
-          <div class="partners__logo"><img src="assets/logos/WOODMAKER.png" /></div>
-          <div class="partners__logo"><img src="assets/logos/ABDEEN.png" /></div>
-          <div class="partners__logo"><img src="assets/logos/MANASEER.png" /></div>
-          <div class="partners__logo"><img src="assets/logos/HATEM.png" /></div>
+          <div class="partners__logo"><img src="assets/logos/ALWATANIYEH.png" alt="" width="160" height="60" /></div>
+          <div class="partners__logo"><img src="assets/logos/LEOMARMI.png" alt="" width="160" height="60" /></div>
+          <div class="partners__logo"><img src="assets/logos/ATG.png" alt="" width="160" height="60" /></div>
+          <div class="partners__logo"><img src="assets/logos/WOODMAKER.png" alt="" width="160" height="60" /></div>
+          <div class="partners__logo"><img src="assets/logos/ABDEEN.png" alt="" width="160" height="60" /></div>
+          <div class="partners__logo"><img src="assets/logos/MANASEER.png" alt="" width="160" height="60" /></div>
+          <div class="partners__logo"><img src="assets/logos/HATEM.png" alt="" width="160" height="60" /></div>
   
-          <div class="partners__logo"><img src="assets/logos/ALMADAR.png" /></div>
-          <div class="partners__logo"><img src="assets/logos/MEGNA.png" /></div>
-          <div class="partners__logo"><img src="assets/logos/ABRAJ.png" /></div>
-          <div class="partners__logo"><img src="assets/logos/MADARAT.png" /></div>
-          <div class="partners__logo"><img src="assets/logos/UPB.png" /></div>
-          <div class="partners__logo"><img src="assets/logos/ID.png" /></div>
-          <div class="partners__logo"><img src="assets/logos/MIX.png" /></div>
+          <div class="partners__logo"><img src="assets/logos/ALMADAR.png" alt="" width="160" height="60" /></div>
+          <div class="partners__logo"><img src="assets/logos/MEGNA.png" alt="" width="160" height="60" /></div>
+          <div class="partners__logo"><img src="assets/logos/ABRAJ.png" alt="" width="160" height="60" /></div>
+          <div class="partners__logo"><img src="assets/logos/MADARAT.png" alt="" width="160" height="60" /></div>
+          <div class="partners__logo"><img src="assets/logos/UPB.png" alt="" width="160" height="60" /></div>
+          <div class="partners__logo"><img src="assets/logos/ID.png" alt="" width="160" height="60" /></div>
+          <div class="partners__logo"><img src="assets/logos/MIX.png" alt="" width="160" height="60" /></div>
   
-          <div class="partners__logo"><img src="assets/logos/ABUNASRA.png" /></div>
-          <div class="partners__logo"><img src="assets/logos/ALMUNA.png" /></div>
-          <div class="partners__logo"><img src="assets/logos/MAJESTIC.png" /></div>
-          <div class="partners__logo"><img src="assets/logos/MARAQA.png" /></div>
-          <div class="partners__logo"><img src="assets/logos/IZZAT.png" /></div>
-          <div class="partners__logo"><img src="assets/logos/VEINS.png" /></div>
-          <div class="partners__logo"><img src="assets/logos/SIKA.png" /></div>
+          <div class="partners__logo"><img src="assets/logos/ABUNASRA.png" alt="" width="160" height="60" /></div>
+          <div class="partners__logo"><img src="assets/logos/ALMUNA.png" alt="" width="160" height="60" /></div>
+          <div class="partners__logo"><img src="assets/logos/MAJESTIC.png" alt="" width="160" height="60" /></div>
+          <div class="partners__logo"><img src="assets/logos/MARAQA.png" alt="" width="160" height="60" /></div>
+          <div class="partners__logo"><img src="assets/logos/IZZAT.png" alt="" width="160" height="60" /></div>
+          <div class="partners__logo"><img src="assets/logos/VEINS.png" alt="" width="160" height="60" /></div>
+          <div class="partners__logo"><img src="assets/logos/SIKA.png" alt="" width="160" height="60" /></div>
   
-          <div class="partners__logo"><img src="assets/logos/SILCA.png" /></div>
-          <div class="partners__logo"><img src="assets/logos/PETRA.png" /></div>
-          <div class="partners__logo"><img src="assets/logos/NOOR.png" /></div>
-          <div class="partners__logo"><img src="assets/logos/LAFARGE.png" /></div>
-          <div class="partners__logo"><img src="assets/logos/AMAD.png" /></div>
+          <div class="partners__logo"><img src="assets/logos/SILCA.png" alt="" width="160" height="60" /></div>
+          <div class="partners__logo"><img src="assets/logos/PETRA.png" alt="" width="160" height="60" /></div>
+          <div class="partners__logo"><img src="assets/logos/NOOR.png" alt="" width="160" height="60" /></div>
+          <div class="partners__logo"><img src="assets/logos/LAFARGE.png" alt="" width="160" height="60" /></div>
+          <div class="partners__logo"><img src="assets/logos/AMAD.png" alt="" width="160" height="60" /></div>
         </div>
   
       </div>
@@ -450,7 +497,7 @@
   </footer>
 
   <!-- Data must load before main.js -->
-  <script src="js/data.js?v=5"></script>
-  <script src="js/main.js?v=7"></script>
+  <script defer src="js/data.js?v=5"></script>
+  <script defer src="js/main.js?v=7"></script>
 </body>
 </html>
