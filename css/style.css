@@ -4409,7 +4409,14 @@ body.page-contact {
 }
 
 .page-home .hero__content {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
   text-align: center;
+  padding: 0;
+  z-index: 3;
 }
 
 /* Hero: lightweight dark overlay */
