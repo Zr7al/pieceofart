@@ -4440,44 +4440,41 @@ body.page-contact {
   );
 }
 
-.page-home .hero__copy {
-  max-width: 36rem;
-  padding-left: 0;
-  border-left: none;
-  margin: 0 auto;
-}
-
-.page-home .hero__label {
-  letter-spacing: 0.36em;
-  color: rgba(255, 255, 255, 0.78);
-}
-
-/* Home hero copy: flex column, tightly grouped in center */
-.hero__copy--home {
+/* ── HOME HERO: single authoritative block ─────────────────── */
+body.page-home .hero__copy--home {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0;
-  max-width: 860px;
-  margin: 0 auto;
   text-align: center;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  border: none;
+  gap: 1rem;
 }
-.hero__copy--home .hero__logo-mark { margin-bottom: 1rem; }
-.hero__copy--home .hero__label     { margin-bottom: 2.2rem; }
-.hero__copy--home .btn--hero       { margin-top: 0; }
 
-
-/* Hero logo mark replaces the script text on the home page */
-.hero__logo-mark {
-  margin: 0 0 2rem;
+body.page-home .hero__copy--home .hero__logo-mark {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0;
 }
-.hero__logo-mark img {
-  width: clamp(420px, 52vw, 740px);
+
+body.page-home .hero__copy--home .hero__logo-mark img {
+  width: clamp(360px, 46vw, 680px);
   height: auto;
-  filter: brightness(0) invert(1) drop-shadow(0 2px 32px rgba(0,0,0,0.4));
+  filter: brightness(0) invert(1) drop-shadow(0 2px 40px rgba(0,0,0,0.5));
+}
+
+body.page-home .hero__copy--home .hero__label {
+  letter-spacing: 0.36em;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0;
+}
+
+body.page-home .hero__copy--home .btn--hero {
+  margin-top: 1.5rem;
 }
 
 /* Center the hero content block on the home page */
