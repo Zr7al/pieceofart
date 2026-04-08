@@ -3932,6 +3932,10 @@ body.page-contact {
   .hero {
     align-items: end;
   }
+  /* Home hero: always truly centered */
+  body.page-home .hero {
+    align-items: center;
+  }
 
   .page-services .services-hero {
     justify-content: flex-end;
@@ -4446,9 +4450,12 @@ body.page-contact {
 .page-home .hero__label {
   letter-spacing: 0.36em;
   color: rgba(255, 255, 255, 0.78);
-  margin-top: -0.5rem; /* pull closer to logo above */
-  margin-bottom: 2rem;
 }
+
+/* Tighten spacing between hero elements on home — override .flow defaults */
+body.page-home .hero__copy.flow > * + * { margin-top: 0.6rem; }
+body.page-home .hero__copy .hero__logo-mark { margin-bottom: 0; }
+body.page-home .hero__copy .btn--hero { margin-top: 2.5rem; }
 
 
 /* Hero logo mark replaces the script text on the home page */
