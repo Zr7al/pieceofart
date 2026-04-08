@@ -22,18 +22,17 @@
   <meta name="twitter:description" content="Piece of Art is a premium design and project management studio crafting spaces of lasting distinction." />
   <meta name="twitter:image"       content="https://zaidrahhal.me/pieceofart/Assets/images/hero-main.jpg" />
 
-  <!-- Fonts: gstatic first (actual font files); Latin subset for hero script -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preload" href="https://fonts.gstatic.com/s/pinyonscript/v24/6xKpdSJbL9-e9LuoeQiDRQR8WOXaOg.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Montserrat:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Montserrat:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet" /></noscript>
+  <!-- Critical ATF: system-font LCP → optional font-swap if cached -->
+  <link rel="preload" href="Assets/fonts/pinyon-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="Assets/fonts/montserrat-600-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="css/critical-home.min.css?v=2" />
 
-  <!-- Preload hero image (WebP) for faster LCP -->
+  <!-- Hero image: preloaded so it becomes LCP element (faster than font-dependent text) -->
   <link rel="preload" as="image" href="Assets/images/webp/hero-main.webp" fetchpriority="high" type="image/webp" />
 
-  <link rel="preload" href="css/style.min.css?v=35" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link rel="stylesheet" href="css/style.min.css?v=35" /></noscript>
+  <!-- Full stylesheet deferred — not on critical path -->
+  <link rel="preload" href="css/style.min.css?v=37" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="css/style.min.css?v=37" /></noscript>
 
   <!-- JSON-LD structured data -->
   <script type="application/ld+json">
@@ -72,8 +71,12 @@
 
       <a href="index.html" class="navbar__logo" aria-label="Piece of Art — Home">
         <picture>
-          <source srcset="Assets/images/webp/logo 2-01.webp" type="image/webp" />
-          <img src="Assets/images/logo 2-01.png" alt="Piece of Art" width="280" height="80" decoding="async" />
+          <source
+            type="image/webp"
+            srcset="Assets/images/webp/logo-2-01-176.webp 176w, Assets/images/webp/logo 2-01.webp 280w"
+            sizes="(max-width: 480px) 40vw, 176px"
+          />
+          <img src="Assets/images/logo 2-01.png" alt="Piece of Art" width="176" height="50" decoding="async" />
         </picture>
       </a>
 
@@ -126,10 +129,9 @@
           <img
             class="hero__media"
             src="Assets/images/hero-main-opt.jpg"
-            alt=""
+            alt="Piece of Art — Design studio"
             width="1440"
             height="900"
-            decoding="async"
             fetchpriority="high"
           />
         </picture>
@@ -141,7 +143,9 @@
       <div class="container">
         <div class="hero__copy flow">
           <p class="hero__label" data-i18n="hero.eyebrow">Design &amp; Project Management</p>
-          <h1 class="hero__accent" data-i18n="hero.accent">Piece of Art</h1>
+          <div class="hero__logo-mark" aria-label="Piece of Art">
+            <img src="Assets/images/logo 2-01.png" alt="Piece of Art" width="320" height="90" decoding="async" />
+          </div>
           <a href="projects.html" class="btn btn--hero" data-i18n="hero.cta">Explore Our Work</a>
         </div>
       </div>
@@ -442,7 +446,7 @@
       <div class="footer__brand">
         <a href="index.html" class="footer__logo">
           <picture>
-            <source srcset="Assets/images/webp/logo.webp" type="image/webp" />
+            <source srcset="Assets/images/webp/logo-168.webp" type="image/webp" />
             <img src="Assets/images/logo.png" alt="Piece of Art" width="140" height="42" decoding="async" />
           </picture>
         </a>
@@ -516,6 +520,31 @@
 
   <!-- Data must load before main.js -->
   <script defer src="js/data.min.js?v=11"></script>
-  <script defer src="js/main.min.js?v=13"></script>
+  <script defer src="js/main.min.js?v=15"></script>
+  <script>
+    (function () {
+      /* After first paint: swap system font → Pinyon Script on hero accent */
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(function () {
+          var el = document.querySelector(".hero__accent");
+          if (el) el.style.fontFamily = '"Pinyon Script", Georgia, "Times New Roman", serif';
+          var lbl = document.querySelector(".hero__label");
+          if (lbl) lbl.style.fontFamily = 'Montserrat, system-ui, sans-serif';
+        });
+      }
+      /* Remaining font weights/families: loaded after everything settles */
+      function loadRestFonts() {
+        var l = document.createElement("link");
+        l.rel = "stylesheet";
+        l.href = "https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Tajawal:wght@300;400;500;700&display=swap";
+        document.head.appendChild(l);
+      }
+      if ("requestIdleCallback" in window) {
+        window.requestIdleCallback(loadRestFonts);
+      } else {
+        window.addEventListener("load", loadRestFonts);
+      }
+    })();
+  </script>
 </body>
 </html>

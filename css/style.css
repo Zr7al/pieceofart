@@ -717,6 +717,21 @@ h2 { margin-bottom: 1.25rem; }
   transform: translate3d(0, 0, 0);
 }
 
+/* Home: LCP — hero headline must not wait on entrance transition (Lighthouse element render delay) */
+body.page-home .hero__copy .hero__label,
+body.page-home .hero__copy .hero__accent,
+body.page-home .hero__copy .btn--hero {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition: none;
+}
+
+/* Home: hero image IS the LCP element — paint immediately, no fade-in */
+body.page-home .hero__media {
+  opacity: 1;
+  animation: heroKenSubtle 22s ease-in-out 0.15s infinite alternate;
+}
+
 @keyframes heroMediaIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -4431,6 +4446,24 @@ body.page-contact {
   color: rgba(255, 255, 255, 0.78);
 }
 
+
+/* Hero logo mark replaces the script text on the home page */
+.hero__logo-mark {
+  margin: 0 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero__logo-mark img {
+  width: clamp(200px, 35vw, 360px);
+  height: auto;
+  filter: brightness(0) invert(1);
+  drop-shadow: 0 2px 32px rgba(0,0,0,0.4);
+}
+
+/* Center the hero copy on the home page */
+body.page-home .hero__content { text-align: center; }
+body.page-home .hero__copy    { max-width: 44ch; margin: 0 auto; }
 
 .page-home .hero__accent {
   color: #fff;

@@ -33,38 +33,9 @@ const POA_DATA = {
   /* ── SERVICES ───────────────────────────────────────────── */
   services: [
     {
-      id:     'interior-design',
-      slug:   'interior-design',
-      number: '01',
-      icon:   'interior',
-      image:  'Assets/images/webp/interior-design.webp',
-      en: {
-        title:       'Interior Design',
-        description: 'Most interiors look finished but never feel right. We solve that. Our team designs environments where every material, proportion, and detail is chosen with purpose — creating spaces that feel effortless to inhabit and impossible to forget.',
-        bullets: [
-          'Space planning that maximises how every room functions',
-          'Curated materials, finishes & furniture selection',
-          'Photorealistic 3D visuals before anything is ordered',
-          'On-site supervision through to final handover'
-        ],
-        link:        'Book Interior Consultation'
-      },
-      ar: {
-        title:       'التصميم الداخلي',
-        description: 'معظم التصاميم الداخلية تبدو مكتملة ولكنها لا تمنح الشعور الصحيح. نحن نعالج ذلك؛ حيث يصمم فريقنا بيئات تُختار فيها كل مادة وكل تفصيلة بدقة متناهية، لنخلق مساحات مريحة للسكن وعصية على النسيان.',
-        bullets: [
-          'تخطيط المساحات لتحقيق أقصى استفادة من وظائف الغرف',
-          'اختيار منسق للمواد والتشطيبات والأثاث',
-          'مرئيات ثلاثية الأبعاد واقعية قبل طلب أي مادة',
-          'إشراف ميداني حتى التسليم النهائي'
-        ],
-        link:        'احجز استشارة تصميم داخلي'
-      }
-    },
-    {
       id:     'architecture',
       slug:   'architecture',
-      number: '02',
+      number: '01',
       icon:   'arch',
       image:  'Assets/images/webp/Architecture.webp',
       en: {
@@ -88,6 +59,35 @@ const POA_DATA = {
           'زيارات موقعية لضمان مطابقة البناء للتصميم تماماً'
         ],
         link:        'ناقش رؤيتك المعمارية'
+      }
+    },
+    {
+      id:     'interior-design',
+      slug:   'interior-design',
+      number: '02',
+      icon:   'interior',
+      image:  'Assets/images/webp/interior-design.webp',
+      en: {
+        title:       'Interior Design',
+        description: 'Most interiors look finished but never feel right. We solve that. Our team designs environments where every material, proportion, and detail is chosen with purpose — creating spaces that feel effortless to inhabit and impossible to forget.',
+        bullets: [
+          'Space planning that maximises how every room functions',
+          'Curated materials, finishes & furniture selection',
+          'Photorealistic 3D visuals before anything is ordered',
+          'On-site supervision through to final handover'
+        ],
+        link:        'Book Interior Consultation'
+      },
+      ar: {
+        title:       'التصميم الداخلي',
+        description: 'معظم التصاميم الداخلية تبدو مكتملة ولكنها لا تمنح الشعور الصحيح. نحن نعالج ذلك؛ حيث يصمم فريقنا بيئات تُختار فيها كل مادة وكل تفصيلة بدقة متناهية، لنخلق مساحات مريحة للسكن وعصية على النسيان.',
+        bullets: [
+          'تخطيط المساحات لتحقيق أقصى استفادة من وظائف الغرف',
+          'اختيار منسق للمواد والتشطيبات والأثاث',
+          'مرئيات ثلاثية الأبعاد واقعية قبل طلب أي مادة',
+          'إشراف ميداني حتى التسليم النهائي'
+        ],
+        link:        'احجز استشارة تصميم داخلي'
       }
     },
     {
