@@ -4446,6 +4446,8 @@ body.page-contact {
 .page-home .hero__label {
   letter-spacing: 0.36em;
   color: rgba(255, 255, 255, 0.78);
+  margin-top: -0.5rem; /* pull closer to logo above */
+  margin-bottom: 2rem;
 }
 
 
