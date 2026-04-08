@@ -4452,10 +4452,19 @@ body.page-contact {
   color: rgba(255, 255, 255, 0.78);
 }
 
-/* Tighten spacing between hero elements on home — override .flow defaults */
-body.page-home .hero__copy.flow > * + * { margin-top: 0.6rem; }
-body.page-home .hero__copy .hero__logo-mark { margin-bottom: 0; }
-body.page-home .hero__copy .btn--hero { margin-top: 2.5rem; }
+/* Home hero copy: flex column, tightly grouped in center */
+.hero__copy--home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+}
+.hero__copy--home .hero__logo-mark { margin-bottom: 1rem; }
+.hero__copy--home .hero__label     { margin-bottom: 2.2rem; }
+.hero__copy--home .btn--hero       { margin-top: 0; }
 
 
 /* Hero logo mark replaces the script text on the home page */
@@ -4471,9 +4480,8 @@ body.page-home .hero__copy .btn--hero { margin-top: 2.5rem; }
   filter: brightness(0) invert(1) drop-shadow(0 2px 32px rgba(0,0,0,0.4));
 }
 
-/* Center the hero copy on the home page */
+/* Center the hero content block on the home page */
 body.page-home .hero__content { text-align: center; }
-body.page-home .hero__copy    { max-width: 860px; margin: 0 auto; }
 
 .page-home .hero__accent {
   color: #fff;
