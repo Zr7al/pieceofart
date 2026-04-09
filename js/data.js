@@ -182,6 +182,7 @@ const POA_DATA = {
     { id: 'farms',          en: 'Farm Estates',    ar: 'مزارع'   },
     { id: 'restaurants',    en: 'Restaurants',     ar: 'مطاعم'   },
     { id: 'hospitality',    en: 'Hospitality',     ar: 'ضيافة'   },
+    { id: 'tourism',        en: 'Tourism',         ar: 'سياحي'   },
     { id: 'administrative', en: 'Administrative',  ar: 'إداري'   }
   ],
 
@@ -191,7 +192,7 @@ const POA_DATA = {
     {
       id:       'palmira',
       slug:     'palmira',
-      category: 'hospitality',
+      category: 'tourism',
       year:     '2025',
       size:     '10100 m²',
       featured: true,
@@ -214,8 +215,8 @@ const POA_DATA = {
       en: {
         name:        'Palmira',
         location:    'Airport Road, Amman',
-        description: 'A design that rejects excess and celebrates simplicity. In Palmira, spaces are shaped using raw, natural materials — clay that preserves coolness, and wood that brings visual warmth. The project brings together contrasting experiences; from the strength of the stables and the speed of horses, to the calm of the spa and the depth of the main pool. Palmira is not just a resort — it is a conscious return to nature.',
-        philosophy:  'A design that rejects excess and celebrates simplicity through natural materials and contrasting spatial experiences.'
+        description: 'A design that rejects pretension and celebrates simplicity. In Palmira, we crafted spaces from natural raw materials — clay that preserves the coolness of the place, and wood that lends visual warmth. A project that unites the contrasts of beauty; from the grandeur of the stables and the speed of the horses, to the serenity of the spa and the depth of the grand pool. Palmira is not merely a resort — it is a conscious return to nature.',
+        philosophy:  'A design that rejects pretension and celebrates simplicity through natural raw materials and contrasting spatial experiences.'
       },
       ar: {
         name:        'بالميرا',
