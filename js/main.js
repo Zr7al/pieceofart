@@ -706,7 +706,7 @@ function populateModal(project) {
     'modalLoc': lang.location,
     'modalYear': project.year,
     'modalArea': project.size,
-    'modalPhilosophy': lang.philosophy
+    'modalPhilosophy': lang.description
   };
 
   for (const [id, val] of Object.entries(elements)) {
