@@ -267,8 +267,8 @@ const POA_DATA = {
       id:       'ksa',
       slug:     'ksa',
       category: 'restaurants',
-      year:     '',
-      size:     '',
+      year:     '2025',
+      size:     '80 m²',
       featured: false,
       image:    'Assets/projects/ksa/main.jpeg',
       visuals: [
@@ -280,16 +280,16 @@ const POA_DATA = {
         'Assets/projects/ksa/pdf/1.jpg'
       ],
       en: {
-        name:        'KSA',
-        location:    'KSA',
-        description: 'Further project information will be added when available.',
-        philosophy:  'Not specified yet.'
+        name:        'Najla',
+        location:    'Jabal Al Weibdeh, Amman',
+        description: 'Between the historic alleys of Jabal Al Weibdeh and the modernity of the twentieth century, this project revives an interior space with a heritage and contemporary touch. The heritage identity of the place was preserved and merged with modern design elements — colourful traditional floor tiles alongside clean granite finishes. The design highlights an elegant harmony between simple minimalist wooden furniture and classic curved seating, with a smart use of natural light through wide glass facades, embodying the perfect balance between Weibdeh\'s architectural legacy and a contemporary dining experience.',
+        philosophy:  'A heritage restaurant that balances the preservation of architectural identity with contemporary spatial design.'
       },
       ar: {
-        name:        'KSA',
-        location:    'KSA',
-        description: 'سيتم إضافة تفاصيل المشروع لاحقاً.',
-        philosophy:  'غير محدد حالياً.'
+        name:        'نجلاء',
+        location:    'جبل الويبدة، عمّان',
+        description: 'بين أزقة جبل الويبدة العريقة وحداثة القرن العشرين، يأتي هذا المشروع ليعيد إحياء مساحة داخلية بلمسة تراثية ومعاصرة. تم الحفاظ على هوية المكان التراثية ودمجها بعناصر تصميمية حديثة، مثل بلاط الأرضية التراثي الملون والجرانيت المودرن. يبرز التصميم تناغماً أنيقاً بين الأثاث الخشبي البسيط (Minimalist) والكراسي الكلاسيكية المنحنية، مع توظيف ذكي للإضاءة الطبيعية من خلال الواجهات الزجاجية الواسعة، ليجسد المكان التناغم المثالي بين الإرث المعماري للويبدة والتجربة العصرية.',
+        philosophy:  'مطعم تراثي يوازن بين الحفاظ على هوية المكان المعمارية والتصميم المعاصر.'
       }
     },
     {
